@@ -1,0 +1,103 @@
+/* ======== Revolution Slider ================= */
+
+.rev_slider_wrapper .simplebullets.custom{
+	bottom:20px !important;
+	.bullet{
+		background:transparent;
+		width:12px;
+		height:12px;
+		border-radius:6px;
+		margin:0 10px;
+		display:inline-block;
+		border:2px solid #fff;
+		&:hover, &:focus{background:rgba(255,255,255,0.5); }
+	}
+	.bullet.selected{background:#fff;}
+}
+
+/* Slider Layer/Text Styles */
+.uu-title-left-bar, .uu-subtitle-left-bar{
+	position:relative;
+	&:before{
+		  content: "";
+		  position: absolute;
+		  /* fill vertically */
+		  top: 0;
+		  bottom: 0;
+		  width: 9600px;
+		  right: 100%;
+		  background: rgba(0,0,0,0.5);
+	}
+}
+
+.uu-title-right-bar, .uu-subtitle-right-bar{
+	position:relative;
+	&:after{
+		content: "";
+		  position: absolute;
+		  /* fill vertically */
+		  top: 0;
+		  bottom: 0;
+		  width: 9600px;
+		  left: 100%;
+		  background: rgba(0,0,0,0.5);
+	}
+}
+
+/* ================== Adam Rob Parallax Plugin ===================== */
+.adamrob_pcontainer div:first-child{display:none;}
+
+/* ================== Slick Carousel ==================== */
+
+ // see sass _body file
+
+ /* ================= Pure Forms Styles ======================== */
+ form{
+ 	@extend .pure-form;
+ }
+
+.pure-form textarea{
+ 	line-height:1.5;
+ }
+
+ .pure-form select{padding-top:0.3em;}
+
+input[type="submit"], button[type="submit"]{
+	@extend .btn-primary;
+}
+
+input[type="reset"], button[type="reset"]{
+	@extend .btn-secondary;
+}
+
+input:hover[type="submit"], button:hover[type="submit"], input:focus[type="submit"], button:focus[type="submit"]{
+		background:darken($u-red,6%);
+		border:1px solid darken($u-red, 12%);
+		cursor:pointer;
+		color:#fff;
+}
+input:hover[type="reset"], button:hover[type="reset"], input:focus[type="reset"], button:focus[type="reset"]{
+		background:$medium-gray !important;
+		border:1px solid darken($medium-gray, 5%);
+		cursor:pointer;
+		color:#fff;
+}
+
+@media only screen and (max-width:400px){
+input, textarea, select{width:100%; display:block;}
+input[type="submit"], button[type="submit"], input[type="reset"], button[type="reset"]{width:auto; display:inline-block;}
+}
+
+ /* ================= Bootrap Overrides ======================== */
+ // Global Styles
+ a:hover, a:focus {
+	outline-style:none;
+	outline-offset:0;
+}
+
+ // Tabs
+ .tab_wrap .tab-content{
+ 	padding: 1em;
+	margin-bottom: 2em;
+ }
+

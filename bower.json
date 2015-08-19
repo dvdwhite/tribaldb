@@ -1,0 +1,24 @@
+{
+  "name": "tribaldb",
+  "version": "0.0.0",
+  "authors": [
+    " "
+  ],
+  "description": "bower components for the tribaldb",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.3",
+    "fontawesome": "~4.2.0"
+  },
+  "devDependencies": {
+    "pure": "~0.6.0"
+  }
+}

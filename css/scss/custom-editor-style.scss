@@ -1,0 +1,379 @@
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('fonts/glyphicons-halflings-regular.eot');
+  src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('fonts/fontawesome-webfont.eot?v=4.2.0');
+  src: url('fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ===========================
+	Modules & Variables
+============================ */
+@import "modules/variables";
+@import "modules/mixins";
+
+body.mce-content-body{
+	padding:1em !important;
+	font-size: 1em;
+	line-height: 1.4;
+	font-size:16px;
+	line-height:26px;
+	font-family:$open-sans;
+	font-weight:400;
+	margin: 0;
+	background-color:#fff;
+}
+
+body {
+	font-size: 1em;
+	line-height: 1.4;
+	font-size:16px;
+	line-height:26px;
+	font-family:$open-sans;
+	font-weight:400;
+	margin: 0;
+	background-color:#fff;
+}
+
+/* ----- heading levels ---------*/
+h1, h2, h3, h4, h5, h6{
+	font-weight:400;
+}
+h1, h2 {
+	letter-spacing:-.03em;
+	line-height:1.2em;
+	margin: 1em 0 .5em;
+}
+h1 { font-size: 2.6em;
+	font-family:$open-sans-condensed;
+	text-transform:uppercase;
+}
+h2 { font-size: 1.9em; font-weight:bold;}
+h3,h4,h5,h6 { 
+	letter-spacing:-.03em;
+	margin: 1.5em 0 .5em;
+}
+h3 {font-size: 1.6em; font-weight:bold;}
+h4 {font-size: 1.5em; font-weight:bold;}
+
+h2, h3, h4{
+	small{font-weight:400;}
+}
+
+h5 {font-size: 1.3em; text-transform:uppercase;}
+h6 {font-size: 1.1em;}
+
+h1, h2, h3, h4, h5, h6{
+	small{
+		display: block;
+		text-transform: none;
+		color: #666;
+	}
+}
+
+h1, h2{
+	small{margin-top: -0.2em;}
+}
+h3, h4, h5, h6{
+	small{margin-top: -0.1em;}
+}
+
+p { margin:1em 0; }
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid rgb(204, 204, 204);
+	margin: 1em 0;
+	padding: 0;
+	clear:both;
+}
+
+a, a:active {
+	color: $u-red;
+}
+
+a:hover {
+	color: $neon-red;
+}
+
+a:visited {
+	color: $dark-red;
+}
+
+.uppercase{
+	text-transform:uppercase;
+}
+
+// Wordpress Specific Clases
+.sticky{background:#ececec;}
+
+.wp-caption{
+	padding-bottom: 1px;
+}
+
+.wp-caption-text{
+	margin: 0.5em 0 0.7em;
+	font-size:0.85em;
+	text-align:center;
+	border-top: 1px solid $faint-gray;
+	border-bottom: 1px solid $faint-gray;
+	color:$pencil-gray;
+	padding: 5px 0;
+}
+
+.wp-caption img{
+	float:none;
+	padding: 0;
+	margin: 5px;
+}
+
+.alignnone, .alignleft{
+	&.wp-caption{margin: 0.4em 1em 1em 0em;}
+}
+
+.aligncenter{
+	&.wp-caption{margin: 1em;}
+}
+
+.alignright{
+	&.wp-caption{margin: 0.4em 0em 1em 1em;}
+}
+
+/* Alignment */
+.alignleft{
+	float:left;
+	margin:0.4em 1em 1em 0;
+}
+
+.alignnone, .aligncenter{
+	float:none;
+	display:block;
+	clear:both;
+}
+
+.alignnone{
+	margin:0.4em 1em 1em 0em;
+}
+.aligncenter{
+	margin: 0.4em auto 1em;
+}
+
+.alignright{
+	float:right;
+	margin: 0.4em 0em 1em 1em;
+}
+
+.gallery-caption{font-size:0.9em;}
+.bypostauthor{text-transform:uppercase;}
+
+/* =========================================================
+	Add any custom styles for editor elements here
+============================================================ */
+
+a{
+	&.btn{
+		padding:2px 10px;
+		text-decoration:none;
+		background:none;
+		border:1px solid lighten($medium-gray,40%);
+		color:$medium-gray;
+		display:inline-block;
+		text-align:center;
+		border-radius: 3px;
+		font-size:1.1em;
+		font-weight:400;
+	}
+
+	&.btn-primary{
+		display:inline-block;
+		text-decoration:none;
+		text-align:center;
+		padding:2px 10px;
+		text-decoration:none;
+		border:1px solid darken($u-red, 5%);
+		background:$u-red;
+		color:#fff;
+		border-radius: 3px;
+		font-size:1.1em;
+		transition: background 250ms ease-in-out;
+		font-weight:400;
+	}
+
+	&.btn-secondary{
+		display:inline-block;
+		text-decoration:none;
+		text-align:center;
+		padding:2px 10px;
+		text-decoration:none;
+		border:1px solid darken($pencil-gray, 5%);
+		background:$pencil-gray;
+		color:#fff;
+		border-radius: 3px;
+		font-size:1.1em;
+		transition: background 250ms ease-in-out;
+		font-weight:400;
+	}
+
+	&.small{
+		font-size:0.8em;
+		padding:0 8px;
+	}
+
+	&.large{
+		font-size:1.3em;
+		padding:15px 20px;
+	}
+
+	&.arrow{
+		font-weight:600;
+		&:after{
+			// glyphicon-triangle-right
+			content:"\e250";
+			font-size:0.8em;
+			margin-left:5px;
+			font-family: 'Glyphicons Halflings';
+			vertical-align:middle;
+			top: -1px;
+			position: relative;
+		}
+	}
+
+	&.uppercase{
+		text-transform:uppercase;
+		font-family:$open-sans-condensed;
+		font-weight:400;
+		&.btn, &.btn-primary, &.btn-secondary{
+			font-size:1.5em;
+		}
+		&.small{font-size:1.3em;}
+		&.large{font-size:1.7em;}
+	}
+
+	&.btn-full-width{diplay:block; width:100%; margin-bottom:0.5em; font-weight:400;}
+
+	&.outline-dark{
+		border:1px solid #fff;
+		color:#fff;
+		background:none;
+	}
+
+	&.outline-light{
+		color:darken($pencil-gray,20%);
+		border:1px solid $pencil-gray;
+	}
+
+	&.outline-primary{
+		background:none;
+		color:$u-red;
+		border:1px solid $u-red;
+	}
+
+	&.gray-btn-wtag{
+		padding:2px 10px;
+		text-decoration:none;
+		background-color:$pencil-gray;
+		color:#fff;
+		text-transform:uppercase;
+		font-size:1.5em;
+		font-weight:300;
+		font-family:$open-sans-condensed;
+		transition: background 250ms ease-in-out;
+	}
+
+}/* end of 'a' tag */
+
+a:hover, a:focus{
+	&.btn{color:$u-red; font-weight:400;}
+	&.btn-primary{
+		background:darken($u-red,6%);
+		border:1px solid darken($u-red, 12%);
+		cursor:pointer;
+		color:#fff;
+		font-weight:400;
+	}
+	&.btn-secondary{
+		background:$medium-gray;
+		border:1px solid darken($medium-gray, 5%);
+		cursor:pointer;
+		color:#fff;
+		font-weight:400;
+	}
+
+	&.outline-dark{background:rgba(255,255,255,0.1); color:#fff; font-weight:400;}
+	&.outline-light{background:rgba(0,0,0,0.1); border:1px solid $pencil-gray; color:darken($pencil-gray, 30%); font-weight:400;}
+	&.outline-primary{background:rgba(204,0,0,0.03); color:$u-red; border:1px solid darken($u-red, 5%); font-weight:400;}
+
+	&.gray-btn-wtag{background:$medium-gray; cursor:pointer; font-weight:400;}
+
+} /* End of hover, focus pseudo selectors */
+
+.btn-tag{
+	padding:2px 10px;
+	background:$dark-gray;
+	color:#fff;
+	text-transform:uppercase;
+	font-size:1.5em;
+	font-weight:300;
+	font-family:$open-sans-condensed;
+}
+
+/* Block Quotes */
+blockquote{
+	position:relative;
+	&:before{
+		content:"";
+		font-family: "FontAwesome";
+		color: $pencil-gray;
+		position: absolute;
+		top: 10px;
+		font-size: 2.75em;
+		left: -1.25em;
+	}
+}
+
+
+/* Additional Editor Components */
+.drop-cap:first-letter{
+	float: left;
+	margin: 0.1em 0.15em auto auto;
+	padding: inherit;
+	font-size: 6em;
+	line-height: 1;
+	text-indent: 0px;
+	background: none repeat scroll 0% 0% transparent;
+	color: inherit;
+	font-style: normal !important;
+	font-weight:700;
+}
+
+/* ---------------- Image Styles ----------------------- */
+
+.light-gray-border{
+	border: 1px solid #ECECEC;
+	padding: 0.75em !important;
+}
+
+/* ------------------- Editor Background Styles -------------- */
+#tinymce.post-type-parallax_scroll{
+	background-color:$medium-gray;
+}
+

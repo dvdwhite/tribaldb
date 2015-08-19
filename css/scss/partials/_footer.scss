@@ -1,0 +1,201 @@
+/*==========================================================
+4. FOOTER
+==========================================================*/
+
+#footer-container {
+	background: #333;
+	text-transform: uppercase;
+	width: 100%;
+	margin: 0 auto;
+	text-align: left;
+	position: relative;
+	z-index: 1;
+}
+
+#bottom-nav {
+	background: rgb(104, 104, 105);
+	width: 94%;
+	margin:0.85em auto;
+	min-height: 34px;
+}
+
+#bottom-nav .bottom-mobile-nav {
+	display: block;
+	margin: 0 0 0 0.8em;
+	color: #fff;
+	font-size: 0.9em;
+	line-height: 2.3em;
+	text-decoration: none;
+}
+
+#bottom-nav .bottom-mobile-nav span {
+	float: right;
+	width: 30px;
+	height: 34px;
+	margin: 0 4px;
+	background: url(images/global/sprite_elements.png) no-repeat 5px -390px;
+}
+
+
+/* -----------------------------------------
+	FOOTER BRANDING AREA
+-------------------------------------------*/
+
+#footer-container .brand-area {
+	width: 90%;
+	margin:0 auto;
+	color:#fff;
+}
+#footer-container .bottom-brand img {
+	max-width:100%;
+}
+#footer-container .brand-area h3 { 
+	font-size: 0.8em;
+	letter-spacing:0.07em;
+	line-height:1.2em;
+}
+#footer-container .brand-area p {
+	line-height: 1.2em;
+	margin-top:5px;
+}
+
+/* ------ footer address area ----------*/
+#footer-container .address {
+	float: left;
+	width:100%;
+	font-size:.6em;
+}
+#footer-container .address a {
+   color:#fff;
+   text-decoration:underline;
+}
+#footer-container .address .spacer {
+	margin:15px 0  0 0 ;
+}
+/* ------ footer social icons ---------*/
+#footer-container .socons {
+	float: left;
+	padding:0;
+	width:100%;
+}
+#footer-container .socons .spacer {
+	margin:15px 2% 0 0;
+}
+#footer-container .socons h3 {
+	margin:0;
+}
+#footer-container .socons ul {
+	margin:0;
+	padding:0;
+	position:relative;
+	list-style:none;
+	overflow:hidden;
+}
+#footer-container .socons li {
+	float:left;
+	margin:0 20px 15px 0;
+}
+.socons .umc-icon-list a {
+	width:24px;
+	height:24px;
+    padding:0;
+	text-indent:-900em;
+}
+
+
+.footer-logo-container {
+    display: inline;
+    float: left;
+    padding: 0 0 0 26px;
+}
+
+.footer-logo {
+    display: inline;
+    float: left;
+    width: 90px;
+    height: 120px;
+}
+
+.footer-logo img {
+    width: 70px;
+}
+
+.footer-logo img.ojb {
+    padding: 20px 0 0 0;
+}
+
+.footer-logo img.ojjdp {
+    padding: 40px 0 0 0;
+}
+
+.footer-logo img.amber-alert {
+    padding: 36px 0 0 0;
+}
+
+/* -- icon lists link background --*/
+.umc-icon-list {list-style:none;}
+/* -----------------------------------------
+	ICON LIST LINK IMAGES (hover state using sprite)
+-------------------------------------------*/
+
+.umc-icon-list li a {
+	background:url(images/global/spritesheet-share-icons.png) no-repeat;
+	display:block;
+	padding-left:35px;
+}
+
+.umc-icon-list a.facebook-link { background-position: 0 -30px; }
+.umc-icon-list a.facebook-link:hover, .icon-list a.facebook-link:focus { background-position: 0 -30px; }
+
+.umc-icon-list a.twitter-link { background-position: -30px -30px; }
+.umc-icon-list a.twitter-link:hover, .icon-list a.twitter-link:focus { background-position: -30px -30px; }
+
+.umc-icon-list a.googleplus-link { background-position: -90px -30px; }
+.umc-icon-list a.googleplus-link:hover, .icon-list a.googleplus-link:focus { background-position: -90px -30px; }
+
+.umc-icon-list a.youtube-link { background-position: -150px -30px; }
+.umc-icon-list a.youtube-link:hover, .icon-list a.youtube-link:focus { background-position: -150px -30px; }
+
+.umc-icon-list a.instagram-link { background-position: -120px -30px; }
+.umc-icon-list a.instagram-link:hover, .icon-list a.instagram-link:focus { background-position: -120px -30px; }
+
+.umc-icon-list a.linkedin-link { background-position: -180px -30px; }
+.umc-icon-list a.linkedin-link:hover, .icon-list a.linkedin-link:focus { background-position: -180px -30px; }
+
+
+/* -----------------------------------------
+	CIS & UMAIL ICON LIST LINK IMAGES 
+-------------------------------------------*/
+
+.umc-icon-list a.cis-link { background:url(images/global/sprite_elements.png) no-repeat; background-position: 0 -900px; }
+.umc-icon-list a.umail-link { background:url(images/global/sprite_elements.png) no-repeat; background-position: 0 -1000px; }
+
+/* ----------------------------------------
+	BUTTON LINKS
+-------------------------------------------*/
+#main-container a.button,
+#footer-container a.button {
+	background: rgb(204, 0, 0);
+	border: 1px solid #fff;
+	border-radius:.5em;
+	color:white;
+	font: bold .8em/1.2em Helvetice, sans-serif;
+	letter-spacing:.045em;
+	padding: 0.7em 1.5em;
+	text-align:center;
+	text-decoration: none;	
+	text-transform: uppercase;
+}
+#footer-container a.button {
+	padding: 0.3em 1em;	
+}
+#main-container .button:hover,
+#main-container .button:active,
+#main-container .button:focus,
+#footer-container .button:hover,
+#footer-container .button:active,
+#footer-container .button:focus {
+	color:white;
+	background:rgb(153, 0, 0);
+	text-decoration: none;	
+ }

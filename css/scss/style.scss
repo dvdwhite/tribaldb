@@ -1,0 +1,56 @@
+/*!
+Theme Name:UMC Theme
+Theme URI:http://umc.utah.edu/
+Description:Responsive theme that supports both 1024 and full-width layouts.
+Version: 0.0.9
+Author:Scott Troxel (design), Dave White (code), Brian Thurber (code), Rachel Engle (design & code)
+Author URI: http://umc.utah.edu/
+License: Approved use for the Tribal Database Marketing and Communications only
+License URI: http://umc.utah.edu/
+Tags: Responsive University
+Text Domain: twentythirteen
+
+*/
+
+/* ===========================
+	Modules & Variables
+============================ */
+@import "modules/variables";
+@import "modules/mixins";
+
+/* ===========================
+	Third-party
+============================= */
+
+@import "vendor/font-awesome";
+@import "vendor/slick-theme";
+@import "vendor/pure/forms";
+
+
+/* ===========================
+	Partials
+============================ */
+
+// 1. GLOBAL STYLES
+@import "partials/global";
+
+// 2. HEADER (AND SHARED FOOTER)
+@import "partials/header";
+
+// 3. BODY CONTENT
+@import "partials/body";
+
+// 4. FOOTER
+@import "partials/footer";
+
+// 5. HELPER CLASSES
+@import "partials/helper-classes";
+
+// 6. MEDIA QUERIES (Inc. Print)
+@import "partials/media-queries";
+
+// 7. PLUGIN SPECIFIC OVERRIDES
+@import "partials/plugin-overrides";
+
+
+

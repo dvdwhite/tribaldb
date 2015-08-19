@@ -1,0 +1,272 @@
+/* ==========================================================
+2. HEADER
+========================================================== */
+
+#header-container {
+	width: 100%;
+}
+#header-container-desktop{display:none;}
+
+header {
+	max-width: 1024px;
+	margin: 0 auto;
+	background-image:none;
+}
+
+header h1 {
+	font-family: 'Noto Sans';
+	margin: 0 0 0 0.4em;
+	font-weight: 300;
+	font-size: 2em;
+	letter-spacing: 0;
+	/*  ----  without header background image 
+	color:#333;
+	text-shadow: 1px 1px #fff; ---- */
+	/*  ----  with header background image ---- */
+	color:#fff;
+	text-shadow: 1px 1px #000;
+	
+}
+
+header#masthead *{
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;    
+}
+
+.header-color {
+	background: #333333;
+}
+
+.main-headline {
+	padding: 1em 0 1em 0;
+}
+
+.main-headline a {
+	color: #fff;
+}
+
+.main-headline a:hover {
+	text-decoration: none;
+}
+
+#utah-logo {
+	background-image: url(images/global/tribal-logo.png);  /* need a @2x version for retina */
+	width:224px;
+	height: 82px;
+	background-size:224px 82px;
+	background-repeat: no-repeat;
+	/*padding: 1em;
+	padding-right: 0;
+	background-position: .7em 1em;*/
+	display: inline;
+	float: left;
+}
+
+#block-u-logo{
+	background:url(images/global/database-icon.png) no-repeat;
+	width:50px;
+	height:47px;
+	display:inline-block;
+	padding-top:45px;
+	overflow:hidden;
+	margin: 12px 14px 3px 5px;
+	background-size: 47px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
+	#utah-logo {
+		background-image:url(images/global/tribal-logo.png);
+		width:224px;
+		height: 82px;
+		background-size:224px 82px; 
+		display: inline;
+		float: left; 
+	}
+
+	#block-u-logo{
+		background:url(images/global/database-icon.png) no-repeat;
+		width:50px;
+		height:45px;
+		background-size: 47px;
+	}
+}
+
+
+/* Parallax Background Header */
+#parallax-header{
+	width:100%;
+	min-height:300px;
+	position:relative;
+	background-size:cover;
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-attachment:scroll;
+} 
+
+/* ---------------------------------------
+	SEARCH AREA
+------------------------------------------*/
+#search-area {
+	background-color:white;
+	float:right;
+	margin: 2em 1em 0 .5em;	
+	position:relative;	
+}
+#search {
+	border:1px solid rgb(171, 170, 168);
+	padding:6px 30px 6px 2px;
+	height:1.2em;
+	width:52px;
+}
+#search-btn {
+	background: white url(images/global/sprite_tools.png) no-repeat -796px 4px;
+	border:none;
+	color:transparent;
+	font-size:0;
+	height:25px;
+	padding:0;
+	position:absolute;
+	right:1px;
+	top:3px;
+	width:25px;
+}
+#search-btn:hover,
+#search-btn:focus,
+#search-btn:active {
+	background-color:rgb(215, 215, 215);
+}
+/* -- input watermark images --*/
+#search.watermark { background:url(images/global/sprite_tools.png) no-repeat -590px 7px;}
+
+
+/* ----------------------------------------------
+	TOP NAVIGATION (AND BOTTOM NAV SHARED STYLES)
+-------------------------------------------------*/
+#top-nav {
+	background: #333;
+	width: 100%;
+	min-height: 34px;
+	z-index:9999;
+}
+
+#top-nav .top-mobile-nav {
+	display: block;
+	margin: 0 0 0 0.8em;
+	color: #fff;
+	font-size: 0.9em;
+	line-height: 2.3em;
+	text-decoration: none;
+}
+
+#top-nav .top-mobile-nav span, #masthead2 .menu-toggle span {
+	float: right;
+	width: 30px;
+	height: 34px;
+	margin: 0 4px;
+	background: url(images/global/sprite_elements.png) no-repeat 5px -390px;
+}
+
+#masthead2 .menu-toggle span{
+	margin-top:15px;
+}
+
+#top-nav ul.top-menu, #bottom-nav ul.bottom-menu {
+	display: none;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#top-nav ul.top-menu li, #bottom-nav ul.bottom-menu li {
+	padding: 0;
+	border: 1px solid #999;
+	border-top: 0;
+	font-size: 0.8em;
+	font-weight: bold;
+	text-transform: uppercase;
+	background: rgb(196, 196, 197);
+	cursor: pointer;
+}
+
+#top-nav ul.top-menu li h3, #bottom-nav ul.bottom-menu li h3 {
+	padding: 4px 10px;
+	font-size: 1em;
+	margin: 0 10px 0 0;
+	letter-spacing: 0em;
+	background: url(images/global/arrow_left.png) right no-repeat;
+	line-height:2em;
+}
+
+#top-nav ul.top-menu li:hover, #bottom-nav ul.bottom-menu li:hover {
+	background-color: rgb(170, 170, 172);
+}
+
+#top-nav ul.top-menu li.selected, #bottom-nav ul.bottom-menu li.selected {
+	background-color: rgb(170, 170, 172);
+}
+
+#top-nav ul.top-menu li a, #bottom-nav ul.bottom-menu li a {
+	text-decoration: none;
+	color: #000;
+}
+
+#top-nav ul.top-sub-menu, #bottom-nav ul.bottom-sub-menu {
+	display: none;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#top-nav ul.top-sub-menu li, #bottom-nav ul.bottom-sub-menu li {
+	margin: 0;
+	padding: 4px 0;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 0;
+	width: 100%;
+	font-size: 1em;
+	font-weight: 100;
+	background-color: rgb(221, 221, 220);
+
+}
+
+#top-nav ul.top-sub-menu li:hover, #bottom-nav ul.bottom-sub-menu li:hover {
+	background-color: #f1f1f1;
+}
+
+#top-nav ul.top-sub-menu li:first-child, #bottom-nav ul.bottom-sub-menu li:first-child {
+	border-top: 1px solid #999;
+}
+
+#top-nav ul.top-sub-menu ul li:first-child {
+	border-top: 0;
+}
+
+#top-nav ul.top-sub-menu ul li a {
+	padding: 0 20px 0 30px; 
+}
+
+#top-nav ul.top-sub-menu li a, #bottom-nav ul.bottom-sub-menu li a {
+	padding: 0 20px;
+	display: block;
+}
+
+
+.parent-link {
+    font-size:1.6em; 
+    color:#333; 
+    font-family:'Open Sans Condensed'; 
+    padding-left:0.7em; 
+    text-transform: uppercase;
+    line-height: 2em;
+    /*position: relative;
+    top: 0.8em;*/
+}
+.parent-link a {
+    color:#333;
+}
+.parent-link a:hover {
+    text-decoration: none;
+} 

@@ -1,0 +1,597 @@
+/*==========================================================
+6. MEDIA QUERIES
+==========================================================*/
+
+/* ------ Anything smaller than the desktop -------------- */
+@media only screen and (max-width:1040px){
+	.adamrob_parallax_container_fullwidth{
+		height:auto !important;
+		min-height:100px;
+		margin-left: -1em;
+		margin-right: -1em;
+	}
+	.adamrob_parallax{
+		position:relative !important;
+		background-attachment:scroll !important;
+	}
+	.fixed-wrapper .window-fixed{position:relative !important; transform:translate3d(0px, 0px, 0px) !important;}
+
+}
+
+@media only screen and (max-width:950px){
+	#header-container-desktop{display:none !important;}
+}
+
+@media only screen and (max-width:766px){
+
+	.front-page #header-container.has-slideshow .main-headline h1, #header-container.has-parallax-header .main-headline h1{
+		color:$dark-gray;
+		text-shadow:none;
+		a{
+		color:$dark-gray;
+		text-shadow:none;
+		}
+	}
+
+}
+
+@media only screen and (max-width:445px){
+	.tab-content img{width:100%; height:auto;}
+}
+
+/* --------- LARGE MOBILE/PHABLET SCREEN SIZE ----------- */
+@media only screen and (min-width: 480px) {
+
+
+	#search {
+		width:162px;
+	}
+
+	/* -- social icons & brand --*/
+	#footer-container .bottom-brand,
+	#footer-container .socons {
+		float:right;
+		padding: 0;
+	}
+	#footer-container .bottom-brand .spacer,
+	#footer-container .socons .spacer {
+		margin:0 0 1em 1em;
+	}
+	/* -- address --*/
+	#footer-container .address {
+		float:left;
+		width:auto;
+	}
+	.banner-text-position {
+		position:absolute;
+		bottom:16%;
+	}
+	.banner-text {
+		padding: 0.4em 1em 0.295em 0.5em;
+		display: inline-block;
+	}
+	.banner-headline{
+		font-size: 2.4em;
+	}
+	.banner-subtext{
+		padding-left: .9em;
+		font-size: 1.8em;
+	}
+	.flex-control-nav{
+		display: block;	
+	}	
+	#utah-logo {
+		padding-right: 1em;
+	}
+	.pledge-img{
+		max-width: 500px;
+		margin: 0 auto;
+	}
+	.inline-img-left{
+		float: left;
+		padding: 0 20px 20px 0;
+	}
+	.inline-img-right{
+		float: right;
+		padding: 0 0 20px 20px;
+	}
+	.inline-img-right img, .inline-img-left img{
+		max-width: 300px;
+	}
+
+}	
+
+
+/* --------- TABLET SCREEN SIZE (PORTRAIT iPAD) ----------- */
+@media only screen and (min-width: 766px) {
+
+	#header-container.has-slideshow, #header-container.has-parallax-header{
+		position:absolute;
+		z-index:500;
+	}
+
+	#utah-logo {
+		position: relative;
+		top: 20px;
+		background-color: #333;
+		cursor: pointer;
+	}
+
+	.main-headline {
+		padding: 1.8em 0 1em 0;
+	}
+
+	.top-menu { z-index:999; }
+
+	#top-nav {
+		width: 330px;
+		display: inline;
+		float: right;
+		margin: -0.7em 1em 0 0;
+		background: #333;
+	}
+
+	#top-nav ul.top-menu {
+		width: 330px;
+		position: absolute;
+	}	
+
+	#search-area {
+		margin: 1.5em 1em 0 .5em;		
+	}
+
+	.header-color {
+		background: transparent;
+	}
+
+	.main-headline {
+		background: 0;
+	}	
+
+	#header-bg-image {
+		display: block;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 230px;
+		z-index: -1;
+	}
+
+	.main-headline{background-image:none !important;}
+	
+	/* Parallax Background Header */
+	#parallax-header{
+		min-height:550px;
+		z-index:-1;
+	}
+
+	.banner-text {
+		
+	}
+	.banner-headline{
+		font-size: 3.4em;
+	}
+	.banner-subtext{
+		padding-left: .9em;
+		font-size: 2.1em;
+	}
+	body.ten-twenty-four #header-bg-image {
+		max-width:1024px;
+	}
+	.right-channel { 
+	float:right;
+	padding-right: 0;
+	padding-left:30px;
+	}
+
+	.left-channel{
+		float:left;
+		padding-left:0;
+		padding-right:30px;
+	}
+	#header-bg-image img {
+		width: 100%;
+		height: 230px;
+		z-index: -1;
+	}
+	.pledge-container{
+		max-width: 765px;
+		margin: 0 auto;
+	}
+	.pledge-img{
+		width: 33%;
+		float:left;
+		margin: 0;
+	}
+	.pledge-copy{
+		width: 66%;
+		float:left;
+		margin: 0;
+		text-align: left;
+		padding: 3.7em 1em 1em 1em;
+	}
+	.utah-table-bordered table{
+		width: 100%;
+	}
+	.utah-table-bordered td{
+		width: 20%;
+	}
+    
+    .footer-logo-container {
+        padding: 0;
+    }    
+    
+    .footer-logo {
+        width: 150px;
+    }
+
+    .footer-logo img {
+        width: 100px;
+    }    
+    
+    
+}
+
+
+/* --------- DESKTOP SCREEN SIZE (AND LANDSCAPE iPAD) ----------- */
+@media only screen and (min-width: 950px) {
+
+	#header-container {
+		background: transparent url(images/global/bg_header_extent.png) center 20px  no-repeat;
+	}
+
+
+.fixed-wrapper{
+	position:relative;
+	z-index:1;
+	.window-fixed{position:fixed; width:100%; z-index:1; }
+}
+
+	header h1 {
+		font-size: 2.3em;
+		padding-top: 0.3em;
+	}
+
+	/* Header Effects for Desktop */
+ .front-page #header-container.has-slideshow, #header-container-desktop{
+		position:fixed;
+		top:0;
+		z-index:1000;
+		width: 100%;
+	}
+
+
+#header-container-desktop{
+	.left, .right{height:65px;}
+	.left{overflow:hidden;}
+	.department{
+		font-size:1.1em;
+		line-height:1.1;
+		text-shadow:none;
+		text-transform:uppercase;
+		float:left;
+		.name{font-size:1.5em;} /* department name and subtitle */
+		a, a:hover, a:focus, a:visited, a:active{color:#fff !important; text-decoration:none !important;}
+		a:hover, a:focus{text-shadow:2px 2px darken($light-blue, 20%);}
+	}
+	.desc-null{
+		.department{
+			margin: 14px 0 0 0;
+		}
+		#block-u-logo{
+			width:35px;
+			background-size:35px;
+			background-position:0 6px;
+		}
+	}
+	.desc-present{
+		.department{
+			margin: 4px 0 0 0;
+			.name{font-weight:bold;}
+		}
+	}
+}
+
+#masthead2{
+	.left{
+		background:#333;
+		padding:0 10px 0 0;
+	}
+}
+
+	#header-container-desktop{
+		display:none;
+		background:transparent;
+		.secondary-header{max-width: 927px;}
+		#masthead2{
+			position:relative;
+			background:$dark-gray;
+			height:65px;
+
+			&:before, &:after{
+				content:"";
+				height:65px;
+				position:absolute;
+				top:0;
+				bottom:0;
+				width:9600px;
+				right:100%;
+				background:$light-blue;
+			}
+			&:after{
+				left:100%;
+				background:$dark-gray;
+			}
+		}
+	}
+
+	#parallax-header{
+		top:0;
+		z-index:-1;
+		background-attachment:fixed;
+	}
+
+
+
+	#top-nav {
+		margin: -14px 0 0 0;
+		width: auto;
+		z-index: 9999;
+	}	
+
+	#top-nav a.top-mobile-nav {
+		display: none;
+	}
+
+	#top-nav ul.top-menu {	
+		display: block;
+		position: relative;
+		width: auto;
+	}
+
+	#top-nav ul.top-menu li {
+		display: inline;
+		float: left;
+		border:0;
+		background: transparent;
+		color: #fff;
+	}
+
+	#top-nav ul.top-menu li h3, #bottom-nav ul.bottom-menu li h3 {
+		background: transparent;
+	}
+
+	#top-nav ul.top-menu li h3 {
+		margin: 0 5px;
+		font-weight:600;
+	}
+
+	#top-nav ul.top-menu li:hover {
+		background: #000;
+	}
+
+	#top-nav ul.top-menu li.selected {
+		background: #000;
+	}
+
+	#top-nav ul.top-menu li a {
+		color: #fff;
+		padding: 0;
+	}
+
+// Makes sure the sub nav is styled without the javascript
+	#top-nav ul.top-menu ul.sub-menu{
+		padding-top: 8px;
+		position: absolute;
+		width: 14em;
+		background: transparent url(images/global/sprite_elements.png) 18px -700px no-repeat;
+	}
+
+	#top-nav ul.top-menu{
+		height:34px;
+		overflow:hidden;
+	}
+
+// End
+
+	#top-nav ul.top-sub-menu {
+		padding-top: 8px;
+		position: absolute;
+		width: 14em;
+		background: transparent url(images/global/sprite_elements.png) 18px -700px no-repeat;
+	}		
+
+	#top-nav ul.top-sub-menu li {
+		background-color: #333;
+		font-size: .9em;
+		line-height: 1.7em;
+		padding: .8em 1.2em;		
+		font-weight: 100;
+	}		
+
+	#top-nav ul.top-sub-menu ul {
+		width: 11.8em;
+		position: relative;
+		background: 0;
+	}
+
+	#top-nav ul.top-sub-menu ul li {
+		position: relative;
+		margin: 0 0 0 -1.2em;
+		padding: 0.4em 4em 0.4em 2em;
+		font-size: 1em;
+	}
+
+	#top-nav ul.top-sub-menu ul li a {
+		padding: 0; 
+	}
+
+	#top-nav ul.top-sub-menu li:first-child {
+		border-top: 0;
+	}
+
+	#main-container { position: relative; /*z-index:-9;*/ }
+
+	#masthead2 #top-nav{
+		> ul > li > h3{margin:30px 5px 15px;}
+	}
+
+	
+
+	/* ---- bottom nav -----*/
+
+	#footer-container footer {
+		margin: 0 auto;
+		max-width: 1004px;
+	}
+
+	#bottom-nav {
+		width: auto;
+		background: transparent;
+		float: left;
+		line-height: 1em;
+	}
+
+	#bottom-nav a.bottom-mobile-nav {
+		display: none;
+	}
+
+	#bottom-nav ul.bottom-menu {	
+		display: block;
+		position: relative;
+		width: auto;
+		margin: 1em 0 0 1em;
+	}
+
+	#bottom-nav ul.bottom-menu li {
+		display: inline;
+		float: left;
+		border:0;
+		background: transparent;
+		color: #fff;
+		width: 16em;
+		font-weight: 100;
+	}	
+
+	#bottom-nav ul.bottom-menu li h3 {
+		text-shadow: 0 0 5px #000;
+		padding: 0;
+	}
+
+	#bottom-nav ul.bottom-menu li:hover {
+		background: 0;
+	}
+
+	#bottom-nav ul.bottom-menu li.selected {
+		background: 0;
+	}
+
+	#bottom-nav ul.bottom-menu li a {
+		text-decoration: none;
+		color: #fff;
+	}
+
+	#bottom-nav ul.bottom-sub-menu {
+		display: block;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	#bottom-nav ul.bottom-sub-menu li {
+		display: block;
+		float: none;
+		width: auto;
+		padding: 0.5em 0 0 0;
+		margin: 0;
+		font-size: 0.8em;
+	}
+
+	#bottom-nav ul.bottom-sub-menu li:hover {
+		background-color: transparent;
+	}
+
+	#bottom-nav ul.bottom-sub-menu li:first-child {
+		border-top: 0;
+	}
+
+	#bottom-nav ul.bottom-sub-menu li a {
+		padding: 0;
+	}
+
+	#bottom-nav ul.bottom-sub-menu li a:hover {
+		text-decoration: underline;
+	}		
+
+
+	/* ---- branding area -----*/
+	#footer-container .brand-area {
+		float: right;
+		width: 30%;
+		margin: 1.3em auto;
+	}
+	/* -- bottom brand --*/
+	#footer-container .bottom-brand {
+		float:left;
+		margin-top:16px;
+		width:100%;
+	}
+	#footer-container .bottom-brand .spacer{
+		margin: 0 0 1em 0
+	}
+	/* -- address ---*/
+	#footer-container .address {
+		float: left;
+		margin:0;
+		width:100%;
+	}
+	#footer-container .address .spacer {
+		margin:0;
+	}
+	/* -- social icons ---*/
+	#footer-container .socons {
+		float: left;
+		width:auto;
+	}
+	#footer-container .socons .spacer {
+		margin: 0 3px 0 2em;
+	}
+	#footer-container .socons li {
+		margin:0 10px 10px 0;
+	}	
+
+}
+
+/*==========================================================
+7. PRINT STYLES
+==========================================================*/
+@media print {
+
+	/* ========= Global Styles ========== */
+	#header-container, footer, #footer, nav, #footer-container, .widget_search{
+		display:none;
+	}
+
+	#content{
+		display:block;
+	}
+
+	html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,
+	pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,
+	samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,
+	form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{
+		color:#000;background:#fff;
+	}
+
+	/* try to avoid page breaks in bad places */
+	h1, h2, h3, h4, h5, h6 { 
+		page-break-after:avoid; 
+	     page-break-inside:avoid; 
+	}
+	img { page-break-inside:avoid; 
+	     page-break-after:avoid; 
+	}
+	blockquote, table, pre { page-break-inside:avoid; }
+	ul, ol, dl  { page-break-before:avoid; }
+
+}
