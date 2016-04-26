@@ -382,7 +382,7 @@ BODY ANIMATIONS
     // Smooth scroll with anchor links and IDs, accounts for sticky header
    	// To work, the link and the ID must start with the prefix 'ss-'
 
-function smoothScrollUMC(){
+/*function smoothScrollUMC(){
 
 
 	jQuery('a[href*=#ss-]').click(function() {
@@ -410,7 +410,7 @@ function smoothScrollUMC(){
 
 }
 
-smoothScrollUMC();
+smoothScrollUMC();*/
 	
 }); //end document.ready function
 

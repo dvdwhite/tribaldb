@@ -3348,7 +3348,7 @@ a:visited {
   text-align: center;
   padding: 2px 10px;
   text-decoration: none;
-  border: 1px solid #767676;
+  border: 1px solid #777777;
   background: #909090;
   color: #fff !important;
   border-radius: 3px;
@@ -4151,6 +4151,10 @@ table.body-content-table td {
   padding: 3em 0;
   text-align: center;
   margin: 0 auto;
+}
+
+.body-callout-box div.ten-twenty-four {
+  padding: 0 1em 1em 1em;
 }
 
 .white-no-border-callout {
