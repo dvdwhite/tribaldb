@@ -134,11 +134,35 @@ function tribaldb_widgets_init() {
 }
 add_action( 'widgets_init', 'tribaldb_widgets_init' );
 
-
 /**
 * Add custom post types.
 */
 
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+	register_post_type( 'organization',
+		array(
+			'labels' => array(
+				'name' => __( 'Organization' ),
+				'singular_name' => __( 'Organization' )
+			),
+		'public' => true,
+		'has_archive' => true,
+		'capability_type' => 'post',
+		'rewrite' => array('slug' => 'organizations'),  
+		'supports' => array(
+            'title',
+            'excerpt',
+            'editor',
+            'custom-fields',
+            'revisions',
+            'thumbnail',
+            'author'),
+        'taxonomies' => array('category', 'post_tag'),
+        /*'show_in_nav_menus' => true*/
+		)
+	);
+} 
 
 /**
  * Enqueue scripts and styles.
