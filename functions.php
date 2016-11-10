@@ -369,8 +369,123 @@ function ie_style_sheets () {
 }
 add_action ('wp_enqueue_scripts','ie_style_sheets');
 
+/**
+ * META BOXES
+ */
+add_filter( 'rwmb_meta_boxes', 'tribal_register_meta_boxes' );
+function tribal_register_meta_boxes( $meta_boxes ) {
+    $prefix = 'tribal_';
+    // Add Meta Boxes For Attached Documents (note: this applies to all images, pdfs, doc, and excel files)
+    $meta_boxes[] = array(
+        'id'         => 'personal',
+        'title'      => __( 'Document Details', 'tribal' ),
+        'post_types' => array( 'attachment' ),
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'fields' => array(
+			// HEADLINE TEXT
+			array(
+				'name' => __( 'File Name', 'tribal' ),
+				'id'   => "{$prefix}textarea1",
+				'type' => 'textarea',
+				'cols' => 10,
+				'rows' => 1,
+			),
+			// SUBHEAD TEXT
+			array(
+				'name' => __( 'Submitted By', 'tribal' ),
+				'id'   => "{$prefix}textarea2",
+				'type' => 'textarea',
+				'cols' => 10,
+				'rows' => 1,
+			),
+			// DESCRIPTION TEXT
+			array(
+				'name' => __( 'Submittion Date', 'tribal' ),
+				'id'   => "{$prefix}textarea3",
+				'type' => 'date',
+				// jQuery date picker options. See here http://api.jqueryui.com/datepicker
+				'js_options' => array(
+					'appendText'      => __( '(yyyy-mm-dd)', 'your-prefix' ),
+					'dateFormat'      => __( 'yy-mm-dd', 'your-prefix' ),
+					'changeMonth'     => true,
+					'changeYear'      => true,
+					'showButtonPanel' => true,
+				),
+			),
+        )
+    );
+    // ALLOW ATTACHMENT OF FILES TO ORGANIZATION CUSTOM POST TYPE
+    $meta_boxes[] = array(
+        'title'      => __( 'File Attachment', 'tribal' ),
+        'post_types' => 'organization',
+        'fields'     => array(
+            // FILE ADVANCED (WP 3.5+)
+			array(
+				'name'             => __( 'File Upload', 'tribal' ),
+				'id'               => "{$prefix}file_advanced",
+				'type'             => 'file_advanced',
+				'mime_type'        => 'application,audio,video', // Leave blank for all file types
+			),
+        )
+    );
+    return $meta_boxes;
+}
 
+add_filter( 'user_meta_field_config', 'user_meta_field_config_populate_categories', 10, 3 );
+function user_meta_field_config_populate_categories( $field, $fieldID, $formName){ 
+	//get list of organizations
+ 	$args = array(
+		'posts_per_page'   => 5,
+		'offset'           => 0,
+		'category'         => '',
+		'category_name'    => '',
+		'orderby'          => 'date',
+		'order'            => 'DESC',
+		'include'          => '',
+		'exclude'          => '',
+		'meta_key'         => '',
+		'meta_value'       => '',
+		'post_type'        => 'organization',
+		'post_mime_type'   => '',
+		'post_parent'      => '',
+		'author'	   => '',
+		'author_name'	   => '',
+		'post_status'      => 'publish',
+		'suppress_filters' => true 
+	);
+	$posts_array = get_posts( $args );
 
+    if( $fieldID != '3' ) // Put your desired field id here
+        return $field;
+ 	
+    $output = null;
+    foreach( $posts_array as $post ):
+        $output .= $post->ID.'='.$post->post_name.',';
+    endforeach;
+    $output = ',' . trim( $output, ',' );
+ 
+    $field['options'] = $output;
+ 
+    return $field;
+}				
+/*add_filter( 'user_meta_field_config', 'user_meta_field_config_populate_categories', 10, 3 );
+function user_meta_field_config_populate_categories( $field, $fieldID, $formName ){ 
+ 
+    if( $fieldID != '1' ) // Put your desired field id here
+        return $field;
+ 
+    $output = null;
+    $cats = get_categories();
+    foreach( $cats as $cat ):
+        $output .= $cat->term_id.'='.$cat->name.',';
+    endforeach;
+    $output = ',' . trim( $output, ',' );
+ 
+    $field['options'] = $output;
+ 
+    return $field;
+}*/
 /**
  * Implement the Custom Header feature.
  */
