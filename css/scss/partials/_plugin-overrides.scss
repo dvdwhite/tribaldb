@@ -101,3 +101,7 @@ input[type="submit"], button[type="submit"], input[type="reset"], button[type="r
 	margin-bottom: 2em;
  }
 
+ /* ================= User Meta Overrides ======================== */
+input[type="text"].um_login_field, input[type="password"].um_pass_field{
+		width: 100%;
+	}

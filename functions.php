@@ -432,7 +432,9 @@ function tribal_register_meta_boxes( $meta_boxes ) {
     return $meta_boxes;
 }
 
-add_filter( 'user_meta_field_config', 'user_meta_field_config_populate_categories', 10, 3 );
+
+//ADD DROPDOWN TO USER PROFILE THAT DISPLAYS ORGANIZATIONS
+/*add_filter( 'user_meta_field_config', 'user_meta_field_config_populate_categories', 10, 3 );
 function user_meta_field_config_populate_categories( $field, $fieldID, $formName){ 
 	//get list of organizations
  	$args = array(
@@ -456,7 +458,7 @@ function user_meta_field_config_populate_categories( $field, $fieldID, $formName
 	);
 	$posts_array = get_posts( $args );
 
-    if( $fieldID != '3' ) // Put your desired field id here
+    if( $fieldID != '4') // This has to match the Field ID of the User Meta Dropdown
         return $field;
  	
     $output = null;
@@ -468,24 +470,13 @@ function user_meta_field_config_populate_categories( $field, $fieldID, $formName
     $field['options'] = $output;
  
     return $field;
-}				
-/*add_filter( 'user_meta_field_config', 'user_meta_field_config_populate_categories', 10, 3 );
-function user_meta_field_config_populate_categories( $field, $fieldID, $formName ){ 
- 
-    if( $fieldID != '1' ) // Put your desired field id here
-        return $field;
- 
-    $output = null;
-    $cats = get_categories();
-    foreach( $cats as $cat ):
-        $output .= $cat->term_id.'='.$cat->name.',';
-    endforeach;
-    $output = ',' . trim( $output, ',' );
- 
-    $field['options'] = $output;
- 
-    return $field;
-}*/
+}	
+*/
+/**
+ * Include User Meta Fields.
+ */
+require get_template_directory() . '/user-meta-fields.php';
+
 /**
  * Implement the Custom Header feature.
  */
