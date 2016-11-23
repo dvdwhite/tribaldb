@@ -14,7 +14,7 @@
 	<div class="entry-content">
         
             <div class="eq-ht-wrapper clearfix">
-                <div class="eq-ht col-3 lt-grey lter-grey full-image col-3-spaced rectangle clearfix">
+                <!--<div class="eq-ht col-3 lt-grey lter-grey full-image col-3-spaced rectangle clearfix">
                     <div class="image">
                         <a href="#" class="staff-click" rel="karin-ashby"><img src="/wp-content/uploads/2015/06/karin-ashby.jpg" /></a>
                     </div>
@@ -22,7 +22,7 @@
                         <h3>&nbsp;</h3>
                         <a href="#" class="staff-click title department" rel="karin-ashby"><h4 class="name subtitle">Karin Ashby</h4></a>
                     </div>
-                </div>
+                </div>-->
                 <div class="eq-ht col-3 lt-grey lter-grey full-image col-3-spaced rectangle clearfix">
                     <div class="image">
                         <a href="#" class="staff-click" rel="ron-gurley"><img src="/wp-content/uploads/2015/06/ron-gurley.jpg" /></a>
