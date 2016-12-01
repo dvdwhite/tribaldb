@@ -19,22 +19,22 @@
 		<?php the_content(); ?>
 		<aside id="tribal_column-8" class="widget widget_tribal_column">
 			<div class="eq-ht-wrapper clearfix">
-				<div class="eq-ht col-3 lt-grey" style="height: 190px;">
+				<div class="eq-ht col-3 lt-grey orange-bg" style="height: 190px;">
 					<a href=" #"> <h3>Member Login</h3></a>
 					<?php echo do_shortcode('[user-meta-login]');?>
 				</div>	
 
 
-				<div class="eq-ht col-3 lt-grey" style="height: 190px;">
+				<div class="eq-ht col-3 lt-grey purple-bg" style="height: 190px;">
 					<a href=" #"> <h3>Member Request</h3></a>
-					This is description #2 where some stuff gets talked about at length<div class="learn-more"><a href="#">Request Access </a></div>	
+					This is description #2 where some stuff gets talked about at length<div class="learn-more blue"><a href="#">Request Access </a></div>	
 				</div>	
 
 
 
-				<div class="eq-ht col-3 lt-grey" style="height: 190px;">
+				<div class="eq-ht col-3 lt-grey blue-bg" style="height: 190px;">
 					<a href=" #"> <h3>Resources</h3></a>
-					This is description #3 where some stuff gets talked about at length<div class="learn-more"><a href="#">Search Docs </a></div>	
+					This is description #3 where some stuff gets talked about at length<div class="learn-more blue"><a href="#">Search Docs </a></div>	
 				</div>		
 			</div> <!-- end eq height wrapper -->   
 		</aside>
