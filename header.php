@@ -142,6 +142,37 @@
             </div>
 
         <?php }
+    
+            else if ( is_page( array( 'database' ) ) ) { ?>
+
+			<script type="text/javascript">
+				jQuery('#header-container').addClass('has-slideshow');
+			</script>
+            <div class="fixed-wrapper">
+                <div id="header-rs" class="window-fixed">
+                    <div class="scroll-slow">
+                        <?php echo do_shortcode('[rev_slider database_home]'); ?>
+                    </div>
+                </div>
+            </div>
+
+        <?php }   
+    
+            else if ( ( is_post_type_archive('organization') ) || ( is_singular( 'organization' ) ) ) { ?>
+
+			<script type="text/javascript">
+				jQuery('#header-container').addClass('has-slideshow');
+			</script>
+            <div class="fixed-wrapper">
+                <div id="header-rs" class="window-fixed">
+                    <div class="scroll-slow">
+                        <?php echo do_shortcode('[rev_slider organization-list]'); ?>
+                    </div>
+                </div>
+            </div>
+
+        <?php }     
+    
 
             else if ( (!is_front_page()) && (!empty($parallax_header_text)) ) { // Test to see if the Parallax Header has been set ?>
                 <script type="text/javascript">

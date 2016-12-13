@@ -6,7 +6,7 @@
 	background: #fff;
 	width: 100%;
 	margin: 0 auto;
-	padding:10px 0 0 0;
+	padding:0;  // DW - changed to 0 padding to remove white gutter between header and body content as part of database integration project
 	min-height: 100px;
 	font-size:0.9em;
 }

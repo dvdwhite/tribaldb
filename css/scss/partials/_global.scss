@@ -27,12 +27,29 @@
   font-style: normal;
 }
 
+@font-face {
+    font-family: 'Encode-Thin';
+    src: url(/wp-content/themes/tribaldb/fonts/EncodeSansNormal-100-Thin.ttf);
+    font-weight:100;
+}
+@font-face {
+    font-family: 'Encode-Regular';
+    src: url(/wp-content/themes/tribaldb/fonts/EncodeSansNormal-400-Regular.ttf);
+    font-weight:400;
+}
+@font-face {
+    font-family: 'Encode-Bold';
+    src: url(/wp-content/themes/tribaldb/fonts/EncodeSansNormal-700-Bold.ttf);
+    font-weight:700;
+}
+
 body {
 	font-size: 1em;
 	line-height: 1.4;
 	font-size:16px;
 	line-height:26px;
-	font-family:$open-sans;
+	/*font-family:$open-sans;*/
+    font-family:'Encode-Regular';
 	font-weight:400;
 	margin: 0;
 	background-color:#e1e1e1;
@@ -48,7 +65,7 @@ h1, h2 {
 	margin: 1em 0 .5em;
 }
 h1 { font-size: 2.6em;
-	font-family:$open-sans-condensed;
+	font-family:'Encode-Thin';
 	text-transform:uppercase;
 }
 h2 { font-size: 1.9em; font-weight:bold;}
@@ -218,15 +235,15 @@ ol.underline-list li {
 // Buttons! - Please also add to custom-editor-styles if they are used in the editor
 
 a, a:active {
-	color: $u-red;
+	color: #866787;
 }
 
 a:hover, a:focus {
-	color: $neon-red;
+	color: #866787;
 }
 
 a:visited {
-	color: $dark-red;
+	color: #866787;
 }
 
 
@@ -249,8 +266,8 @@ a:visited {
 		text-align:center;
 		padding:2px 10px;
 		text-decoration:none;
-		border:1px solid darken($u-red, 10%);
-		background:$u-red;
+		border:1px solid darken($brown, 10%);
+		background:$brown;
 		color:#fff !important;
 		border-radius: 3px;
 		font-size:1.1em;
@@ -297,7 +314,8 @@ a:visited {
 
 	.uppercase{
 		text-transform:uppercase;
-		font-family:$open-sans-condensed;
+		/*font-family:$open-sans-condensed;*/
+        font-family:'Encode-Thin';
 		&.btn, &.btn-primary, &.btn-secondary{
 			font-size:1.5em;
 		}
@@ -332,7 +350,8 @@ a:visited {
 		text-transform:uppercase;
 		font-size:1.5em;
 		font-weight:300;
-		font-family:$open-sans-condensed;
+		/*font-family:$open-sans-condensed;*/
+        font-family:'Encode-Thin';
 		transition: background 250ms ease-in-out;
 	}
 
@@ -374,7 +393,8 @@ button:hover, button:focus{
 	text-transform:uppercase;
 	font-size:1.5em;
 	font-weight:300;
-	font-family:$open-sans-condensed;
+	/*font-family:$open-sans-condensed;*/
+    font-family:'Encode-Thin';
 }
 
 div.learn-more{
@@ -487,6 +507,60 @@ img.size-large,
     width: 100%;
     height: 100%;
 }
+
+
+
+
+/* ----- TRIBAL DATABASE MEMBER LOGIN / ORGANIZATIONS / ORG DETAIL / CONTACT / REQUEST ACCESS ----- */
+
+
+// EQ HT COLUMN WIDTH/PADDING OVERRIDES FOR THE MAIN DATABASE SECTION
+
+.database-section {
+    font-family: 'Encode-Regular';
+}
+
+span.back-to-link {
+    font-size: 0.5em;
+    text-transform: none;
+}
+
+.database-section .eq-ht h3 {
+    font-family: 'Encode-Regular';
+}
+
+.db-full-width {
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+
+.db-full-width .eq-ht {
+    margin: 0 1% !important;
+}
+
+table.organization-list {
+    width: 100%;
+    margin: 0 0 40px 0;
+}
+
+table.organization-list th {
+    font-size: 1.2em;
+    padding: 10px;
+    font-family: 'Encode-Bold';
+}
+
+table.organization-list tr:nth-child(even) {
+    background: #CCC
+}
+
+table.organization-list td { 
+    padding: 10px; 
+}
+
+
+
+
+
 /* ----- BRIAN tribal database Login Page ---------*/
 @media (min-width: 766px){
 	.eq-ht.col-3.purple-bg, .eq-ht.col-3.orange-bg, .eq-ht.col-3.blue-bg, {
@@ -560,18 +634,21 @@ input[type="submit"].um_login_button{
 	padding-left: 6px;
 }
 .search-form input[type="search"]{
-	line-height: 2.2em;
+	line-height: 1.5em;
+    font-family: 'Encode-Thin';
+    font-size: 2em;
 	text-transform: uppercase !important;
 	width:66.6%;
  	border: 0 !important;
     outline: 0 !important;
     background: transparent !important;
-    border-bottom: 1px solid #000 !important;
+    border-bottom: 1px solid #ccc !important;
     border-radius: 0 !important;
     box-shadow: none !important;
 }
 .search-form input[type="submit"]{
-	line-height: 2.2em;
+	line-height: 3em;
+    margin: 20px 0 0 0;
 	width:27%;
 	text-transform: uppercase;
 	float:right;

@@ -143,7 +143,7 @@ function create_post_type() {
 	register_post_type( 'organization',
 		array(
 			'labels' => array(
-				'name' => __( 'Organization' ),
+				'name' => __( 'Organizations' ),
 				'singular_name' => __( 'Organization' )
 			),
 		'public' => true,
@@ -412,6 +412,112 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 					'changeYear'      => true,
 					'showButtonPanel' => true,
 				),
+			),
+        )
+    );
+    // META BOXES FOR ORGANIZATION CUSTOM POST TYPE
+    $meta_boxes[] = array(
+        'title'      => __( 'Organization Details', 'tribal' ),
+        'post_types' => 'organization',
+        'fields'     => array(
+			// TEXT
+			array(
+				'name'  => esc_html__( 'Full Organization Name', $prefix ),
+				// Field ID, i.e. the meta key
+				'id'    => "{$prefix}full_name",
+				'type'  => 'text',
+			),
+			// TEXT
+			array(
+				'name'  => esc_html__( 'Local Name', $prefix ),
+				// Field ID, i.e. the meta key
+				'id'    => "{$prefix}local_name",
+				'type'  => 'text',
+			),
+			// TEXT
+			array(
+				'name'  => esc_html__( 'Alternate Name', $prefix ),
+				// Field ID, i.e. the meta key
+				'id'    => "{$prefix}alternate_name",
+				'type'  => 'text',
+			),
+			// SELECT BOX
+			array(
+				'name'        => esc_html__( 'Region', $prefix ),
+				'id'          => "{$prefix}region",
+				'type'        => 'select',
+				// Array of 'value' => 'Label' pairs for select box
+				'options'     => array(
+					'Southern Plains' => esc_html__( 'Southern Plains', $prefix ),
+					'Pacific' => esc_html__( 'Pacific', $prefix ),
+					'Western' => esc_html__( 'Western', $prefix ),
+				),
+				// Select multiple values, optional. Default is false.
+				'multiple'    => false,
+				'placeholder' => esc_html__( 'Select a Region', $prefix ),
+			),
+			// SELECT BOX
+			array(
+				'name'        => esc_html__( 'State', $prefix ),
+				'id'          => "{$prefix}state",
+				'type'        => 'select',
+				// Array of 'value' => 'Label' pairs for select box
+				'options'     => array(
+					'AL' => esc_html__( 'Alabama', $prefix ),
+                    'AK' => esc_html__( 'Alaska', $prefix ),
+                    'AZ' => esc_html__( 'Arizona', $prefix ),
+                    'AR' => esc_html__( 'Arkansas', $prefix ),
+                    'CA' => esc_html__( 'California', $prefix ),
+                    'CO' => esc_html__( 'Colorado', $prefix ),
+                    'CT' => esc_html__( 'Connecticut', $prefix ),
+                    'DE' => esc_html__( 'Delaware', $prefix ),
+                    'DC' => esc_html__( 'District Of Columbia', $prefix ),
+                    'FL' => esc_html__( 'Florida', $prefix ),
+                    'GA' => esc_html__( 'Georgia', $prefix ),
+                    'HI' => esc_html__( 'Hawaii', $prefix ),
+                    'ID' => esc_html__( 'Idaho', $prefix ),
+                    'IL' => esc_html__( 'Illinois', $prefix ),
+                    'IN' => esc_html__( 'Indiana', $prefix ),
+                    'IA' => esc_html__( 'Iowa', $prefix ),
+                    'KS' => esc_html__( 'Kansas', $prefix ),
+                    'KY' => esc_html__( 'Kentucky', $prefix ),
+                    'LA' => esc_html__( 'Louisiana', $prefix ),
+                    'ME' => esc_html__( 'Maine', $prefix ),
+                    'MD' => esc_html__( 'Maryland', $prefix ),
+                    'MA' => esc_html__( 'Massachusetts', $prefix ),
+                    'MI' => esc_html__( 'Michigan', $prefix ),
+                    'MN' => esc_html__( 'Minnesota', $prefix ),
+                    'MS' => esc_html__( 'Mississippi', $prefix ),
+                    'MO' => esc_html__( 'Missouri', $prefix ),
+                    'MT' => esc_html__( 'Montana', $prefix ),
+                    'NE' => esc_html__( 'Nebraska', $prefix ),
+                    'NV' => esc_html__( 'Nevada', $prefix ),
+                    'NH' => esc_html__( 'New Hampshire', $prefix ),
+                    'NJ' => esc_html__( 'New Jersey', $prefix ),
+                    'NM' => esc_html__( 'New Mexico', $prefix ),
+                    'NY' => esc_html__( 'New York', $prefix ),
+                    'NC' => esc_html__( 'North Carolina', $prefix ),
+                    'ND' => esc_html__( 'North Dakota', $prefix ),
+                    'OH' => esc_html__( 'Ohio', $prefix ),
+                    'OK' => esc_html__( 'Oklahoma', $prefix ),
+                    'OR' => esc_html__( 'Oregon', $prefix ),
+                    'PA' => esc_html__( 'Pennsylvania', $prefix ),
+                    'RI' => esc_html__( 'Rhode Island', $prefix ),
+                    'SC' => esc_html__( 'South Carolina', $prefix ),
+                    'SD' => esc_html__( 'South Dakota', $prefix ),
+                    'TN' => esc_html__( 'Tennessee', $prefix ),
+                    'TX' => esc_html__( 'Texas', $prefix ),
+                    'UT' => esc_html__( 'Utah', $prefix ),
+                    'VT' => esc_html__( 'Vermont', $prefix ),
+                    'VA' => esc_html__( 'Virginia', $prefix ),
+                    'WA' => esc_html__( 'Washington', $prefix ),
+                    'WV' => esc_html__( 'West Virginia', $prefix ),
+                    'WI' => esc_html__( 'Wisconsin', $prefix ),
+                    'WY' => esc_html__( 'Wyoming', $prefix ),                    
+				),
+				// Select multiple values, optional. Default is false.
+				'multiple'    => false,
+				'placeholder' => esc_html__( 'Select a State', $prefix ),
 			),
         )
     );

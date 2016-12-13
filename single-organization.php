@@ -9,25 +9,7 @@ get_header(); ?>
 
 <div class="container-fluid">
 
-    <p>Placeholder template file for Organization Detail page.</p>
-    
-    <?php 
-        $user = wp_get_current_user();
-        if ( in_array( 'member', (array) $user->roles ) ) {
-            echo '<p>You are a Member.</p>';
-        }
-        elseif ( in_array( 'mega_member', (array) $user->roles ) ) {
-            echo '<p>You are a Mega Member.</p>';
-        }
-        elseif ( in_array( 'administrator', (array) $user->roles ) ) {
-            echo '<p>You are an Administrator.</p>';
-        }
-        else {
-            echo '<p>You are a guest.</p>';
-        }
-    ?>    
-    
-	<div id="primary" class="content-area">
+    <div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">    
     
 			<div class="ten-twenty-four row clearfix loop-padding">

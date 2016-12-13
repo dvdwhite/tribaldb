@@ -6,18 +6,15 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<h2 class="page-title"><?php the_title(); ?></h2>
-        <?php if (has_post_thumbnail() ): ?>
-            <div class="post-image"><?php the_post_thumbnail(); ?></div>
-        <?php endif ?>
-		<div class="entry-meta">
-			<?php the_date(); ?>
-		</div><!-- .entry-meta -->
+		<h2 class="page-title"><?php the_title(); ?> <span class="back-to-link"> &nbsp; | <a href="/organizations">Back to Organizations &#187;</a></span></h2>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<?php the_content(); ?>
         
+        <?php the_content(); ?>
+        <?php echo rwmb_meta('tribal_full_name') ?>
+        <p>Region: <?php echo rwmb_meta('tribal_region') ?></p>
+        <p>State: <?php echo rwmb_meta('tribal_state') ?></p>
         
         
 		<?php
