@@ -655,4 +655,7 @@ input[type="submit"].um_login_button{
 	background-color: #EF4305 !important;
 	border: 0;
 }
-
+ /* ================= User Meta Form Classes ======================== */
+input[type="text"].um_login_field, input[type="password"].um_pass_field{
+		width: 100%;
+	}
