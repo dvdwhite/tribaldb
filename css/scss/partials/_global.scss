@@ -606,7 +606,7 @@ table.organization-list td {
 #main-container .learn-more.purple a:after, #main-container .learn-more.orange a:after,#main-container .learn-more.blue a:after{
 	content: none;
 }
-input[type="text"], input[type="password"]{
+input[type="text"], input[type="password"], input[type="email"], select[class^="um_field"]{
     border: 0 !important;
     outline: 0 !important;
     background: transparent !important;

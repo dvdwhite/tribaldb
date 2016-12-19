@@ -16,8 +16,8 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-			<div class="fourteen-twenty-five">
-				<a href="/teachers"><h2>Back to full teacher list</h2></a>
+			<div class="ten-twenty-four">
+				
 				<?php
 				while ( have_posts() ) : the_post();
 
@@ -38,37 +38,51 @@ get_header(); ?>
 					  //$user_org = get_user_meta( $user_id, $key, $single ); 
 					  //echo '<p>The '. $key . ' value for user id ' . $user_id . ' is: ' . $user_org . '</p>'; 
 
-					$org_id = 'havasupai';
-					//$org_id = $_GET[org_id];
-
-					//I wish... $org_users = get_org_meta( $org_id, 'users', true);
-
+					//$org_id = 'havasupai';
+					$org_name = get_the_title($_GET[org_id]);
 					
+
 					$user_fields = array( 
 						'meta_query' => array(
 						        array(
 						            'key'   => 'organization',
-						            'value' => $org_id,
+						            'value' => $org_name,
 						            'compare' => 'REGEXP'
 						        )
 						    )
 						);
 					$user_query = new WP_User_Query( $user_fields );
-					echo '<pre>';
+					/*echo '<pre>';
 					var_dump($user_query);
-					echo '</pre>';
+					echo '</pre>';*/
+					?>
+					<table class="organization-list">
+                        <tr>
+                            <th>User Name</th>
+                            <th>ID</th>
+                            <th>Other</th>
+                        </tr>
+                        
+                    <?php
+					
 					// User Loop
 					if ( ! empty( $user_query->results ) ) {
 						foreach ( $user_query->results as $user ) {
-							
-							echo $user->display_name;
+							//echo 'User Name: ' . $user->display_name . ' User ID: ' . $user->ID . '</br>';
+							echo '<tr><td>'. $user->display_name .'</td><td>'. $user->ID .'</td><td>something else</td></tr>';
+
 						}
 					} 
 					else {
-						echo '<br/>No Members Found.';
+						echo '<td>No Members Found.</td>';
 					}
-				
+					echo '</table>';
 				?>
+				<!-- <tr>
+				    <td><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></td>
+				    <td><?php echo rwmb_meta('tribal_region') ?></td>
+				    <td><?php echo rwmb_meta('tribal_state') ?></td>
+				</tr> -->
 			</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->

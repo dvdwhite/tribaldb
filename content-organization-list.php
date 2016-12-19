@@ -5,9 +5,14 @@
 ?>
 
 <!--<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>-->
-
+<?php
+$url = get_the_permalink();
+$url_with_get_values = add_query_arg( array(
+    'org_id' => get_the_ID()
+), $url );
+?>
 <tr>
-    <td><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></td>
+    <td><a href="<?php echo $url_with_get_values; ?>"><?php the_title(); ?></a></td>
     <td><?php echo rwmb_meta('tribal_region') ?></td>
     <td><?php echo rwmb_meta('tribal_state') ?></td>
 </tr>
