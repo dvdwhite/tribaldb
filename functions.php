@@ -374,6 +374,15 @@ add_action ('wp_enqueue_scripts','ie_style_sheets');
  */
 add_filter( 'rwmb_meta_boxes', 'tribal_register_meta_boxes' );
 function tribal_register_meta_boxes( $meta_boxes ) {
+    
+    
+    // Get the users to display in the Admin Contact select box
+    $tribalusers = get_users( 'blog_id=1&orderby=nicename&role=member' );
+    // Array of WP_User objects.
+    $tribal_admin = array();    
+    foreach ( $tribalusers as $tribaluser ) $tribal_admin[$tribaluser->user_nicename] = $tribaluser->user_firstname . ' ' . $tribaluser->user_lastname;  
+    
+    
     $prefix = 'tribal_';
     // Add Meta Boxes For Attached Documents (note: this applies to all images, pdfs, doc, and excel files)
     $meta_boxes[] = array(
@@ -428,11 +437,25 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 				'type'  => 'text',
 			),
 			// TEXT
+			//array(
+			//	'name'  => esc_html__( 'Local Name', $prefix ),
+			//	// Field ID, i.e. the meta key
+			//	'id'    => "{$prefix}local_name",
+			//	'type'  => 'text',
+			//),
+			// SELECT ADVANCED BOX
 			array(
-				'name'  => esc_html__( 'Local Name', $prefix ),
-				// Field ID, i.e. the meta key
-				'id'    => "{$prefix}local_name",
-				'type'  => 'text',
+				'name'        => __( 'Administrative Contact', $prefix ),
+				'id'          => "{$prefix}admin_contact",
+				'type'        => 'select_advanced',
+				// Array of 'value' => 'Label' pairs for select box
+				'options'     => $tribal_admin,
+				// Select multiple values, optional. Default is false.
+				'multiple'    => false,
+				// 'std'         => 'value2', // Default value, optional
+				'placeholder' => __( 'Select a User', $prefix ),
+                //'after'       => $pruser->user_nicename,
+                'clone'       => false,
 			),
 			// TEXT
 			array(
@@ -440,6 +463,24 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 				// Field ID, i.e. the meta key
 				'id'    => "{$prefix}alternate_name",
 				'type'  => 'text',
+			),
+			// TEXT
+			array(
+				'name' => __( 'Primary Phone', $prefix ),
+				'id'   => "{$prefix}primary_phone",
+				'type' => 'text',
+			),
+			// TEXT
+			array(
+				'name' => __( 'Secondary Phone', $prefix ),
+				'id'   => "{$prefix}secondary_phone",
+				'type' => 'text',
+			),
+			// TEXT
+			array(
+				'name' => __( 'Fax', $prefix ),
+				'id'   => "{$prefix}fax_phone",
+				'type' => 'text',
 			),
 			// SELECT BOX
 			array(
@@ -455,6 +496,27 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 				// Select multiple values, optional. Default is false.
 				'multiple'    => false,
 				'placeholder' => esc_html__( 'Select a Region', $prefix ),
+			),
+			// TEXT
+			array(
+				'name'  => esc_html__( 'Address 1', $prefix ),
+				// Field ID, i.e. the meta key
+				'id'    => "{$prefix}address_1",
+				'type'  => 'text',
+			),
+			// TEXT
+			array(
+				'name'  => esc_html__( 'Address 2', $prefix ),
+				// Field ID, i.e. the meta key
+				'id'    => "{$prefix}address_2",
+				'type'  => 'text',
+			),
+			// TEXT
+			array(
+				'name'  => esc_html__( 'City', $prefix ),
+				// Field ID, i.e. the meta key
+				'id'    => "{$prefix}city",
+				'type'  => 'text',
 			),
 			// SELECT BOX
 			array(
@@ -519,11 +581,25 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 				'multiple'    => false,
 				'placeholder' => esc_html__( 'Select a State', $prefix ),
 			),
+			// TEXT
+			array(
+				'name'  => esc_html__( 'Zip', $prefix ),
+				// Field ID, i.e. the meta key
+				'id'    => "{$prefix}zip",
+				'type'  => 'text',
+			),
+			// TEXT
+			array(
+				'name'  => esc_html__( 'Website', $prefix ),
+				// Field ID, i.e. the meta key
+				'id'    => "{$prefix}website",
+				'type'  => 'text',
+			),
         )
     );
     // ALLOW ATTACHMENT OF FILES TO ORGANIZATION CUSTOM POST TYPE
     $meta_boxes[] = array(
-        'title'      => __( 'File Attachment', 'tribal' ),
+        'title'      => __( 'Assessments & Attached Files', 'tribal' ),
         'post_types' => 'organization',
         'fields'     => array(
             // FILE ADVANCED (WP 3.5+)
