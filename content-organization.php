@@ -12,10 +12,35 @@
 	<div class="entry-content">
         
         <?php the_content(); ?>
-        <?php echo rwmb_meta('tribal_full_name') ?>
-        <p>Region: <?php echo rwmb_meta('tribal_region') ?></p>
-        <p>State: <?php echo rwmb_meta('tribal_state') ?></p>
         
+        
+        
+        <h3><?php echo rwmb_meta('tribal_full_name') ?></h3>
+        <p>Other name: <?php echo rwmb_meta('tribal_other_name') ?></p>
+        <p>Administrative Contact: <?php echo rwmb_meta('tribal_admin_contact') ?></p>
+        <p>Primary phone: <?php echo rwmb_meta('tribal_primary_phone') ?></p>
+        <p>Secondary phone: <?php echo rwmb_meta('tribal_secondary_phone') ?></p>
+        <p>Fax: <?php echo rwmb_meta('tribal_fax') ?></p>
+        <p>Region: <?php echo rwmb_meta('tribal_region') ?></p>
+        <p>Address 1: <?php echo rwmb_meta('tribal_address_1') ?></p>
+        <p>Address 2: <?php echo rwmb_meta('tribal_address_2') ?></p>
+        <p>City: <?php echo rwmb_meta('tribal_city') ?></p>
+        <p>State: <?php echo rwmb_meta('tribal_state') ?></p>
+        <p>Zip: <?php echo rwmb_meta('tribal_zip') ?></p>
+        <p>Website: <?php echo rwmb_meta('tribal_website') ?></p>
+        <p>Attached Files:
+        <?php
+        
+            $tribal_files = rwmb_meta('tribal_file_advanced');
+
+            if ( !empty( $tribal_files ) ) {
+                foreach ( $tribal_files as $tribal_file ) {
+                    echo "<a href='{$tribal_file['url']}' title='{$tribal_file['title']}'>{$tribal_file['name']}</a><br />";
+                }
+            }
+        
+        ?>
+        </p>
         
 		<?php
 			$post_tags = wp_get_post_tags($post->ID);

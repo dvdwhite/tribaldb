@@ -435,6 +435,9 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 				// Field ID, i.e. the meta key
 				'id'    => "{$prefix}full_name",
 				'type'  => 'text',
+                'attributes' => array(
+                    'size' => '50',
+                ),
 			),
 			// TEXT
 			//array(
@@ -443,6 +446,16 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 			//	'id'    => "{$prefix}local_name",
 			//	'type'  => 'text',
 			//),
+			// TEXT
+			array(
+				'name'  => esc_html__( 'Other Name', $prefix ),
+				// Field ID, i.e. the meta key
+				'id'    => "{$prefix}other_name",
+				'type'  => 'text',
+                'attributes' => array(
+                    'size' => '50',
+                ),
+			),
 			// SELECT ADVANCED BOX
 			array(
 				'name'        => __( 'Administrative Contact', $prefix ),
@@ -456,13 +469,6 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 				'placeholder' => __( 'Select a User', $prefix ),
                 //'after'       => $pruser->user_nicename,
                 'clone'       => false,
-			),
-			// TEXT
-			array(
-				'name'  => esc_html__( 'Alternate Name', $prefix ),
-				// Field ID, i.e. the meta key
-				'id'    => "{$prefix}alternate_name",
-				'type'  => 'text',
 			),
 			// TEXT
 			array(
@@ -503,6 +509,9 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 				// Field ID, i.e. the meta key
 				'id'    => "{$prefix}address_1",
 				'type'  => 'text',
+                'attributes' => array(
+                    'size' => '50',
+                ),
 			),
 			// TEXT
 			array(
@@ -510,6 +519,9 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 				// Field ID, i.e. the meta key
 				'id'    => "{$prefix}address_2",
 				'type'  => 'text',
+                'attributes' => array(
+                    'size' => '50',
+                ),
 			),
 			// TEXT
 			array(
