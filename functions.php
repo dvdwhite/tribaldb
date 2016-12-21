@@ -485,7 +485,7 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 			// TEXT
 			array(
 				'name' => __( 'Fax', $prefix ),
-				'id'   => "{$prefix}fax_phone",
+				'id'   => "{$prefix}fax",
 				'type' => 'text',
 			),
 			// SELECT BOX
