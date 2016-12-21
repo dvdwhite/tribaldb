@@ -71,8 +71,8 @@ input[type="reset"], button[type="reset"]{
 }
 
 input:hover[type="submit"], button:hover[type="submit"], input:focus[type="submit"], button:focus[type="submit"]{
-		background:darken($u-red,6%);
-		border:1px solid darken($u-red, 12%);
+		background:darken($brown,6%);
+		border:1px solid darken($brown, 12%);
 		cursor:pointer;
 		color:#fff;
 }
@@ -102,3 +102,8 @@ input[type="submit"], button[type="submit"], input[type="reset"], button[type="r
  }
 
 
+
+div.rwmb-input input {
+    width: 50%;
+    min-width:200px;
+}

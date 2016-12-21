@@ -359,10 +359,10 @@ a:visited {
 
 a:hover, a:focus{
 	&.btn, &.btn-primary, &.btn-secondary, &.outline-dark, &.outline-light, &.outline-primary, &.gray-btn-wtag{text-decoration:none !important;}
-	&.btn{color:$u-red;}
+	&.btn{color:$brown;}
 	&.btn-primary{
-		background:darken($u-red,6%);
-		border:1px solid darken($u-red, 12%);
+		background:darken($brown,6%);
+		border:1px solid darken($brown, 12%);
 		cursor:pointer;
 		color:#fff;
 	}
@@ -516,6 +516,12 @@ img.size-large,
 
 // EQ HT COLUMN WIDTH/PADDING OVERRIDES FOR THE MAIN DATABASE SECTION
 
+.eq-ht h3 {
+    
+    color: #000;
+    text-transform: none;
+}
+
 .database-section {
     font-family: 'Encode-Regular';
 }
@@ -527,6 +533,7 @@ span.back-to-link {
 
 .database-section .eq-ht h3 {
     font-family: 'Encode-Regular';
+    color: #fff;
 }
 
 .db-full-width {
