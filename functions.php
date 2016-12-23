@@ -430,32 +430,15 @@ function tribal_register_meta_boxes( $meta_boxes ) {
         'post_types' => 'organization',
         'fields'     => array(
 			// TEXT
-			array(
-				'name'  => esc_html__( 'Full Organization Name', $prefix ),
-				// Field ID, i.e. the meta key
-				'id'    => "{$prefix}full_name",
-				'type'  => 'text',
-                'attributes' => array(
-                    'size' => '50',
-                ),
-			),
-			// TEXT
 			//array(
-			//	'name'  => esc_html__( 'Local Name', $prefix ),
-			//	// Field ID, i.e. the meta key
-			//	'id'    => "{$prefix}local_name",
-			//	'type'  => 'text',
-			//),
-			// TEXT
-			array(
-				'name'  => esc_html__( 'Other Name', $prefix ),
+			//	'name'  => esc_html__( 'Full Organization Name', $prefix ),
 				// Field ID, i.e. the meta key
-				'id'    => "{$prefix}other_name",
-				'type'  => 'text',
-                'attributes' => array(
-                    'size' => '50',
-                ),
-			),
+			//	'id'    => "{$prefix}full_name",
+			//	'type'  => 'text',
+            //    'attributes' => array(
+            //        'size' => '50',
+            //    ),
+			//),
 			// SELECT ADVANCED BOX
 			array(
 				'name'        => __( 'Administrative Contact', $prefix ),

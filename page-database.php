@@ -49,7 +49,7 @@ get_header(); ?>
         
         
 		<!-- SEARCH BAR -->
-		<div class="ten-twenty-four row clearfix loop-padding" style="margin: 50px auto;">
+		<div class="ten-twenty-four row clearfix loop-padding" style="margin: 30px auto;">
             <aside style="width: 100%;" id="" class="">
                 <form role="search" method="get" class="search-form" action="http://www.tribaldatabase.org/">
                     <label>
