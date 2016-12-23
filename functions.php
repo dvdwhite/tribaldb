@@ -615,7 +615,7 @@ add_filter( 'user_meta_field_config', 'user_meta_field_config_populate_categorie
 function user_meta_field_config_populate_categories( $field, $fieldID, $formName){ 
 	//get list of organizations
  	$args = array(
-		'posts_per_page'   => 5,
+		'posts_per_page'   => 600,
 		'offset'           => 0,
 		'category'         => '',
 		'category_name'    => '',
