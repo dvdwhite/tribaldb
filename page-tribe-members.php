@@ -68,9 +68,7 @@ get_header(); ?>
 					// User Loop
 					if ( ! empty( $user_query->results ) ) {
 						foreach ( $user_query->results as $user ) {
-							//echo 'User Name: ' . $user->display_name . ' User ID: ' . $user->ID . '</br>';
 							echo '<tr><td>'. $user->display_name .'</td><td>'. $user->ID .'</td><td>something else</td></tr>';
-
 						}
 					} 
 					else {
@@ -78,11 +76,6 @@ get_header(); ?>
 					}
 					echo '</table>';
 				?>
-				<!-- <tr>
-				    <td><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></td>
-				    <td><?php echo rwmb_meta('tribal_region') ?></td>
-				    <td><?php echo rwmb_meta('tribal_state') ?></td>
-				</tr> -->
 			</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->

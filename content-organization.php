@@ -111,7 +111,47 @@
 			) ); */
 		?>
 	</div><!-- .entry-content -->
+	<div class="ten-twenty-four"><!-- MEMBER LIST -->
+		
+		<?php
+			$org_name = get_the_title($_GET[org_id]);
+			
 
+			$user_fields = array( 
+				'meta_query' => array(
+				        array(
+				            'key'   => 'organization',
+				            'value' => $org_name,
+				            'compare' => 'REGEXP'
+				        )
+				    )
+				);
+			$user_query = new WP_User_Query( $user_fields );
+			/*echo '<pre>';
+			var_dump($user_query);
+			echo '</pre>';*/
+			?>
+			<table class="organization-list">
+                <tr>
+                    <th>User Name</th>
+                    <th>ID</th>
+                    <th>Other</th>
+                </tr>
+                
+            <?php
+			
+			// User Loop
+			if ( ! empty( $user_query->results ) ) {
+				foreach ( $user_query->results as $user ) {
+					echo '<tr><td>'. $user->display_name .'</td><td>'. $user->ID .'</td><td>something else</td></tr>';
+				}
+			} 
+			else {
+				echo '<td>No Members Found.</td>';
+			}
+			echo '</table>';
+		?>
+	</div>
 	<footer class="entry-footer">
 		<?php
 			/* translators: used between list items, there is a space after the comma 
