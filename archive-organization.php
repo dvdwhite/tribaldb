@@ -61,13 +61,116 @@ get_header(); ?>
                             }
                         ?>  
                         
+                        
+
+<script>
+    
+jQuery(function(){
+    jQuery('input').focus(function() {
+        jQuery(this).attr('placeholder','');
+    });
+    jQuery('input').focusout(function() {
+        jQuery(this).attr('placeholder','Search for Organization Name');
+    });
+});
+    
+function orgSearch(searchParam) {
+    var input, filter, table, tr, td, i;
+    if (searchParam == 'name') { jQuery('select#organization-region-search').val(""); jQuery('select#organization-state-search').val(""); }
+    if (searchParam == 'region') { jQuery('input#organization-name-search').attr('placeholder', "Search for Organization Name"); jQuery('select#organization-state-search').val(""); }
+    if (searchParam == 'state') { jQuery('input#organization-name-search').attr('placeholder', "Search for Organization Name"); jQuery('select#organization-region-search').val(""); }
+    input = document.getElementById("organization-" + searchParam + "-search");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("organization-table");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByClassName('org-' + searchParam )[0];
+        if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }       
+    }
+}
+</script> 
+                                   
                         <h3>All Organizations</h3>
                         <hr />
-                        <table class="organization-list">
+                        <table id="organization-table" class="organization-list">
                             <tr>
-                                <th>Organization Name</th>
-                                <th>Region</th>
-                                <th>State</th>
+                                <th><input type="text" id="organization-name-search" onkeyup="orgSearch('name')" placeholder="Search for Organization Name" title="Type in a name"></th>
+                                <th>
+                                    <select id="organization-region-search" onchange="orgSearch('region')">
+                                        <option value="">Select a Region</option>
+                                        <option value="alaska">Alaska</option>
+                                        <option value="eastern-oklahoma">Eastern Oklahoma</option>
+                                        <option value="eastern">Eastern</option>
+                                        <option value="midwest">Midwest</option>
+                                        <option value="northwest">Northwest</option>
+                                        <option value="pacific">Pacific</option>
+                                        <option value="rocky-mountain">Rocky Mountain</option>
+                                        <option value="southern-plains">Southern Plains</option>
+                                        <option value="western">Western</option>
+                                    </select>
+                                </th>
+                                <th>
+                                    <select id="organization-state-search" onchange="orgSearch('state')">
+                                        <option value="">Select a State</option>
+                                        <option value="AL">Alabama</option>
+                                        <option value="AK">Alaska</option>
+                                        <option value="AZ">Arizona</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="CA">California</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="DC">District Of Columbia</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WA">Washington</option>
+                                        <option value="WV">West Virginia</option>
+                                        <option value="WI">Wisconsin</option>
+                                        <option value="WY">Wyoming</option>
+                                    </select>	                                          
+                                </th>
                             </tr>
                             
                             
