@@ -11,12 +11,10 @@ get_header(); ?>
 
 <div class="container-fluid">
 
-
     <div class="ten-twenty-four row clearfix">
     	<?php if(function_exists(simple_breadcrumb)) {simple_breadcrumb();} ?>
     	<?php if ( ! dynamic_sidebar( 'sidebar-above-columns' ) ) : endif; ?>
-    	
-
+        
 	    	<div class="col-sm-12 float-left">
 
 				<section id="primary" class="content-area">
@@ -27,37 +25,41 @@ get_header(); ?>
 					<?php if ( have_posts() ) : ?>
 
 						<header class="page-header">
+                            <div class="profile-links">
+                                <?php if ( is_user_logged_in() ) {
+                                    $user = wp_get_current_user(); ?>
+
+
+                                    <h3><?php echo 'Welcome, ' . $user->first_name; ?>!</h3>
+                                    <?php 
+                                        if ( in_array( 'member', (array) $user->roles ) ) {
+                                            echo '(Member)';
+                                        }
+                                        elseif ( in_array( 'mega_member', (array) $user->roles ) ) {
+                                            echo '(Mega Member)';
+                                        }
+                                        elseif ( in_array( 'administrator', (array) $user->roles ) ) {
+                                            echo '(Administrator)';
+                                        }
+                                    ?> 
+                                    <br /><a href="/database/profile">Profile</a> | <a href="<?php echo wp_logout_url( $redirect ); ?>">Logout</a>
+
+
+                                <?php } 
+                                else {
+                                    echo '<h3>Welcome, guest!</h3>';
+                                    echo '<a href="/wp-admin">Sign In</a> | <a href="/database/request-access">Request Access</a>';
+                                } ?>
+                            </div>
 							<h2 class="page-title">Organizations <span class="back-to-link"> &nbsp; | <a href="/database">Back to Database Home &#187;</a></span></h2>
 						</header><!-- .page-header -->
                         
-                        <?php 
-                            $user = wp_get_current_user();
-                        
-                            if ( $user->first_name ) {
-                                echo 'Welcome, ' . $user->first_name . '.';
-                            }
-                            else {
-                                echo 'Welcome, ' . $user->nickname . '.';
-                            }
-                        
-                            if ( in_array( 'member', (array) $user->roles ) ) {
-                                echo '<p>You are a Member.</p>';
-                            }
-                            elseif ( in_array( 'mega_member', (array) $user->roles ) ) {
-                                echo '<p>You are a Mega Member.</p>';
-                            }
-                            elseif ( in_array( 'administrator', (array) $user->roles ) ) {
-                                echo '<p>You are an Administrator.</p>';
-                            }
-                            else {
-                                echo '<p>You are a guest.</p>';
-                            }
-                        ?>  
+                         
                         
                         <?php 
                             $user = wp_get_current_user();
                             if ( ( in_array( 'member', (array) $user->roles ) ) || ( in_array( 'mega_member', (array) $user->roles ) ) || ( in_array( 'administrator', (array) $user->roles ) ) )  {
-                                echo '<h3>My Organizations</h3><hr />';
+                                //echo '<h3>My Organizations</h3><hr />';
                             }
                         ?>  
                         
@@ -96,8 +98,8 @@ function orgSearch(searchParam) {
 }
 </script> 
                                    
-                        <h3>All Organizations</h3>
-                        <hr />
+                        <!--<h3>All Organizations</h3>
+                        <hr />-->
                         <table id="organization-table" class="organization-list">
                             <tr>
                                 <th><input type="text" id="organization-name-search" onkeyup="orgSearch('name')" placeholder="Search for Organization Name" title="Type in a name"></th>
