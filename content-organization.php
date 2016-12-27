@@ -68,7 +68,7 @@
                 echo '<a href="/wp-admin">Sign In</a> | <a href="/database/request-access">Request Access</a>';
             } ?>
         </div>    <br clear="all" />    
-		<h2 class="page-title"><?php the_title(); ?> <span class="back-to-link"> &nbsp; | <a href="/organizations">Back to Organizations &#187;</a></span></h2>
+		<h2 class="page-title"><?php the_title(); ?><!-- <span class="back-to-link"> &nbsp; | <a href="/organizations">Back to Organizations &#187;</a></span>--></h2>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
@@ -90,12 +90,12 @@
             </div>
             <div class="col-sm-6">
                 <h3>Region: <?php echo rwmb_meta('tribal_region') ?></h3>
-                <h3>Administrative Contact:<br />
+                <h3>Administrative Contact:</h3>
                 <?php foreach ( $user_query->results as $user ) {
                     if (in_array("member", $user->roles) && in_array("organization_admin", $user->roles)) {
-                        echo $user->display_name;
+                        echo $user->display_name . '<br /><a href="mailto:' . $user->user_email . '">' . $user->user_email . '</a></p>';
                     }
-                } ?></h3>
+                } ?>
                 <p><?php if ( !empty( rwmb_meta('tribal_website') ) ) { echo '<a href="' . rwmb_meta('tribal_website') . '">Website</a>'; } ?></p>
             </div>
         </div>
@@ -111,54 +111,80 @@
         </div><br clear="all" />
         
         <?php 
-            if ( is_user_logged_in() ) { ?>
+            if ( is_user_logged_in() ) { 
+                $user = wp_get_current_user();
+                //echo '$org_name: ' . $org_name;
+                //echo '<br />$user->organization: ' . $user->organization;
+        
+                if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( $user->organization == $org_name ) ) { ?>
         
                 <div class="details-header loop-padding">
                     <h3>Member Directory &nbsp; &#187;</h3>
                 </div>
 
-                <table class="organization-list">
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                    </tr>
+                <div class="loop-padding">
+        
+                    <table class="organization-list">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                        </tr>
 
-                    <?php
+                        <?php
 
-                    // User Loop
-                    if ( ! empty( $user_query->results ) ) {
+                        // User Loop
+                        if ( ! empty( $user_query->results ) ) {
 
-                        foreach ( $user_query->results as $user ) {
-                            echo '<tr><td>'. $user->display_name .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
+                            foreach ( $user_query->results as $user ) {
+                                echo '<tr><td>'. $user->display_name .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
+                            }
+                        } 
+                        else {
+                            echo '<tr><td colspan="3">No members found.</td></tr>';
                         }
-                    } 
-                    else {
-                        echo '<tr><td colspan="3">No Members Found.</td></tr>';
-                    }
-                ?>
+                    ?>
 
-                </table> 
-
+                    </table> 
+                    
+                </div>
+        
                 <div class="details-header loop-padding">
                     <h3>Documents &nbsp; &#187;</h3>
                 </div>
+        
+                <div class="loop-padding">
 
-                <table class="organization-list">
-                    <tr>
-                        <th>File name</th>
-                    </tr>
-                    <?php
-                        $tribal_files = rwmb_meta('tribal_file_advanced');
-                        if ( !empty( $tribal_files ) ) {
-                            foreach ( $tribal_files as $tribal_file ) {
-                                echo "<tr><td><a href='{$tribal_file['url']}' title='{$tribal_file['title']}'>{$tribal_file['name']}</a></td></tr>";
+                    <table class="organization-list">
+                        <tr>
+                            <th>File name</th>
+                        </tr>
+                        <?php
+                            $tribal_files = rwmb_meta('tribal_file_advanced');
+                            if ( !empty( $tribal_files ) ) {
+                                foreach ( $tribal_files as $tribal_file ) {
+                                    echo "<tr><td><a href='{$tribal_file['url']}' title='{$tribal_file['title']}'>{$tribal_file['name']}</a></td></tr>";
+                                }
+                            } else {
+                                echo '<tr><td>No documents found.</td></tr>';
                             }
-                        }
-                    ?>
-                </table>
+                        ?>
+                    </table>
+                    
+                
         
         <?php } else { ?>
+                    
+            <div class="details-header loop-padding">
+                <h3>Member Directory and Documents &nbsp; &#187;</h3>
+            </div>
+            <div class="ten-twenty-four row loop-padding clearfix">
+                <p>You must be assigned to an organization to view the member directory and document repository of that organization.</p>
+            </div>
+                    
+                <?php }
+            
+            } else { ?>
         
             <div class="details-header loop-padding">
                 <h3>Members Only &nbsp; &#187;</h3>

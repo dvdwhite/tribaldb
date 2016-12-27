@@ -552,7 +552,7 @@ table.organization-list {
 
 table.organization-list th {
     font-size: 1.2em;
-    padding: 26px 16px 24px 24px;
+    padding: 26px 16px 24px 16px;
     font-family: 'Encode-Regular';
     background: #fff;
 }
@@ -582,11 +582,7 @@ table.organization-list tr.odd {
 }
 
 table.organization-list td { 
-    padding: 8px 24px; 
-}
-
-table.organization-list a {
-    color: #866787;
+    padding: 8px 16px; 
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -623,6 +619,10 @@ table.organization-list a {
 .org-details-container .details-header h3 {
     color: #fff;
     margin: 0.5em;
+}
+
+.org-details-container h3 {
+    color: #fff;
 }
 
 .profile-links {
