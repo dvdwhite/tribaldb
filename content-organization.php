@@ -2,8 +2,26 @@
 /**
  * @package Tribal Database
  */
-?> 
 
+	//GET USER DATA
+	$post = get_post($_GET[org_id]); 
+	$org_name = $post->post_name;
+
+	$user_fields = array( 
+		'meta_query' => array(
+		        array(
+		            'key'   => 'organization',
+		            'value' => $org_name,
+		            'compare' => 'REGEXP'
+		        )
+		    )
+		);
+	$user_query = new WP_User_Query( $user_fields );
+	/*echo '<pre>';
+	var_dump($user_query);
+	echo '</pre>';*/
+	
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<h2 class="page-title"><?php the_title(); ?> <span class="back-to-link"> &nbsp; | <a href="/organizations">Back to Organizations &#187;</a></span></h2>
@@ -12,12 +30,20 @@
 	<div class="entry-content">
         
         <?php the_content(); ?>
-        
-        
-        
+
         <h3><?php echo rwmb_meta('tribal_full_name') ?></h3>
         <p>Other name: <?php echo rwmb_meta('tribal_other_name') ?></p>
-        <p>Administrative Contact: <?php echo rwmb_meta('tribal_admin_contact') ?></p>
+        <p>Administrative Contact: 
+	        <?php
+				foreach ( $user_query->results as $user ) {
+					
+					if (in_array("member", $user->roles) && in_array("organization_admin", $user->roles)) {
+					    echo $user->display_name;
+					}
+				}
+		        
+	        ?>
+        </p>
         <p>Primary phone: <?php echo rwmb_meta('tribal_primary_phone') ?></p>
         <p>Secondary phone: <?php echo rwmb_meta('tribal_secondary_phone') ?></p>
         <p>Fax: <?php echo rwmb_meta('tribal_fax') ?></p>
@@ -112,25 +138,6 @@
 		?>
 	</div><!-- .entry-content -->
 	<div class="ten-twenty-four"><!-- MEMBER LIST -->
-		
-		<?php
-			$org_name = get_the_title($_GET[org_id]);
-			
-
-			$user_fields = array( 
-				'meta_query' => array(
-				        array(
-				            'key'   => 'organization',
-				            'value' => $org_name,
-				            'compare' => 'REGEXP'
-				        )
-				    )
-				);
-			$user_query = new WP_User_Query( $user_fields );
-			/*echo '<pre>';
-			var_dump($user_query);
-			echo '</pre>';*/
-			?>
 			<table class="organization-list">
                 <tr>
                     <th>User Name</th>
@@ -142,6 +149,7 @@
 			
 			// User Loop
 			if ( ! empty( $user_query->results ) ) {
+
 				foreach ( $user_query->results as $user ) {
 					echo '<tr><td>'. $user->display_name .'</td><td>'. $user->ID .'</td><td>something else</td></tr>';
 				}
@@ -187,5 +195,6 @@
 		?>
 
 		<?php edit_post_link( __( 'Edit', 'tribaldb' ), '<span class="edit-link">', '</span>' ); ?>
+
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
