@@ -558,7 +558,7 @@ table.organization-list th {
 }
 
 table.organization-list th input {
-    border: 1px solid #ccc ;
+    border: 1px solid #bbb ;
     color: #000;
     background-image: url('images/global/searchicon.png') !important;
     background-position: 5px 5px !important;
@@ -573,7 +573,11 @@ table.organization-list th select {
     border: 0;
 }
 
-table.organization-list tr:nth-child(even) {
+/*table.organization-list tr:nth-child(even) {
+    background: #CCC
+}*/
+
+table.organization-list tr.odd {
     background: #CCC
 }
 
@@ -582,16 +586,16 @@ table.organization-list td {
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #ccc;
+  color: #bbb;
 }
 ::-moz-placeholder { /* Firefox 19+ */
-  color: #ccc;
+  color: #bbb;
 }
 :-ms-input-placeholder { /* IE 10+ */
-  color: #ccc;
+  color: #bbb;
 }
 :-moz-placeholder { /* Firefox 18- */
-  color: #ccc;
+  color: #bbb;
 }
 
 
@@ -602,9 +606,12 @@ table.organization-list td {
 }
 
 .profile-links h3 {
-    margin: 0;
+    margin: 0.6em 0 0 0;;
 }
 
+.screen-reader-text { /* temp, need to fix */
+    display: none !important;
+}
 
 
 /* ----- BRIAN tribal database Login Page ---------*/
@@ -691,6 +698,11 @@ input[type="submit"].um_login_button{
     border-bottom: 1px solid #ccc !important;
     border-radius: 0 !important;
     box-shadow: none !important;
+    background-image: url('images/global/searchicon.png') !important;
+    background-position: 5px 20px !important;
+    background-repeat: no-repeat !important;
+    background-size: 40px 45px !important;
+    padding: 22px 0 8px 65px;
 }
 .search-form input[type="submit"]{
 	line-height: 3em;
