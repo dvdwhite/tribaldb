@@ -52,7 +52,7 @@ get_header(); ?>
 
                 <?php get_template_part( 'content', 'none' ); ?>
 
-            <?php endif; ?>    
+            <?php endif; ?>  
     
     <p>&nbsp; &nbsp;</p>
 </div>
@@ -63,18 +63,19 @@ get_header(); ?>
 	</div> <!-- #content-wrapper -->
     
 
-            <div class="body-callout-box light-gray-callout row clearfix" style="background:#866787; color:#fff; font-size: 1.2em; border: 0;">
-                <div class="ten-twenty-four">
-                    <div class="callout-description center-align">
-                        <h2>QUESTIONS?</h2>
-                        Lorem ipsum dolor sit amet, ea sit autem facilis graecis. Utinam luptatum urbanitas te cum, fabellas nominati neglegentur eu nam. Mel ne modus tation, et vidisse corpora has. An bonorum dolorum cum. In nostro officiis sed. Sea at augue erant recusabo, pri ex quaeque imperdiet intellegam, ad cum amet omnes equidem.
-                        <br /><br />
-                        <div class="callout-button clearfix">
-                            <div class="learn-more blue"><a href="/database/contact">Contact Us</a></div>
-                        </div>
+    
+        <div class="body-callout-box light-gray-callout row clearfix" style="background:#866787; color:#fff; font-size: 1.2em; border: 0;">
+            <div class="ten-twenty-four">
+                <div class="callout-description center-align">
+                    <h2>QUESTIONS?</h2>
+                    For questions about using the site or your existing membership, please use the <a href="/database/request-access" style="color:#fff;">'Contact Us'</a> button. If you wish to request an account, please use the <a href="/database/request-access" style="color:#fff;">‘Request Access’</a> button.
+                    <br /><br />
+                    <div class="callout-button clearfix">
+                        <div class="learn-more blue" style="display:inline;text-align:center;"><a href="/database/contact">Contact Us</a></div> &nbsp; &nbsp; <div class="learn-more blue" style="display:inline;text-align:center;"><a href="/database/request-access">Request Access</a></div>
                     </div>
                 </div>
-            </div> <!-- #questions -->    
+            </div>
+        </div> <!-- #questions -->   
 
 </div>
 

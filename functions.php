@@ -620,7 +620,7 @@ function user_meta_field_config_populate_categories( $field, $fieldID, $formName
 		'category'         => '',
 		'category_name'    => '',
 		'orderby'          => 'date',
-		'order'            => 'DESC',
+		'order'            => 'ASC',
 		'include'          => '',
 		'exclude'          => '',
 		'meta_key'         => '',
