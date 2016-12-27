@@ -430,32 +430,15 @@ function tribal_register_meta_boxes( $meta_boxes ) {
         'post_types' => 'organization',
         'fields'     => array(
 			// TEXT
-			array(
-				'name'  => esc_html__( 'Full Organization Name', $prefix ),
-				// Field ID, i.e. the meta key
-				'id'    => "{$prefix}full_name",
-				'type'  => 'text',
-                'attributes' => array(
-                    'size' => '50',
-                ),
-			),
-			// TEXT
 			//array(
-			//	'name'  => esc_html__( 'Local Name', $prefix ),
-			//	// Field ID, i.e. the meta key
-			//	'id'    => "{$prefix}local_name",
-			//	'type'  => 'text',
-			//),
-			// TEXT
-			array(
-				'name'  => esc_html__( 'Other Name', $prefix ),
+			//	'name'  => esc_html__( 'Full Organization Name', $prefix ),
 				// Field ID, i.e. the meta key
-				'id'    => "{$prefix}other_name",
-				'type'  => 'text',
-                'attributes' => array(
-                    'size' => '50',
-                ),
-			),
+			//	'id'    => "{$prefix}full_name",
+			//	'type'  => 'text',
+            //    'attributes' => array(
+            //        'size' => '50',
+            //    ),
+			//),
 			// SELECT ADVANCED BOX
 			array(
 				'name'        => __( 'Administrative Contact', $prefix ),
@@ -485,7 +468,7 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 			// TEXT
 			array(
 				'name' => __( 'Fax', $prefix ),
-				'id'   => "{$prefix}fax_phone",
+				'id'   => "{$prefix}fax",
 				'type' => 'text',
 			),
 			// SELECT BOX
@@ -632,7 +615,7 @@ add_filter( 'user_meta_field_config', 'user_meta_field_config_populate_categorie
 function user_meta_field_config_populate_categories( $field, $fieldID, $formName){ 
 	//get list of organizations
  	$args = array(
-		'posts_per_page'   => 5,
+		'posts_per_page'   => 600,
 		'offset'           => 0,
 		'category'         => '',
 		'category_name'    => '',
