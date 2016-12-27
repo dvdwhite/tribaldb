@@ -552,7 +552,7 @@ table.organization-list {
 
 table.organization-list th {
     font-size: 1.2em;
-    padding: 26px 16px 24px 16px;
+    padding: 26px 16px 24px 24px;
     font-family: 'Encode-Regular';
     background: #fff;
 }
@@ -582,7 +582,11 @@ table.organization-list tr.odd {
 }
 
 table.organization-list td { 
-    padding: 8px 16px; 
+    padding: 8px 24px; 
+}
+
+table.organization-list a {
+    color: #866787;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -598,6 +602,28 @@ table.organization-list td {
   color: #bbb;
 }
 
+.org-details-container {
+    
+}
+
+.org-details-container a {
+    color: #fff !important;
+    
+}
+
+.org-details-container .detail-height {
+    min-height: 250px;
+}
+
+.org-details-container .details-header {
+    width: 100%;
+    background: #866787;
+}
+
+.org-details-container .details-header h3 {
+    color: #fff;
+    margin: 0.5em;
+}
 
 .profile-links {
     display: inline;

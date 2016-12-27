@@ -75,69 +75,102 @@
         
         <?php the_content(); ?>
 
-        <p>Administrative Contact: 
-	        <?php
-				foreach ( $user_query->results as $user ) {
-					
-					if (in_array("member", $user->roles) && in_array("organization_admin", $user->roles)) {
-					    echo $user->display_name;
-					}
-				}
-		        
-	        ?>
-        </p>
-        <p>Primary phone: <?php echo rwmb_meta('tribal_primary_phone') ?></p>
-        <p>Secondary phone: <?php echo rwmb_meta('tribal_secondary_phone') ?></p>
-        <p>Fax: <?php echo rwmb_meta('tribal_fax') ?></p>
-        <p>Region: <?php echo rwmb_meta('tribal_region') ?></p>
-        <p>Address 1: <?php echo rwmb_meta('tribal_address_1') ?></p>
-        <p>Address 2: <?php echo rwmb_meta('tribal_address_2') ?></p>
-        <p>City: <?php echo rwmb_meta('tribal_city') ?></p>
-        <p>State: <?php echo rwmb_meta('tribal_state') ?></p>
-        <p>Zip: <?php echo rwmb_meta('tribal_zip') ?></p>
-        <p>Website: <?php echo rwmb_meta('tribal_website') ?></p>
-        <p>Attached Files:
-        <?php
+	</div><!-- .entry-content -->    
+    
+    <div class="org-details-container row loop-padding">
+        <div class="col-sm-8 orange-bg detail-height">
+            <div class="col-sm-6">
+                <h3>Organization Details</h3>
+                <?php echo rwmb_meta('tribal_address_1') ?><br />
+                <?php if ( !empty( rwmb_meta('tribal_address_2') ) ) { echo '<a href="' . rwmb_meta('tribal_address_2') . '</a><br />'; } ?>
+                <?php echo rwmb_meta('tribal_city') ?>, <?php echo rwmb_meta('tribal_state') ?>, <?php echo rwmb_meta('tribal_zip') ?><br />
+                <p>Primary phone: <?php echo rwmb_meta('tribal_primary_phone') ?><br />
+                Secondary phone: <?php echo rwmb_meta('tribal_secondary_phone') ?><br />
+                <?php if ( !empty( rwmb_meta('tribal_fax') ) ) { echo 'Fax: ' . rwmb_meta('tribal_fax'); } ?></p>
+            </div>
+            <div class="col-sm-6">
+                <h3>Region: <?php echo rwmb_meta('tribal_region') ?></h3>
+                <h3>Administrative Contact:<br />
+                <?php foreach ( $user_query->results as $user ) {
+                    if (in_array("member", $user->roles) && in_array("organization_admin", $user->roles)) {
+                        echo $user->display_name;
+                    }
+                } ?></h3>
+                <p><?php if ( !empty( rwmb_meta('tribal_website') ) ) { echo '<a href="' . rwmb_meta('tribal_website') . '">Website</a>'; } ?></p>
+            </div>
+        </div>
+        <div class="col-sm-4 blue-bg detail-height">
+            <h3>Database Links</h3>
+            <div class="menu-temporary-database-menu-container"><ul id="menu-temporary-database-menu" class="menu"><li id="menu-item-1073" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-page-parent menu-item-1073"><a href="https://www.tribaldatabase.org/database/">Database Portal</a></li>
+                <li id="menu-item-481" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-481"><a href="/organizations">Organizations</a></li>
+                <li id="menu-item-411" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-409 current_page_item menu-item-411"><a href="https://www.tribaldatabase.org/database/contact/">Contact Us</a></li>
+                <li id="menu-item-480" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-480"><a href="https://www.tribaldatabase.org/database/request-access/">Request Access</a></li>
+                <li id="menu-item-1074" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1074"><a href="https://www.tribaldatabase.org/database/submit-a-document/">Submit a Document</a></li>
+                </ul>
+            </div>
+        </div><br clear="all" />
         
-            $tribal_files = rwmb_meta('tribal_file_advanced');
-
-            if ( !empty( $tribal_files ) ) {
-                foreach ( $tribal_files as $tribal_file ) {
-                    echo "<a href='{$tribal_file['url']}' title='{$tribal_file['title']}'>{$tribal_file['name']}</a><br />";
-                }
-            }
+        <?php 
+            if ( is_user_logged_in() ) { ?>
         
-        ?>
-        </p>
+                <div class="details-header loop-padding">
+                    <h3>Member Directory &nbsp; &#187;</h3>
+                </div>
 
-	</div><!-- .entry-content -->
-	<div class="ten-twenty-four"><!-- MEMBER LIST -->
-        <h3>Organization Members</h3>
-			<table class="organization-list">
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                </tr>
-                
-            <?php
-			
-			// User Loop
-			if ( ! empty( $user_query->results ) ) {
+                <table class="organization-list">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
 
-				foreach ( $user_query->results as $user ) {
-					echo '<tr><td>'. $user->display_name .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
-				}
-			} 
-			else {
-				echo '<tr><td colspan="3">No Members Found.</td></tr>';
-			}
-		?>
+                    <?php
+
+                    // User Loop
+                    if ( ! empty( $user_query->results ) ) {
+
+                        foreach ( $user_query->results as $user ) {
+                            echo '<tr><td>'. $user->display_name .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
+                        }
+                    } 
+                    else {
+                        echo '<tr><td colspan="3">No Members Found.</td></tr>';
+                    }
+                ?>
+
+                </table> 
+
+                <div class="details-header loop-padding">
+                    <h3>Documents &nbsp; &#187;</h3>
+                </div>
+
+                <table class="organization-list">
+                    <tr>
+                        <th>File name</th>
+                    </tr>
+                    <?php
+                        $tribal_files = rwmb_meta('tribal_file_advanced');
+                        if ( !empty( $tribal_files ) ) {
+                            foreach ( $tribal_files as $tribal_file ) {
+                                echo "<tr><td><a href='{$tribal_file['url']}' title='{$tribal_file['title']}'>{$tribal_file['name']}</a></td></tr>";
+                            }
+                        }
+                    ?>
+                </table>
         
-        </table>  
-                
-                
-	</div>
+        <?php } else { ?>
+        
+            <div class="details-header loop-padding">
+                <h3>Members Only &nbsp; &#187;</h3>
+            </div>
+            <div class="ten-twenty-four row loop-padding clearfix">
+                <p>You must be logged in to view the complete member directory and document repository. Please <a href="/database" style="color:#866787!important">login here</a>.</p>
+            </div>
+        
+        <?php } ?>
+               
+    </div>
+    
         
 	<footer class="entry-footer">
 		<?php
