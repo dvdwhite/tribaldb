@@ -24,6 +24,24 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
+        <!-- SEARCH BAR -->
+                
+                    <aside style="width: 75%; display:inline; float: left;" id="" class="">
+                        <form role="search" method="get" class="search-form" action="/">
+                            <label>
+                                <!--<span class="screen-reader-text">
+                                    <p><strong>Search The Tribal Directory</strong></p>
+                                </span>-->
+                                <input type="search" class="search-field" placeholder="Search the Tribal Database" value="" name="s" title="Search the Tribal Database" />
+                            </label>
+                            <input type="submit" class="search-submit" value="Search" />
+                            <input type="hidden" name="post_type" value="organization" />
+                        </form>
+
+                        <p>&nbsp;</p>
+
+                    </aside>
+                         
         <div class="profile-links">
             <?php if ( is_user_logged_in() ) {
                 $user = wp_get_current_user(); ?>
@@ -49,7 +67,7 @@
                 echo '<h3>Welcome, guest!</h3>';
                 echo '<a href="/wp-admin">Sign In</a> | <a href="/database/request-access">Request Access</a>';
             } ?>
-        </div>        
+        </div>    <br clear="all" />    
 		<h2 class="page-title"><?php the_title(); ?> <span class="back-to-link"> &nbsp; | <a href="/organizations">Back to Organizations &#187;</a></span></h2>
 	</header><!-- .entry-header -->
 
@@ -57,8 +75,6 @@
         
         <?php the_content(); ?>
 
-        <h3><?php echo rwmb_meta('tribal_full_name') ?></h3>
-        <p>Other name: <?php echo rwmb_meta('tribal_other_name') ?></p>
         <p>Administrative Contact: 
 	        <?php
 				foreach ( $user_query->results as $user ) {
@@ -93,82 +109,15 @@
         
         ?>
         </p>
-        
-		<?php
-			$post_tags = wp_get_post_tags($post->ID);
-			$tag_count = count($post_tags);
-			if ( $tag_count >= 1 ) {
-			?>
-				
-			<div class="relatedposts">  
-                <h3>Related posts</h3>
-                <hr>
-                <div class="eq-ht-wrapper clearfix">
-                <?php  
-                    $orig_post = $post;  
-                    global $post;
-                    $tags = wp_get_post_tags($post->ID);  
 
-                    if ($tags) {  
-                    $tag_ids = array();  
-                    foreach($tags as $individual_tag) $tag_ids[] = $individual_tag->term_id;  
-                    $args=array(  
-                    'tag__in' => $tag_ids,  
-                    'post__not_in' => array($post->ID),  
-                    'posts_per_page'=>4, // Number of related posts to display.  
-                    'caller_get_posts'=>1  
-                    );  
-
-                    $my_query = new wp_query( $args );  
-
-                    while( $my_query->have_posts() ) {  
-                    $my_query->the_post();  
-                    ?>  
-
-                    <div class="relatedthumb eq-ht col-4">  
-                        <a rel="external" href="<? the_permalink()?>">
-                        <?php
-                        if ( has_post_thumbnail() ) {
-                            the_post_thumbnail('medium');
-                        }else{
-                            //echo '<img src="http://placehold.it/229x100&text=View+Article"/>';
-                        }
-                        ?>
-                        </a>
-                         <a class="title" rel="external" href="<? the_permalink()?>"><?php the_title(); ?></a><br />
-                        <span class="related-date"><?php echo get_the_date(); ?></span>
-                    </div>  
-
-                    <?php }  
-                    }  
-                    $post = $orig_post;  
-                    wp_reset_query();  
-                    ?>
-                </div>    <!-- End Four Columns Wrapper-->
-            </div> <!-- End related posts by tag -->
-		
-            <hr />
-
-			  <?php
-			}
-			else {}
-		?><!-- End has tag ? -->        
-        
-        
-        
-		<?php /*
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'tribaldb' ),
-				'after'  => '</div>',
-			) ); */
-		?>
 	</div><!-- .entry-content -->
 	<div class="ten-twenty-four"><!-- MEMBER LIST -->
+        <h3>Organization Members</h3>
 			<table class="organization-list">
                 <tr>
-                    <th>User Name</th>
-                    <th>ID</th>
-                    <th>Other</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
                 </tr>
                 
             <?php
@@ -177,33 +126,16 @@
 			if ( ! empty( $user_query->results ) ) {
 
 				foreach ( $user_query->results as $user ) {
-					echo '<tr><td>'. $user->display_name .'</td><td>'. $user->ID .'</td><td>something else</td></tr>';
+					echo '<tr><td>'. $user->display_name .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
 				}
 			} 
 			else {
-				echo '<td>No Members Found.</td>';
+				echo '<tr><td colspan="3">No Members Found.</td></tr>';
 			}
-			echo '</table>';
 		?>
+        
+        </table>  
                 
-        <!-- SEARCH BAR -->
-                <div style="margin: 20px auto;">
-                    <aside style="width: 100%;" id="" class="">
-                        <form role="search" method="get" class="search-form" action="/">
-                            <label>
-                                <!--<span class="screen-reader-text">
-                                    <p><strong>Search The Tribal Directory</strong></p>
-                                </span>-->
-                                <input type="search" class="search-field" placeholder="Search the Tribal Database" value="" name="s" title="Search the Tribal Database" />
-                            </label>
-                            <input type="submit" class="search-submit" value="Search" />
-                            <input type="hidden" name="post_type" value="organization" />
-                        </form>
-
-                        <p>&nbsp;</p>
-
-                    </aside>
-                </div>                  
                 
 	</div>
         

@@ -440,19 +440,19 @@ function tribal_register_meta_boxes( $meta_boxes ) {
             //    ),
 			//),
 			// SELECT ADVANCED BOX
-			array(
-				'name'        => __( 'Administrative Contact', $prefix ),
-				'id'          => "{$prefix}admin_contact",
-				'type'        => 'select_advanced',
-				// Array of 'value' => 'Label' pairs for select box
-				'options'     => $tribal_admin,
-				// Select multiple values, optional. Default is false.
-				'multiple'    => false,
-				// 'std'         => 'value2', // Default value, optional
-				'placeholder' => __( 'Select a User', $prefix ),
-                //'after'       => $pruser->user_nicename,
-                'clone'       => false,
-			),
+//			array(
+//				'name'        => __( 'Administrative Contact', $prefix ),
+//				'id'          => "{$prefix}admin_contact",
+//				'type'        => 'select_advanced',
+//				// Array of 'value' => 'Label' pairs for select box
+//				'options'     => $tribal_admin,
+//				// Select multiple values, optional. Default is false.
+//				'multiple'    => false,
+//				// 'std'         => 'value2', // Default value, optional
+//				'placeholder' => __( 'Select a User', $prefix ),
+//                //'after'       => $pruser->user_nicename,
+//                'clone'       => false,
+//			),
 			// TEXT
 			array(
 				'name' => __( 'Primary Phone', $prefix ),
