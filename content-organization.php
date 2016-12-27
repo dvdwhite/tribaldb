@@ -24,6 +24,32 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
+        <div class="profile-links">
+            <?php if ( is_user_logged_in() ) {
+                $user = wp_get_current_user(); ?>
+
+
+                <h3><?php echo 'Welcome, ' . $user->first_name; ?>!</h3>
+                <?php 
+                    if ( in_array( 'member', (array) $user->roles ) ) {
+                        echo '(Member)';
+                    }
+                    elseif ( in_array( 'mega_member', (array) $user->roles ) ) {
+                        echo '(Mega Member)';
+                    }
+                    elseif ( in_array( 'administrator', (array) $user->roles ) ) {
+                        echo '(Administrator)';
+                    }
+                ?> 
+                <br /><a href="/database/profile">Profile</a> | <a href="<?php echo wp_logout_url( $redirect ); ?>">Logout</a>
+
+
+            <?php } 
+            else {
+                echo '<h3>Welcome, guest!</h3>';
+                echo '<a href="/wp-admin">Sign In</a> | <a href="/database/request-access">Request Access</a>';
+            } ?>
+        </div>        
 		<h2 class="page-title"><?php the_title(); ?> <span class="back-to-link"> &nbsp; | <a href="/organizations">Back to Organizations &#187;</a></span></h2>
 	</header><!-- .entry-header -->
 
@@ -159,7 +185,28 @@
 			}
 			echo '</table>';
 		?>
+                
+        <!-- SEARCH BAR -->
+                <div style="margin: 20px auto;">
+                    <aside style="width: 100%;" id="" class="">
+                        <form role="search" method="get" class="search-form" action="/">
+                            <label>
+                                <!--<span class="screen-reader-text">
+                                    <p><strong>Search The Tribal Directory</strong></p>
+                                </span>-->
+                                <input type="search" class="search-field" placeholder="Search the Tribal Database" value="" name="s" title="Search the Tribal Database" />
+                            </label>
+                            <input type="submit" class="search-submit" value="Search" />
+                            <input type="hidden" name="post_type" value="organization" />
+                        </form>
+
+                        <p>&nbsp;</p>
+
+                    </aside>
+                </div>                  
+                
 	</div>
+        
 	<footer class="entry-footer">
 		<?php
 			/* translators: used between list items, there is a space after the comma 
