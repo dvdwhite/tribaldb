@@ -170,7 +170,7 @@
                             }
                         ?>
                     </table>
-                    
+                </div>    
                 
         
         <?php } else { ?>
