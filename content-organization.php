@@ -116,7 +116,7 @@
                 //echo '$org_name: ' . $org_name;
                 //echo '<br />$user->organization: ' . $user->organization;
         
-                if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( $user->organization == $org_name ) ) { ?>
+                if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( $user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
         
                 <div class="details-header loop-padding">
                     <h3>Member Directory &nbsp; &#187;</h3>
