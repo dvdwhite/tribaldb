@@ -137,7 +137,7 @@
                         if ( ! empty( $user_query->results ) ) {
 
                             foreach ( $user_query->results as $user ) {
-                                echo '<tr><td>'. $user->display_name .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
+                                echo '<tr><td><a href="/profile?usr_id=' . $user->ID . '">'. $user->display_name .'</a></td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
                             }
                         } 
                         else {
