@@ -117,7 +117,9 @@ get_header(); ?>
 				                	<?php
 				                		echo 'Phone: ' . $phone . '<br/>';
 				                		echo 'Address: ' . $address_1 . '<br/>';
-				                		echo '' . $address_2 . '<br/>';
+				                		if ($address_2) {
+				                			echo $address_2 . '<br/>';
+				                		}
 				                		echo 'State: ' . $state . '<br/>';
 				                		echo 'Zip Code:' . $zip . '<br/>';
 				                	?>
