@@ -575,7 +575,7 @@ jQuery(document).ready(function() {
     jQuery('input').focus(function() {
         jQuery(this).attr('placeholder','');
     });
-    jQuery('input').focusout(function() {
+    jQuery('input#organization-name-search').focusout(function() {
         jQuery(this).attr('placeholder','Search for Organization Name');
     });
 });
