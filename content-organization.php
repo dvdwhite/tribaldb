@@ -86,8 +86,8 @@
                 <?php echo rwmb_meta('tribal_city') ?>, <?php echo rwmb_meta('tribal_state') ?>, <?php echo rwmb_meta('tribal_zip') ?><br />
                 <p>Primary phone: <?php echo rwmb_meta('tribal_primary_phone') ?><br />
                 <?php if ( !empty( rwmb_meta('tribal_secondary_phone') ) ) { echo 'Secondary Phone: ' . rwmb_meta('tribal_secondary_phone') . '<br />'; } ?>
-                <?php if ( !empty( rwmb_meta('tribal_fax') ) ) { echo 'Fax: ' . rwmb_meta('tribal_fax') . '<br />'; } ?>
-                <?php if ( !empty( rwmb_meta('tribal_website') ) ) { echo '<a href="' . rwmb_meta('tribal_website') . '">Website</a>'; } ?></p>
+                <?php if ( !empty( rwmb_meta('tribal_fax') ) ) { echo 'Fax: ' . rwmb_meta('tribal_fax'); } ?></p>
+                <?php if ( !empty( rwmb_meta('tribal_website') ) ) { echo '<a href="' . rwmb_meta('tribal_website') . '">Website</a>'; } ?>
             </div>
             <div class="col-sm-6">
                 <h3>Region: <?php echo rwmb_meta('tribal_region') ?></h3>
@@ -97,7 +97,6 @@
                         echo $user->display_name . '<br /><a href="mailto:' . $user->user_email . '">' . $user->user_email . '</a></p>';
                     }
                 } ?>
-                <!--<p><?php if ( !empty( rwmb_meta('tribal_website') ) ) { echo '<a href="' . rwmb_meta('tribal_website') . '">Website</a>'; } ?></p>-->
             </div>
         </div>
         <div class="col-sm-4 blue-bg detail-height">
@@ -138,7 +137,7 @@
                         if ( ! empty( $user_query->results ) ) {
 
                             foreach ( $user_query->results as $user ) {
-                                echo '<tr><td>'. $user->display_name .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
+                                echo '<tr><td><a href="/member-profile?usr_id=' . $user->ID . '">'. $user->display_name .'</a></td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
                             }
                         } 
                         else {
@@ -171,7 +170,7 @@
                             }
                         ?>
                     </table>
-                    
+                </div>    
                 
         
         <?php } else { ?>
