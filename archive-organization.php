@@ -72,6 +72,8 @@ get_header(); ?>
         
                     //echo $organization_slug;
                     
+                
+                    if ( !empty($organization_slug) ) {
                     // The Query
                     $my_organization = new WP_Query(  array( 'name' => $organization_slug, 'post_type' => 'organization' )  );
 
@@ -85,7 +87,7 @@ get_header(); ?>
                     ?>
                 
                                     <h3>My Organization</h3>
-                            <table id="organization-table" class="organization-list">
+                            <table id="my-organization-table" class="organization-list">
                                 <tr>
                                     <td></td>
                                 </tr>
@@ -108,6 +110,8 @@ get_header(); ?>
                         wp_reset_postdata();
                     } else {
                         // no posts found
+                    }
+                        
                     }
                 
                 ?>
