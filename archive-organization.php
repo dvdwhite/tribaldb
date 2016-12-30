@@ -74,43 +74,43 @@ get_header(); ?>
                     
                 
                     if ( !empty($organization_slug) ) {
-                    // The Query
-                    $my_organization = new WP_Query(  array( 'name' => $organization_slug, 'post_type' => 'organization' )  );
+                    
+                        $my_organization = new WP_Query(  array( 'name' => $organization_slug, 'post_type' => 'organization' )  );
 
-                    // The Loop
-                    if ( $my_organization->have_posts() ) { 
-                        
-                        while ( $my_organization->have_posts() ) {
-                            
-                            $my_organization->the_post();
-                            //echo '<h3>' . get_the_title() . '</h3>';
-                    ?>
-                
-                                    <h3>My Organization</h3>
-                            <table id="my-organization-table" class="organization-list">
-                                <tr>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="<?php the_permalink();?>"><?php echo the_title();?></a></td>
-                                    <td><?php echo rwmb_meta('tribal_region') ?></td>
-                                    <td><?php echo rwmb_meta('tribal_city') ?>, <?php echo rwmb_meta('tribal_state') ?></td>
-                                </tr>
-                            </table>
-                                    <?php foreach ( $user_query->results as $user ) {
-                                        if (in_array("member", $user->roles) && in_array("organization_admin", $user->roles)) {
-                                            //echo $user->display_name . '<br /><a href="mailto:' . $user->user_email . '">' . $user->user_email . '</a></p>';
-                                        }
-                                    } ?>
-                        
-                
-                        <?php }
-                        
-                        /* Restore original Post Data */
-                        wp_reset_postdata();
-                    } else {
-                        // no posts found
-                    }
+                        // The Loop
+                        if ( $my_organization->have_posts() ) { 
+
+                            while ( $my_organization->have_posts() ) {
+
+                                $my_organization->the_post();
+                                //echo '<h3>' . get_the_title() . '</h3>';
+                        ?>
+
+                                        <h3>My Organization</h3>
+                                <table id="my-organization-table" class="organization-list">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="<?php the_permalink();?>"><?php echo the_title();?></a></td>
+                                        <td><?php echo rwmb_meta('tribal_region') ?></td>
+                                        <td><?php echo rwmb_meta('tribal_city') ?>, <?php echo rwmb_meta('tribal_state') ?></td>
+                                    </tr>
+                                </table>
+                                        <?php foreach ( $user_query->results as $user ) {
+                                            if (in_array("member", $user->roles) && in_array("organization_admin", $user->roles)) {
+                                                //echo $user->display_name . '<br /><a href="mailto:' . $user->user_email . '">' . $user->user_email . '</a></p>';
+                                            }
+                                        } ?>
+
+
+                            <?php }
+
+                            /* Restore original Post Data */
+                            wp_reset_postdata();
+                        } else {
+                            // no posts found
+                        }
                         
                     }
                 
