@@ -7,6 +7,21 @@
  * @package Tribal Database
  */
 
+ 	//GET USER DATA
+	$post = get_post($_GET[org_id]); 
+	$org_name = $post->post_name;
+
+	$user_fields = array( 
+		'meta_query' => array(
+		        array(
+		            'key'   => 'organization',
+		            'value' => $org_name,
+		            'compare' => 'REGEXP'
+		        )
+		    )
+		);
+	$user_query = new WP_User_Query( $user_fields );
+	
 get_header(); ?>
 
 <div class="container-fluid">
@@ -51,7 +66,55 @@ get_header(); ?>
                     <h2 class="page-title">Organizations <span class="back-to-link"> &nbsp; | <a href="/database">Back to Database Home &#187;</a></span></h2>
                 </header><!-- .page-header -->
 
+                <?php 
+                    $user = wp_get_current_user();
+                    $organization_slug = $user->organization; 
+        
+                    //echo $organization_slug;
+                    
+                
+                    if ( !empty($organization_slug) ) {
+                    
+                        $my_organization = new WP_Query(  array( 'name' => $organization_slug, 'post_type' => 'organization' )  );
 
+                        // The Loop
+                        if ( $my_organization->have_posts() ) { 
+
+                            while ( $my_organization->have_posts() ) {
+
+                                $my_organization->the_post();
+                                //echo '<h3>' . get_the_title() . '</h3>';
+                        ?>
+
+                                        <h3>My Organization</h3>
+                                <table id="my-organization-table" class="organization-list">
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="<?php the_permalink();?>"><?php echo the_title();?></a></td>
+                                        <td><?php echo rwmb_meta('tribal_region') ?></td>
+                                        <td><?php echo rwmb_meta('tribal_city') ?>, <?php echo rwmb_meta('tribal_state') ?></td>
+                                    </tr>
+                                </table>
+                                        <?php foreach ( $user_query->results as $user ) {
+                                            if (in_array("member", $user->roles) && in_array("organization_admin", $user->roles)) {
+                                                //echo $user->display_name . '<br /><a href="mailto:' . $user->user_email . '">' . $user->user_email . '</a></p>';
+                                            }
+                                        } ?>
+
+
+                            <?php }
+
+                            /* Restore original Post Data */
+                            wp_reset_postdata();
+                        } else {
+                            // no posts found
+                        }
+                        
+                    }
+                
+                ?>
 
                 <?php 
                     $user = wp_get_current_user();
@@ -61,8 +124,7 @@ get_header(); ?>
                 ?>  
 
 
-                <!--<h3>All Organizations</h3>
-                <hr />-->
+                <h3>All Organizations</h3>
                 <table id="organization-table" class="organization-list">
                     <tr>
                         <th><input type="text" id="organization-name-search" onkeyup="orgSearch('name')" placeholder="Search for Organization Name" title="Type in a name"></th>
@@ -70,13 +132,13 @@ get_header(); ?>
                             <select id="organization-region-search" onchange="orgSearch('region')">
                                 <option value="">Select a Region</option>
                                 <option value="alaska">Alaska</option>
-                                <option value="eastern-oklahoma">Eastern Oklahoma</option>
+                                <option value="eastern oklahoma">Eastern Oklahoma</option>
                                 <option value="eastern">Eastern</option>
                                 <option value="midwest">Midwest</option>
                                 <option value="northwest">Northwest</option>
                                 <option value="pacific">Pacific</option>
-                                <option value="rocky-mountain">Rocky Mountain</option>
-                                <option value="southern-plains">Southern Plains</option>
+                                <option value="rocky mountain">Rocky Mountain</option>
+                                <option value="southern plains">Southern Plains</option>
                                 <option value="western">Western</option>
                             </select>
                         </th>
@@ -168,7 +230,7 @@ get_header(); ?>
                 <?php endwhile; ?>
                 </table>
 
-                <?php tribaldb_paging_nav(); ?>
+                <?php //tribaldb_paging_nav(); ?>
 
             <?php else : ?>
 
@@ -185,10 +247,10 @@ get_header(); ?>
             <div class="ten-twenty-four">
                 <div class="callout-description center-align">
                     <h2>QUESTIONS?</h2>
-                    Lorem ipsum dolor sit amet, ea sit autem facilis graecis. Utinam luptatum urbanitas te cum, fabellas nominati neglegentur eu nam. Mel ne modus tation, et vidisse corpora has. An bonorum dolorum cum. In nostro officiis sed. Sea at augue erant recusabo, pri ex quaeque imperdiet intellegam, ad cum amet omnes equidem.
+                    For questions about using the site or your existing membership, please use the <a href="/database/request-access" style="color:#fff;">'Contact Us'</a> button. If you wish to request an account, please use the <a href="/database/request-access" style="color:#fff;">‘Request Access’</a> button.
                     <br /><br />
                     <div class="callout-button clearfix">
-                        <div class="learn-more blue"><a href="/database/contact">Contact Us</a></div>
+                        <div class="learn-more blue" style="display:inline;text-align:center;"><a href="/database/contact">Contact Us</a></div> &nbsp; &nbsp; <div class="learn-more blue" style="display:inline;text-align:center;"><a href="/database/request-access">Request Access</a></div>
                     </div>
                 </div>
             </div>

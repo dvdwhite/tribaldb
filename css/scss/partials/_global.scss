@@ -550,9 +550,13 @@ table.organization-list {
     margin: 0 0 40px 0;
 }
 
+table.organization-list a {
+    color: #866787 !important;
+}
+
 table.organization-list th {
     font-size: 1.2em;
-    padding: 26px 16px 24px 16px;
+    padding: 6px 16px 10px 16px;
     font-family: 'Encode-Regular';
     background: #fff;
 }
@@ -608,7 +612,7 @@ table.organization-list td {
 }
 
 .org-details-container .detail-height {
-    min-height: 250px;
+    min-height: 270px;
 }
 
 .org-details-container .details-header {
