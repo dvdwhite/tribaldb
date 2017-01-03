@@ -85,8 +85,10 @@ get_header(); ?>
                                 $my_organization->the_post();
                                 //echo '<h3>' . get_the_title() . '</h3>';
                         ?>
-
-                                        <h3>My Organization</h3>
+                                <br clear="all" />
+                                <div class="details-header">
+                                    <h3>My Organizations &nbsp; &#187;</h3>
+                                </div>
                                 <table id="my-organization-table" class="organization-list">
                                     <tr>
                                         <td></td>
@@ -124,7 +126,9 @@ get_header(); ?>
                 ?>  
 
 
-                <h3>All Organizations</h3>
+                <div class="details-header">
+                    <h3>All Organizations &nbsp; &#187;</h3>
+                </div>
                 <table id="organization-table" class="organization-list">
                     <tr>
                         <th><input type="text" id="organization-name-search" onkeyup="orgSearch('name')" placeholder="Search for Organization Name" title="Type in a name"></th>

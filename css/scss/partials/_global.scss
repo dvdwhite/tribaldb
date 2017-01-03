@@ -556,7 +556,7 @@ table.organization-list a {
 
 table.organization-list th {
     font-size: 1.2em;
-    padding: 6px 16px 10px 16px;
+    padding: 16px;
     font-family: 'Encode-Regular';
     background: #fff;
 }
@@ -615,14 +615,16 @@ table.organization-list td {
     min-height: 270px;
 }
 
-.org-details-container .details-header {
+.details-header {
     width: 100%;
     background: #866787;
+    margin: 0.3em 0;
+    padding: 0.5em 1em;
 }
 
-.org-details-container .details-header h3 {
+.details-header h3 {
     color: #fff;
-    margin: 0.5em;
+    margin: 0.3em;
 }
 
 .org-details-container h3 {

@@ -118,7 +118,7 @@
         
                 if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( $user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
         
-                <div class="details-header loop-padding">
+                <div class="details-header">
                     <h3>Member Directory &nbsp; &#187;</h3>
                 </div>
 
@@ -149,7 +149,7 @@
                     
                 </div>
         
-                <div class="details-header loop-padding">
+                <div class="details-header">
                     <h3>Documents &nbsp; &#187;</h3>
                 </div>
         
