@@ -649,6 +649,12 @@ function user_meta_field_config_populate_categories( $field, $fieldID, $formName
     return $field;
 }	
 
+//List of admin email notification recipients
+function changeUMPAdminEmail( $adminEmails ) {
+    return array( 'david@dvdwhite.com' );
+}
+add_filter( 'user_meta_admin_email_recipient', 'changeUMPAdminEmail' );	
+
 /**
  * Include User Meta Fields.
  */

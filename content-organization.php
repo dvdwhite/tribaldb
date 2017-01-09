@@ -64,7 +64,7 @@
 
             <?php } 
             else {
-                echo '<h3>Welcome, guest!</h3>';
+                echo '<h3>Welcome, Guest!</h3>';
                 echo '<a href="/wp-admin">Sign In</a> | <a href="/database/request-access">Request Access</a>';
             } ?>
         </div>    <br clear="all" />    
@@ -91,7 +91,7 @@
             </div>
             <div class="col-sm-6">
                 <h3>Region: <?php echo rwmb_meta('tribal_region') ?></h3>
-                <h3>Administrative Contact:</h3>
+                <h3>Primary Contact:</h3>
                 <?php foreach ( $user_query->results as $user ) {
                     if (in_array("member", $user->roles) && in_array("organization_admin", $user->roles)) {
                         echo $user->display_name . '<br /><a href="mailto:' . $user->user_email . '">' . $user->user_email . '</a></p>';
@@ -119,7 +119,7 @@
                 if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( $user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
         
                 <div class="details-header">
-                    <h3>Member Directory &nbsp; &#187;</h3>
+                    <h3>Member Directory<!-- &nbsp; &#187;--></h3>
                 </div>
 
                 <div class="loop-padding">
@@ -127,6 +127,7 @@
                     <table class="organization-list">
                         <tr>
                             <th>Name</th>
+                            <th>Title</th>
                             <th>Email</th>
                             <th>Phone</th>
                         </tr>
@@ -137,7 +138,7 @@
                         if ( ! empty( $user_query->results ) ) {
 
                             foreach ( $user_query->results as $user ) {
-                                echo '<tr><td><a href="/member-profile?usr_id=' . $user->ID . '">'. $user->display_name .'</a></td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
+                                echo '<tr><td><a href="/member-profile?usr_id=' . $user->ID . '">'. $user->display_name .'</a></td><td>'. $user->job_title .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
                             }
                         } 
                         else {
@@ -150,7 +151,7 @@
                 </div>
         
                 <div class="details-header">
-                    <h3>Documents &nbsp; &#187;</h3>
+                    <h3>Documents<!-- &nbsp; &#187;--></h3>
                 </div>
         
                 <div class="loop-padding">
@@ -170,7 +171,11 @@
                             }
                         ?>
                     </table>
-                </div>    
+                </div> 
+        
+                <div class="details-header">
+                   <h3><a href="/database/submit-a-document">Submit a Document</a> &nbsp; &#187;</h3>
+                </div>
                 
         
         <?php } else { ?>
