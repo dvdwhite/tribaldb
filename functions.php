@@ -651,7 +651,7 @@ function user_meta_field_config_populate_categories( $field, $fieldID, $formName
 
 //List of admin email notification recipients
 function changeUMPAdminEmail( $adminEmails ) {
-    return array( 'david@dvdwhite.com' );
+    return array( 'tribaldatabase@ncjtc.org' );
 }
 add_filter( 'user_meta_admin_email_recipient', 'changeUMPAdminEmail' );	
 
