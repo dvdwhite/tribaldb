@@ -689,3 +689,8 @@ require get_template_directory() . '/inc/jetpack.php';
  * Load theme customization file.
  */
 require get_template_directory() . '/inc/theme-options.php';
+
+
+include (TEMPLATEPATH . '/tribal-marquee/php/marquee-meta-box.php');
+
+include (TEMPLATEPATH . '/tribal-marquee/php/marquee_functions_include.php');

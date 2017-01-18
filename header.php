@@ -128,8 +128,23 @@
             if (array_key_exists('parallax_header_text', $custom_fields)){
             	$parallax_header_text = $custom_fields[parallax_header_text][0];
             } 
-            
-            if ( $themeOptions['revolution_slider'] == 'true' && (is_front_page()) ) { // Test to see if the Revolution Slider option is set in Current Theme Options for the home page ?>
+
+
+            if ( rwmb_meta( 'umc_meta_imgadv', 'type=image&size=full' ) != null ) {?>
+                <script type="text/javascript">
+                        jQuery('#header-container').addClass('has-slideshow');
+                </script>
+                    
+                    <div class="fixed-wrapper">
+                        <div id="header-rs" class="window-fixed">
+                            <div class="scroll-slow">
+                                <?php include (TEMPLATEPATH . '/tribal-marquee/php/marquee_include.php'); ?>
+                            </div>
+                        </div>
+                    </div>
+            <?php }
+/*
+            else if ( $themeOptions['revolution_slider'] == 'true' && (is_front_page()) ) { // Test to see if the Revolution Slider option is set in Current Theme Options for the home page ?>
 			<script type="text/javascript">
 				jQuery('.front-page #header-container').addClass('has-slideshow');
 			</script>
@@ -191,18 +206,18 @@
                     jQuery('.main-headline').css('background-image',headerImage);
                 </script>
 
-        <?php }
-            else { // Show the blank gray space if nothing is set in Current Theme Options?>
+        <?php }*/
+        //    else { // Show the blank gray space if nothing is set in Current Theme Options?>
 
                 <script type="text/javascript">
-                    jQuery('#header-bg-image').css('background','');
-                    jQuery('#header-bg-image img').hide();
-                    jQuery('#header-container').css('background-color','#e1e1e1');
-                    jQuery('.main-headline h1 a, .main-headline h1').css('color','#333');
-                    jQuery('.main-headline h1 a, .main-headline h1').css('text-shadow', 'none');
+                    //jQuery('#header-bg-image').css('background','');
+                    //jQuery('#header-bg-image img').hide();
+                    //jQuery('#header-container').css('background-color','#e1e1e1');
+                    //jQuery('.main-headline h1 a, .main-headline h1').css('color','#333');
+                    //jQuery('.main-headline h1 a, .main-headline h1').css('text-shadow', 'none');
                 </script> 
     
-        <?php } ?>
+        <?php //} ?>
     
 	<!--  // PARALLAX HEADER  -->
     
