@@ -101,13 +101,17 @@
         </div>
         <div class="col-sm-4 blue-bg detail-height">
             <h3>Database Links</h3>
-            <div class="menu-temporary-database-menu-container"><ul id="menu-temporary-database-menu" class="menu"><li id="menu-item-1073" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-page-parent menu-item-1073"><a href="https://www.tribaldatabase.org/database/">Database Portal</a></li>
-                <li id="menu-item-481" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-481"><a href="/organizations">Organizations</a></li>
-                <li id="menu-item-411" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-409 current_page_item menu-item-411"><a href="https://www.tribaldatabase.org/database/contact/">Contact Us</a></li>
-                <li id="menu-item-480" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-480"><a href="https://www.tribaldatabase.org/database/request-access/">Request Access</a></li>
-                <li id="menu-item-1074" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1074"><a href="https://www.tribaldatabase.org/database/submit-a-document/">Submit a Document</a></li>
+            <div class="menu-temporary-database-menu-container">
+                <ul id="menu-temporary-database-menu" class="menu">
+                    <li class="menu-item"><a href="/database/">Database Portal</a></li>
+                    <li class="menu-item"><a href="/organizations">Organizations</a></li>
+                    <li class="menu-item"><a href="/database/contact/">Contact Us</a></li>
+                    <li class="menu-item"><a href="/database/request-access/">Request Access</a></li>
+                    <li class="menu-item"><a href="/database/submit-a-document/">Submit a Document</a></li>
+                    <li class="menu-item"><a href="/wp-admin/profile">Update Profile</a></li>
                 </ul>
             </div>
+            <!--<div class="learn-more blue" style="text-align:left;padding-left:39px;"><a href="/wp-admin/profile">Update Profile</a></div>-->
         </div><br clear="all" />
         
         <?php 
@@ -151,7 +155,7 @@
                 </div>
         
                 <div class="details-header">
-                    <h3>Documents<!-- &nbsp; &#187;--></h3>
+                    <h3>Documents<!-- &nbsp; &#187;--><span><a href="/database/submit-a-document">Submit a Document &#187;</a></span></h3>
                 </div>
         
                 <div class="loop-padding">
@@ -164,7 +168,7 @@
                             $tribal_files = rwmb_meta('tribal_file_advanced');
                             if ( !empty( $tribal_files ) ) {
                                 foreach ( $tribal_files as $tribal_file ) {
-                                    echo "<tr><td><a href='{$tribal_file['url']}' title='{$tribal_file['title']}'>{$tribal_file['name']}</a></td></tr>";
+                                    echo "<tr><td><a href='{$tribal_file['url']}' title='{$tribal_file['title']}' target='_blank'>{$tribal_file['name']}</a></td></tr>";
                                 }
                             } else {
                                 echo '<tr><td>No documents found.</td></tr>';
@@ -172,19 +176,15 @@
                         ?>
                     </table>
                 </div> 
-        
-                <div class="details-header">
-                   <h3><a href="/database/submit-a-document">Submit a Document</a> &nbsp; &#187;</h3>
-                </div>
                 
         
         <?php } else { ?>
                     
             <div class="details-header loop-padding">
-                <h3>Member Directory and Documents &nbsp; &#187;</h3>
+                <h3>Member Directory and Documents <!--&nbsp; &#187;--></h3>
             </div>
             <div class="ten-twenty-four row loop-padding clearfix">
-                <p>You must be assigned to an organization to view the member directory and document repository of that organization.</p>
+                <p>You must be assigned to this organization to view it’s member directory and documents.</p>
             </div>
                     
                 <?php }
@@ -192,7 +192,7 @@
             } else { ?>
         
             <div class="details-header loop-padding">
-                <h3>Members Only &nbsp; &#187;</h3>
+                <h3>Members Only <!--&nbsp; &#187;--></h3>
             </div>
             <div class="ten-twenty-four row loop-padding clearfix">
                 <p>You must be logged in to view the complete member directory and document repository. Please <a href="/database" style="color:#866787!important">login here</a>.</p>

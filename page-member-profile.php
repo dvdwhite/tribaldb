@@ -132,13 +132,16 @@ get_header(); ?>
 				        </div>
 				        <div class="col-sm-4 blue-bg detail-height">
 				            <h3>Database Links</h3>
-				            <div class="menu-temporary-database-menu-container"><ul id="menu-temporary-database-menu" class="menu"><li id="menu-item-1073" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-page-parent menu-item-1073"><a href="https://www.tribaldatabase.org/database/">Database Portal</a></li>
-				                <li id="menu-item-481" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-481"><a href="/organizations">Organizations</a></li>
-				                <li id="menu-item-411" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-409 current_page_item menu-item-411"><a href="https://www.tribaldatabase.org/database/contact/">Contact Us</a></li>
-				                <li id="menu-item-480" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-480"><a href="https://www.tribaldatabase.org/database/request-access/">Request Access</a></li>
-				                <li id="menu-item-1074" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1074"><a href="https://www.tribaldatabase.org/database/submit-a-document/">Submit a Document</a></li>
-				                </ul>
-				            </div>
+				            <div class="menu-temporary-database-menu-container">
+                                <ul id="menu-temporary-database-menu" class="menu">
+                                    <li class="menu-item"><a href="/database/">Database Portal</a></li>
+                                    <li class="menu-item"><a href="/organizations">Organizations</a></li>
+                                    <li class="menu-item"><a href="/database/contact/">Contact Us</a></li>
+                                    <li class="menu-item"><a href="/database/request-access/">Request Access</a></li>
+                                    <li class="menu-item"><a href="/database/submit-a-document/">Submit a Document</a></li>
+                                    <li class="menu-item"><a href="/wp-admin/profile">Update Profile</a></li>
+                                </ul>
+                            </div>
 				        </div><br clear="all" />
          
 				    </div><!-- end org-details-container -->
