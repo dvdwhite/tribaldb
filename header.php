@@ -22,6 +22,7 @@
 <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>    
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'> <!-- ,300 ,600 -->
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css' />   
+<?php include (TEMPLATEPATH . '/tribal-marquee/php/marquee_header_include.php'); ?>
 
 <?php wp_head(); ?>
 <!--[if lte IE 8]>
@@ -143,7 +144,7 @@
                         </div>
                     </div>
             <?php }
-/*
+
             else if ( $themeOptions['revolution_slider'] == 'true' && (is_front_page()) ) { // Test to see if the Revolution Slider option is set in Current Theme Options for the home page ?>
 			<script type="text/javascript">
 				jQuery('.front-page #header-container').addClass('has-slideshow');
@@ -206,18 +207,18 @@
                     jQuery('.main-headline').css('background-image',headerImage);
                 </script>
 
-        <?php }*/
-        //    else { // Show the blank gray space if nothing is set in Current Theme Options?>
+        <?php }
+            else { // Show the blank gray space if nothing is set in Current Theme Options?>
 
                 <script type="text/javascript">
-                    //jQuery('#header-bg-image').css('background','');
-                    //jQuery('#header-bg-image img').hide();
-                    //jQuery('#header-container').css('background-color','#e1e1e1');
-                    //jQuery('.main-headline h1 a, .main-headline h1').css('color','#333');
-                    //jQuery('.main-headline h1 a, .main-headline h1').css('text-shadow', 'none');
+                    jQuery('#header-bg-image').css('background','');
+                    jQuery('#header-bg-image img').hide();
+                    jQuery('#header-container').css('background-color','#e1e1e1');
+                    jQuery('.main-headline h1 a, .main-headline h1').css('color','#333');
+                    jQuery('.main-headline h1 a, .main-headline h1').css('text-shadow', 'none');
                 </script> 
     
-        <?php //} ?>
+        <?php } ?>
     
 	<!--  // PARALLAX HEADER  -->
     

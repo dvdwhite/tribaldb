@@ -10,7 +10,7 @@
  * For more information, please visit:
  * @link http://metabox.io/docs/registering-meta-boxes/
  */
-add_filter( 'rwmb_meta_boxes', 'umc_meta_register_meta_boxes' );
+add_filter( 'rwmb_meta_boxes', 'tribal_meta_register_meta_boxes' );
 /**
  * Register meta boxes
  *
@@ -27,8 +27,8 @@ add_filter( 'rwmb_meta_boxes', 'umc_meta_register_meta_boxes' );
 
 
 
-if ( ! function_exists ( 'umc_meta_register_meta_boxes' ) ){
-	function umc_meta_register_meta_boxes( $meta_boxes )
+if ( ! function_exists ( 'tribal_meta_register_meta_boxes' ) ){
+	function tribal_meta_register_meta_boxes( $meta_boxes )
 	{
 		/**
 		 * prefix of meta keys (optional)
@@ -36,7 +36,7 @@ if ( ! function_exists ( 'umc_meta_register_meta_boxes' ) ){
 		 * Alt.: You also can make prefix empty to disable it
 		 */
 		// Better has an underscore as last sign
-		$prefix = 'umc_meta_';
+		$prefix = 'tribal_meta_';
 		
 		$settings = get_option( 'marquee_settings' );
 		 
@@ -57,7 +57,7 @@ if ( ! function_exists ( 'umc_meta_register_meta_boxes' ) ){
 			// Meta box id, UNIQUE per meta box. Optional since 4.1.5
 			'id'         => 'advanced',
 			// Meta box title - Will appear at the drag and drop handle bar. Required.
-			'title'  => __( 'Marquee Image Slider', 'umc_meta' ),
+			'title'  => __( 'Marquee Image Slider', 'tribal_meta' ),
 			// Post types, accept custom post types as well - DEFAULT is 'post'. Can be array (multiple post types) or string (1 post type). Optional.
 			'post_types' => $post_type_display,
 			// Where the meta box appear: normal (default), advanced, side. Optional.
@@ -66,13 +66,13 @@ if ( ! function_exists ( 'umc_meta_register_meta_boxes' ) ){
 			'fields' => array(
 				// SLIDER
 				array(
-					'name'       => __( 'Marquee Minimum Height Adjustment', 'umc_meta' ),
+					'name'       => __( 'Marquee Minimum Height Adjustment', 'tribal_meta' ),
 					'id'         => "{$prefix}image_min_height_slider",
 					'type'       => 'slider',
-					'std' =>  __( 700, 'umc_meta' ),
+					'std' =>  __( 700, 'tribal_meta' ),
 					// Text labels displayed before and after value
-					//'prefix'     => __( 'px', 'umc_meta' ),
-					'suffix'     => __( ' pixels', 'umc_meta' ),
+					//'prefix'     => __( 'px', 'tribal_meta' ),
+					'suffix'     => __( ' pixels', 'tribal_meta' ),
 					// jQuery UI slider options. See here http://api.jqueryui.com/slider/
 					'js_options' => array(
 						'min'  => 200,
@@ -82,19 +82,19 @@ if ( ! function_exists ( 'umc_meta_register_meta_boxes' ) ){
 				),
 				// RADIO BUTTONS
 				array(
-					'name'    => __( 'Full screen height - Overrides Marquee Minimum Height Adjustment', 'umc_meta' ),
+					'name'    => __( 'Full screen height - Overrides Marquee Minimum Height Adjustment', 'tribal_meta' ),
 					'id'      => "{$prefix}full_screen",
 					'type'    => 'radio',
 					// Array of 'value' => 'Label' pairs for radio options.
 					// Note: the 'value' is stored in meta field, not the 'Label'
 					'options' => array(
-						'true' => __( 'On', 'umc_meta' ),
-						'false' => __( 'Off', 'umc_meta' ),
+						'true' => __( 'On', 'tribal_meta' ),
+						'false' => __( 'Off', 'tribal_meta' ),
 					),
 				),
 				// IMAGE ADVANCED (WP 3.5+)
 				array(
-					'name'             => __( 'Marquee Images - Please load these images in the "media assets" section before you select them here.', 'umc_meta' ),
+					'name'             => __( 'Marquee Images - Please load these images in the "media assets" section before you select them here.', 'tribal_meta' ),
 					'id'               => "{$prefix}imgadv",
 					'type'             => 'image_advanced',
 					'max_file_uploads' => 6,
@@ -104,19 +104,19 @@ if ( ! function_exists ( 'umc_meta_register_meta_boxes' ) ){
 		return $meta_boxes;
 	}
 }
-add_filter( 'rwmb_meta_boxes', 'umc_register_image_meta_boxes' );
+add_filter( 'rwmb_meta_boxes', 'tribal_register_image_meta_boxes' );
 
-	function umc_register_image_meta_boxes( $meta_boxes )
+	function tribal_register_image_meta_boxes( $meta_boxes )
 	{
 		
-		$prefix = 'umc_image_meta_';
+		$prefix = 'tribal_image_meta_';
 
 		// meta box
 		$meta_boxes[] = array(
 			// Meta box id, UNIQUE per meta box. Optional since 4.1.5
 			'id'         => 'image_advanced',
 			// Meta box title - Will appear at the drag and drop handle bar. Required.
-			'title'  => __( 'Marquee Image Slider Meta - Used for full-width image marquee to display optional title, subhead, etc.', 'umc_image_meta' ),
+			'title'  => __( 'Marquee Image Slider Meta - Used for full-width image marquee to display optional title, subhead, etc.', 'tribal_image_meta' ),
 			// Post types, accept custom post types as well - DEFAULT is 'post'. Can be array (multiple post types) or string (1 post type). Optional.
 			'post_types' => array( 'attachment' ),
 			// Where the meta box appear: normal (default), advanced, side. Optional.
@@ -126,7 +126,7 @@ add_filter( 'rwmb_meta_boxes', 'umc_register_image_meta_boxes' );
 			'fields' => array(
 				// HEADLINE TEXT
 				array(
-					'name' => __( 'Header Text', 'umc_image_meta' ),
+					'name' => __( 'Header Text', 'tribal_image_meta' ),
 					'id'   => "{$prefix}textarea_1",
 					'type' => 'textarea',
 					'cols' => 10,
@@ -134,7 +134,7 @@ add_filter( 'rwmb_meta_boxes', 'umc_register_image_meta_boxes' );
 				),
 				// SUBHEAD TEXT
 				array(
-					'name' => __( 'Subhead Text', 'umc_image_meta' ),
+					'name' => __( 'Subhead Text', 'tribal_image_meta' ),
 					'id'   => "{$prefix}textarea_2",
 					'type' => 'textarea',
 					'cols' => 10,
@@ -142,7 +142,7 @@ add_filter( 'rwmb_meta_boxes', 'umc_register_image_meta_boxes' );
 				),
 				// DESCRIPTION TEXT
 				array(
-					'name' => __( 'Description Text', 'umc_image_meta' ),
+					'name' => __( 'Description Text', 'tribal_image_meta' ),
 					'id'   => "{$prefix}textarea_3",
 					'type' => 'textarea',
 					'cols' => 10,
@@ -150,33 +150,33 @@ add_filter( 'rwmb_meta_boxes', 'umc_register_image_meta_boxes' );
 				),
 				// URL
 				array(
-					'name' => __( 'Link URL', 'umc_image_meta' ),
+					'name' => __( 'Link URL', 'tribal_image_meta' ),
 					'id'   => "{$prefix}url",
-					'desc' => __( 'Be sure to use "http://"', 'umc_image_meta' ),
+					'desc' => __( 'Be sure to use "http://"', 'tribal_image_meta' ),
 					'type' => 'url',
 				),
 				// RADIO BUTTONS
 				array(
-					'name'    => __( 'Slider Text Left or Right Justified', 'umc_image_meta' ),
+					'name'    => __( 'Slider Text Left or Right Justified', 'tribal_image_meta' ),
 					'id'      => "{$prefix}lr_radio",
 					'type'    => 'radio',
-					'std' =>  __( 'caption_left', 'umc_image_meta' ),
+					'std' =>  __( 'caption_left', 'tribal_image_meta' ),
 					// Array of 'value' => 'Label' pairs for radio options.
 					// Note: the 'value' is stored in meta field, not the 'Label'
 					'options' => array(
-						'caption_left' => __( 'Left', 'umc_image_meta' ),
-						'caption_right' => __( 'Right', 'umc_image_meta' ),
+						'caption_left' => __( 'Left', 'tribal_image_meta' ),
+						'caption_right' => __( 'Right', 'tribal_image_meta' ),
 					),
 				),
 				//TEXT HEIGHT SLIDER
 				array(
-					'name'       => __( 'Slider Text Height Adjustment', 'umc_image_meta' ),
+					'name'       => __( 'Slider Text Height Adjustment', 'tribal_image_meta' ),
 					'id'         => "{$prefix}text_height_slider",
 					'type'       => 'slider',
-                    'std' =>  __( 15, 'umc_image_meta' ),
+                    'std' =>  __( 15, 'tribal_image_meta' ),
 					// Text labels displayed before and after value
-					//'prefix'     => __( '$', 'umc_image_meta' ),
-					'suffix'     => __( ' %', 'umc_image_meta' ),
+					//'prefix'     => __( '$', 'tribal_image_meta' ),
+					'suffix'     => __( ' %', 'tribal_image_meta' ),
 					// jQuery UI slider options. See here http://api.jqueryui.com/slider/
 					'js_options' => array(
 						'min'  => 10,
@@ -186,15 +186,15 @@ add_filter( 'rwmb_meta_boxes', 'umc_register_image_meta_boxes' );
 				),
 				// RADIO BUTTONS
 				array(
-					'name'    => __( 'Vertical Orientation', 'umc_image_meta' ),
+					'name'    => __( 'Vertical Orientation', 'tribal_image_meta' ),
 					'id'      => "{$prefix}vertical_position",
 					'type'    => 'radio',
 					// Array of 'value' => 'Label' pairs for radio options.
 					// Note: the 'value' is stored in meta field, not the 'Label'
 					'options' => array(
-						'marquee_top' => __( 'Top', 'umc_image_meta' ),
-						'marquee_center' => __( 'Center', 'umc_image_meta' ),
-						'marquee_bottom' => __( 'Bottom', 'umc_image_meta' ),
+						'marquee_top' => __( 'Top', 'tribal_image_meta' ),
+						'marquee_center' => __( 'Center', 'tribal_image_meta' ),
+						'marquee_bottom' => __( 'Bottom', 'tribal_image_meta' ),
 					),
 				),
 			)
