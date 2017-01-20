@@ -479,8 +479,9 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 				// Array of 'value' => 'Label' pairs for select box
 				'options'     => array(
 					'Alaska' => esc_html__( 'Alaska', $prefix ),
-                    'Eastern' => esc_html__( 'Eastern Oklahoma', $prefix ),
+                    'Eastern' => esc_html__( 'Eastern', $prefix ),
                     'Eastern Oklahoma' => esc_html__( 'Eastern Oklahoma', $prefix ),
+                    'Great Plains' => esc_html__( 'Great Plains', $prefix ),
                     'Midwest' => esc_html__( 'Midwest', $prefix ),
                     'Northwest' => esc_html__( 'Northwest', $prefix ),
                     'Pacific' => esc_html__( 'Pacific', $prefix ),
