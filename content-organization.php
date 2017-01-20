@@ -108,7 +108,7 @@
                     <li class="menu-item"><a href="/database/contact/">Contact Us</a></li>
                     <li class="menu-item"><a href="/database/request-access/">Request Access</a></li>
                     <li class="menu-item"><a href="/database/submit-a-document/">Submit a Document</a></li>
-                    <li class="menu-item"><a href="/wp-admin/profile">Update Profile</a></li>
+                    <li class="menu-item"><a href="/database/profile">Update Profile</a></li>
                 </ul>
             </div>
             <!--<div class="learn-more blue" style="text-align:left;padding-left:39px;"><a href="/wp-admin/profile">Update Profile</a></div>-->
