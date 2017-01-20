@@ -44,14 +44,14 @@ get_header(); ?>
 
                             <h3><?php echo 'Welcome, ' . $user->first_name; ?>!</h3>
                             <?php 
-                                if ( in_array( 'member', (array) $user->roles ) ) {
-                                    echo '(Member)';
+                                if ( in_array( 'administrator', (array) $user->roles ) ) {
+                                    echo '(Administrator)';
                                 }
                                 elseif ( in_array( 'mega_member', (array) $user->roles ) ) {
                                     echo '(Mega Member)';
                                 }
-                                elseif ( in_array( 'administrator', (array) $user->roles ) ) {
-                                    echo '(Administrator)';
+                                elseif ( in_array( 'member', (array) $user->roles ) ) {
+                                    echo '(Member)';
                                 }
                             ?> 
                             <br /><a href="/database/profile">Profile</a> | <a href="<?php echo wp_logout_url( $redirect ); ?>">Logout</a>
