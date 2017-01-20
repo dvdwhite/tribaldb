@@ -485,6 +485,7 @@ function tribal_register_meta_boxes( $meta_boxes ) {
                     'Northwest' => esc_html__( 'Northwest', $prefix ),
                     'Pacific' => esc_html__( 'Pacific', $prefix ),
 					'Southern Plains' => esc_html__( 'Southern Plains', $prefix ),
+					'Southwest' => esc_html__( 'Southwest', $prefix ),
 					'Rocky Mountain' => esc_html__( 'Rocky Mountain', $prefix ),
                     'Western' => esc_html__( 'Western', $prefix ),
 				),

@@ -143,6 +143,7 @@ get_header(); ?>
                                 <option value="pacific">Pacific</option>
                                 <option value="rocky mountain">Rocky Mountain</option>
                                 <option value="southern plains">Southern Plains</option>
+                                <option value="southwest">Southwest</option>
                                 <option value="western">Western</option>
                             </select>
                         </th>
