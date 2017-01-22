@@ -125,7 +125,7 @@ get_header(); ?>
                     }
                 ?>  
 
-
+<br clear="all" />
                 <div class="details-header">
                     <h3>All Organizations<!-- &nbsp; &#187;--></h3>
                 </div>

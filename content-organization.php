@@ -61,7 +61,7 @@
                 ?> 
                 <br /><a href="/database/profile">Profile</a> | <a href="<?php echo wp_logout_url( $redirect ); ?>">Logout</a>
 
-
+                <br clear="all" />
             <?php } 
             else {
                 echo '<h3>Welcome, Guest!</h3>';
