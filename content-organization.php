@@ -146,7 +146,7 @@
                             }
                         } 
                         else {
-                            echo '<tr><td colspan="3">No members found.</td></tr>';
+                            echo '<tr><td colspan="4">No members found.</td></tr>';
                         }
                     ?>
 
