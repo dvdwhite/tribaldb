@@ -90,13 +90,17 @@
                 <?php if ( !empty( rwmb_meta('tribal_website') ) ) { echo '<a href="' . rwmb_meta('tribal_website') . '">Website</a>'; } ?>
             </div>
             <div class="col-sm-6">
-                <h3>Region: <?php echo rwmb_meta('tribal_region') ?></h3>
+                <h3>Region:</h3>
+                
+                <?php echo rwmb_meta('tribal_region') ?>
+<!--
                 <h3>Primary Contact:</h3>
                 <?php foreach ( $user_query->results as $user ) {
                     if (in_array("member", $user->roles) && in_array("organization_admin", $user->roles)) {
                         echo $user->display_name . '<br /><a href="mailto:' . $user->user_email . '">' . $user->user_email . '</a></p>';
                     }
                 } ?>
+-->
             </div>
         </div>
         <div class="col-sm-4 blue-bg detail-height">
@@ -166,6 +170,7 @@
                         </tr>
                         <?php
                             $tribal_files = rwmb_meta('tribal_file_advanced');
+                            //var_dump($tribal_files);
                             if ( !empty( $tribal_files ) ) {
                                 foreach ( $tribal_files as $tribal_file ) {
                                     echo "<tr><td><a href='{$tribal_file['url']}' title='{$tribal_file['title']}' target='_blank'>{$tribal_file['name']}</a></td></tr>";
@@ -176,9 +181,32 @@
                         ?>
                     </table>
                 </div> 
-                
         
-        <?php } else { ?>
+                <?php
+                    $settings = get_option( 'tribaldb' );
+                    $field_id = 'global_doc';
+                    $global_doc_ids = $settings[$field_id];
+
+                    if ( !empty( $global_doc_ids ) ) {        
+        
+                        echo '<div class="details-header"><h3>Information & Resources</h3></div>';
+                        echo '<div class="loop-padding">';
+                        echo '<table class="organization-list">';
+
+                        foreach ( $global_doc_ids as $global_doc_id ) {
+
+                            $document = RWMB_File_Field::file_info( $global_doc_id );
+                            //var_dump($document);
+
+                            echo "<tr><td><a href='{$document['url']}' title='{$document['title']}' target='_blank'>{$document['name']}</a></td></tr>";
+                        }
+                        
+                        echo '</table>';
+                        echo '</div>';
+        
+                    }
+        
+        } else { ?>
                     
             <div class="details-header loop-padding">
                 <h3>Member Directory and Documents <!--&nbsp; &#187;--></h3>

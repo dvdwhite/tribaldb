@@ -681,7 +681,7 @@ add_filter( 'rwmb_meta_boxes', 'global_docs_meta_boxes' );
 function global_docs_meta_boxes( $meta_boxes )
 {
     $meta_boxes[] = array(
-        'id'         => 'global_docs',
+        'id'         => 'global-docs',
         'title'      => __( 'Global Assessments & Attached Files', 'tribaldb' ),
         'settings_pages' => 'tribaldb',
 		'icon_url'      => 'dashicons-admin-page',
