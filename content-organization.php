@@ -173,7 +173,7 @@
                             //var_dump($tribal_files);
                             if ( !empty( $tribal_files ) ) {
                                 foreach ( $tribal_files as $tribal_file ) {
-                                    echo "<tr><td><a href='{$tribal_file['url']}' title='{$tribal_file['title']}' target='_blank'>{$tribal_file['name']}</a></td></tr>";
+                                    echo "<tr><td><a href='{$tribal_file['url']}' title='{$tribal_file['title']}' target='_blank'>{$tribal_file['title']}</a></td></tr>";
                                 }
                             } else {
                                 echo '<tr><td>No documents found.</td></tr>';

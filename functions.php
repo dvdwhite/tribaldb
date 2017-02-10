@@ -682,7 +682,7 @@ function global_docs_meta_boxes( $meta_boxes )
 {
     $meta_boxes[] = array(
         'id'         => 'global-docs',
-        'title'      => __( 'Global Assessments & Attached Files', 'tribaldb' ),
+        'title'      => __( 'Information and Resources Documents', 'tribaldb' ),
         'settings_pages' => 'tribaldb',
 		'icon_url'      => 'dashicons-admin-page',
         'fields'     => array(
