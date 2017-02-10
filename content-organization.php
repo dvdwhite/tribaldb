@@ -198,7 +198,7 @@
                             $document = RWMB_File_Field::file_info( $global_doc_id );
                             //var_dump($document);
 
-                            echo "<tr><td><a href='{$document['url']}' title='{$document['title']}' target='_blank'>{$document['name']}</a></td></tr>";
+                            echo "<tr><td><a href='{$document['url']}' title='{$document['title']}' target='_blank'>{$document['title']}</a></td></tr>";
                         }
                         
                         echo '</table>';

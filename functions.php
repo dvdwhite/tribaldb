@@ -671,7 +671,7 @@ function global_docs_page( $settings_pages )
 	$settings_pages[] = array(
 		'id'          => 'tribaldb',
 		'option_name' => 'tribaldb',
-		'menu_title'  => __( 'Global Documents', 'tribaldb' ),
+		'menu_title'  => __( 'Information & Resources', 'tribaldb' ),
 		//'parent'      => 'themes.php',
 	);
 	return $settings_pages;
