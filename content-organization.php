@@ -104,7 +104,7 @@
             </div>
         </div>
         <div class="col-sm-4 blue-bg detail-height">
-            <h3>Database Links</h3>
+            <h3><span class="dashicons dashicons-admin-links dash-large"></span> Database Links</h3>
             <div class="menu-temporary-database-menu-container">
                 <ul id="menu-temporary-database-menu" class="menu">
                     <li class="menu-item"><a href="/database/">Database Portal</a></li>
@@ -127,7 +127,7 @@
                 if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( $user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
         
                 <div class="details-header">
-                    <h3>Member Directory<!-- &nbsp; &#187;--></h3>
+                    <h3><span class="dashicons dashicons-groups dash-large"></span> Member Directory<!-- &nbsp; &#187;--></h3>
                 </div>
 
                 <div class="loop-padding">
@@ -146,7 +146,7 @@
                         if ( ! empty( $user_query->results ) ) {
 
                             foreach ( $user_query->results as $user ) {
-                                echo '<tr><td><a href="/member-profile?usr_id=' . $user->ID . '">'. $user->display_name .'</a></td><td>'. $user->job_title .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
+                                echo '<tr><td><span class="dashicons dashicons-universal-access dash-large"></span> <a href="/member-profile?usr_id=' . $user->ID . '">'. $user->display_name .'</a></td><td>'. $user->job_title .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
                             }
                         } 
                         else {
@@ -159,7 +159,7 @@
                 </div>
         
                 <div class="details-header">
-                    <h3>Documents<!-- &nbsp; &#187;--><span><a href="/database/submit-a-document">Submit a Document &#187;</a></span></h3>
+                    <h3><span class="dashicons dashicons-paperclip dash-large"></span> Documents<!-- &nbsp; &#187;--><span class="float-right"><span class="dashicons dashicons-welcome-add-page dash-large"></span> <a href="/database/submit-a-document">Submit a Document &#187;</a></span></h3>
                 </div>
         
                 <div class="loop-padding">
@@ -173,7 +173,7 @@
                             //var_dump($tribal_files);
                             if ( !empty( $tribal_files ) ) {
                                 foreach ( $tribal_files as $tribal_file ) {
-                                    echo "<tr><td><a href='{$tribal_file['url']}' title='{$tribal_file['title']}' target='_blank'>{$tribal_file['title']}</a></td></tr>";
+                                    echo "<tr><td><span class='dashicons dashicons-media-document dash-medium'></span> <a href='{$tribal_file['url']}' title='{$tribal_file['title']}' target='_blank'>{$tribal_file['title']}</a></td></tr>";
                                 }
                             } else {
                                 echo '<tr><td>No documents found.</td></tr>';
@@ -189,7 +189,7 @@
 
                     if ( !empty( $global_doc_ids ) ) {        
         
-                        echo '<div class="details-header"><h3>Information & Resources</h3></div>';
+                        echo '<div class="details-header"><h3><span class="dashicons dashicons-info dash-large"></span> Information & Resources</h3></div>';
                         echo '<div class="loop-padding">';
                         echo '<table class="organization-list">';
 
@@ -198,7 +198,7 @@
                             $document = RWMB_File_Field::file_info( $global_doc_id );
                             //var_dump($document);
 
-                            echo "<tr><td><a href='{$document['url']}' title='{$document['title']}' target='_blank'>{$document['title']}</a></td></tr>";
+                            echo "<tr><td><span class='dashicons dashicons-media-document dash-medium'></span> <a href='{$document['url']}' title='{$document['title']}' target='_blank'>{$document['title']}</a></td></tr>";
                         }
                         
                         echo '</table>';

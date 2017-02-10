@@ -87,7 +87,7 @@ get_header(); ?>
                         ?>
                                 <br clear="all" />
                                 <div class="details-header">
-                                    <h3>My Organizations<!-- &nbsp; &#187;--></h3>
+                                    <h3><span class="dashicons dashicons-admin-users dash-large"></span> My Organizations<!-- &nbsp; &#187;--></h3>
                                 </div>
                                 <table id="my-organization-table" class="organization-list">
                                     <tr>
@@ -127,7 +127,7 @@ get_header(); ?>
 
 <br clear="all" />
                 <div class="details-header">
-                    <h3>All Organizations<!-- &nbsp; &#187;--></h3>
+                    <h3><span class="dashicons dashicons-admin-site dash-large"></span> All Organizations<!-- &nbsp; &#187;--></h3>
                 </div>
                 <table id="organization-table" class="organization-list">
                     <tr>
