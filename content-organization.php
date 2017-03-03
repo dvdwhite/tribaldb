@@ -49,19 +49,19 @@
 
                 <h3><?php echo 'Welcome, ' . $user->first_name; ?>!</h3>
                 <?php 
-                    if ( in_array( 'member', (array) $user->roles ) ) {
-                        echo '(Member)';
+                    if ( in_array( 'administrator', (array) $user->roles ) ) {
+                        echo '(Administrator)';
                     }
                     elseif ( in_array( 'mega_member', (array) $user->roles ) ) {
                         echo '(Mega Member)';
                     }
-                    elseif ( in_array( 'administrator', (array) $user->roles ) ) {
-                        echo '(Administrator)';
+                    elseif ( in_array( 'member', (array) $user->roles ) ) {
+                        echo '(Member)';
                     }
                 ?> 
                 <br /><a href="/database/profile">Profile</a> | <a href="<?php echo wp_logout_url( $redirect ); ?>">Logout</a>
 
-
+                <br clear="all" />
             <?php } 
             else {
                 echo '<h3>Welcome, Guest!</h3>';
@@ -90,17 +90,21 @@
                 <?php if ( !empty( rwmb_meta('tribal_website') ) ) { echo '<a href="' . rwmb_meta('tribal_website') . '">Website</a>'; } ?>
             </div>
             <div class="col-sm-6">
-                <h3>Region: <?php echo rwmb_meta('tribal_region') ?></h3>
+                <h3>Region:</h3>
+                
+                <?php echo rwmb_meta('tribal_region') ?>
+<!--
                 <h3>Primary Contact:</h3>
                 <?php foreach ( $user_query->results as $user ) {
                     if (in_array("member", $user->roles) && in_array("organization_admin", $user->roles)) {
                         echo $user->display_name . '<br /><a href="mailto:' . $user->user_email . '">' . $user->user_email . '</a></p>';
                     }
                 } ?>
+-->
             </div>
         </div>
         <div class="col-sm-4 blue-bg detail-height">
-            <h3>Database Links</h3>
+            <h3><span class="dashicons dashicons-admin-links dash-large"></span> Database Links</h3>
             <div class="menu-temporary-database-menu-container">
                 <ul id="menu-temporary-database-menu" class="menu">
                     <li class="menu-item"><a href="/database/">Database Portal</a></li>
@@ -108,7 +112,7 @@
                     <li class="menu-item"><a href="/database/contact/">Contact Us</a></li>
                     <li class="menu-item"><a href="/database/request-access/">Request Access</a></li>
                     <li class="menu-item"><a href="/database/submit-a-document/">Submit a Document</a></li>
-                    <li class="menu-item"><a href="/wp-admin/profile">Update Profile</a></li>
+                    <li class="menu-item"><a href="/database/profile">Update Profile</a></li>
                 </ul>
             </div>
             <!--<div class="learn-more blue" style="text-align:left;padding-left:39px;"><a href="/wp-admin/profile">Update Profile</a></div>-->
@@ -123,7 +127,7 @@
                 if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( $user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
         
                 <div class="details-header">
-                    <h3>Member Directory<!-- &nbsp; &#187;--></h3>
+                    <h3><span class="dashicons dashicons-groups dash-large"></span> Member Directory<!-- &nbsp; &#187;--></h3>
                 </div>
 
                 <div class="loop-padding">
@@ -142,11 +146,11 @@
                         if ( ! empty( $user_query->results ) ) {
 
                             foreach ( $user_query->results as $user ) {
-                                echo '<tr><td><a href="/member-profile?usr_id=' . $user->ID . '">'. $user->display_name .'</a></td><td>'. $user->job_title .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
+                                echo '<tr><td><span class="dashicons dashicons-universal-access dash-large"></span> <a href="/member-profile?usr_id=' . $user->ID . '">'. $user->display_name .'</a></td><td>'. $user->job_title .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
                             }
                         } 
                         else {
-                            echo '<tr><td colspan="3">No members found.</td></tr>';
+                            echo '<tr><td colspan="4">No members found.</td></tr>';
                         }
                     ?>
 
@@ -155,7 +159,7 @@
                 </div>
         
                 <div class="details-header">
-                    <h3>Documents<!-- &nbsp; &#187;--><span><a href="/database/submit-a-document">Submit a Document &#187;</a></span></h3>
+                    <h3><span class="dashicons dashicons-paperclip dash-large"></span> Documents<!-- &nbsp; &#187;--><span class="float-right"><span class="dashicons dashicons-welcome-add-page dash-large"></span> <a href="/database/submit-a-document">Submit a Document &#187;</a></span></h3>
                 </div>
         
                 <div class="loop-padding">
@@ -166,9 +170,10 @@
                         </tr>
                         <?php
                             $tribal_files = rwmb_meta('tribal_file_advanced');
+                            //var_dump($tribal_files);
                             if ( !empty( $tribal_files ) ) {
                                 foreach ( $tribal_files as $tribal_file ) {
-                                    echo "<tr><td><a href='{$tribal_file['url']}' title='{$tribal_file['title']}' target='_blank'>{$tribal_file['name']}</a></td></tr>";
+                                    echo "<tr><td><span class='dashicons dashicons-media-document dash-medium'></span> <a href='{$tribal_file['url']}' title='{$tribal_file['title']}' target='_blank'>{$tribal_file['title']}</a></td></tr>";
                                 }
                             } else {
                                 echo '<tr><td>No documents found.</td></tr>';
@@ -176,9 +181,32 @@
                         ?>
                     </table>
                 </div> 
-                
         
-        <?php } else { ?>
+                <?php
+                    $settings = get_option( 'tribaldb' );
+                    $field_id = 'global_doc';
+                    $global_doc_ids = $settings[$field_id];
+
+                    if ( !empty( $global_doc_ids ) ) {        
+        
+                        echo '<div class="details-header"><h3><span class="dashicons dashicons-info dash-large"></span> Information & Resources</h3></div>';
+                        echo '<div class="loop-padding">';
+                        echo '<table class="organization-list">';
+
+                        foreach ( $global_doc_ids as $global_doc_id ) {
+
+                            $document = RWMB_File_Field::file_info( $global_doc_id );
+                            //var_dump($document);
+
+                            echo "<tr><td><span class='dashicons dashicons-media-document dash-medium'></span> <a href='{$document['url']}' title='{$document['title']}' target='_blank'>{$document['title']}</a></td></tr>";
+                        }
+                        
+                        echo '</table>';
+                        echo '</div>';
+        
+                    }
+        
+        } else { ?>
                     
             <div class="details-header loop-padding">
                 <h3>Member Directory and Documents <!--&nbsp; &#187;--></h3>

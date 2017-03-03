@@ -627,10 +627,22 @@ table.organization-list td {
     margin: 0.3em;
 }
 
-.details-header h3 span {
+.details-header h3 span.float-right {
     font-size: 0.8em;
     font-weight: normal;
     float: right;
+}
+
+.dash-large{
+    font-size:28px; 
+    width: 34px; 
+    height: 32px;
+}
+
+.dash-medium{
+    font-size:26px; 
+    width: 30px; 
+    height: 30px;
 }
 
 .org-details-container h3 {

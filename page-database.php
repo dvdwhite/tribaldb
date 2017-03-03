@@ -32,8 +32,18 @@ get_header(); ?>
 					<a href="/organizations"> <h3>Organizations</h3></a>
                     View tribal organization contact information. Search by organization name, and sort organizations by region or state.
                     <div class="learn-more blue"><a href="/organizations">View Organizations</a></div>
-                    <!--<a href="#"> <h3>Member Directory</h3></a>
-                    <a href="#"> <h3>Resources</h3></a>-->
+                    
+                    <?php 
+                        if ( is_user_logged_in() ) { 
+                            $user = wp_get_current_user();
+                            //echo '$org_name: ' . $org_name;
+                            //echo '<br />$user->organization: ' . $user->organization;
+
+                            if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( in_array( 'member', (array) $user->roles ) ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
+
+                                <div class="learn-more blue"><a href="/database/submit-a-document">Submit a Document</a></div>
+                    
+                            <?php } }?>
 						
 				</div>	
 

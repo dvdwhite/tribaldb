@@ -44,14 +44,14 @@ get_header(); ?>
 
                             <h3><?php echo 'Welcome, ' . $user->first_name; ?>!</h3>
                             <?php 
-                                if ( in_array( 'member', (array) $user->roles ) ) {
-                                    echo '(Member)';
+                                if ( in_array( 'administrator', (array) $user->roles ) ) {
+                                    echo '(Administrator)';
                                 }
                                 elseif ( in_array( 'mega_member', (array) $user->roles ) ) {
                                     echo '(Mega Member)';
                                 }
-                                elseif ( in_array( 'administrator', (array) $user->roles ) ) {
-                                    echo '(Administrator)';
+                                elseif ( in_array( 'member', (array) $user->roles ) ) {
+                                    echo '(Member)';
                                 }
                             ?> 
                             <br /><a href="/database/profile">Profile</a> | <a href="<?php echo wp_logout_url( $redirect ); ?>">Logout</a>
@@ -87,7 +87,7 @@ get_header(); ?>
                         ?>
                                 <br clear="all" />
                                 <div class="details-header">
-                                    <h3>My Organizations<!-- &nbsp; &#187;--></h3>
+                                    <h3><span class="dashicons dashicons-admin-users dash-large"></span> My Organizations<!-- &nbsp; &#187;--></h3>
                                 </div>
                                 <table id="my-organization-table" class="organization-list">
                                     <tr>
@@ -125,9 +125,9 @@ get_header(); ?>
                     }
                 ?>  
 
-
+<br clear="all" />
                 <div class="details-header">
-                    <h3>All Organizations<!-- &nbsp; &#187;--></h3>
+                    <h3><span class="dashicons dashicons-admin-site dash-large"></span> All Organizations<!-- &nbsp; &#187;--></h3>
                 </div>
                 <table id="organization-table" class="organization-list">
                     <tr>
@@ -138,11 +138,13 @@ get_header(); ?>
                                 <option value="alaska">Alaska</option>
                                 <option value="eastern oklahoma">Eastern Oklahoma</option>
                                 <option value="eastern">Eastern</option>
+                                <option value="great plains">Great Plains</option>
                                 <option value="midwest">Midwest</option>
                                 <option value="northwest">Northwest</option>
                                 <option value="pacific">Pacific</option>
                                 <option value="rocky mountain">Rocky Mountain</option>
                                 <option value="southern plains">Southern Plains</option>
+                                <option value="southwest">Southwest</option>
                                 <option value="western">Western</option>
                             </select>
                         </th>

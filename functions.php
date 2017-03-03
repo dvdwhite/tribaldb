@@ -478,9 +478,17 @@ function tribal_register_meta_boxes( $meta_boxes ) {
 				'type'        => 'select',
 				// Array of 'value' => 'Label' pairs for select box
 				'options'     => array(
+					'Alaska' => esc_html__( 'Alaska', $prefix ),
+                    'Eastern' => esc_html__( 'Eastern', $prefix ),
+                    'Eastern Oklahoma' => esc_html__( 'Eastern Oklahoma', $prefix ),
+                    'Great Plains' => esc_html__( 'Great Plains', $prefix ),
+                    'Midwest' => esc_html__( 'Midwest', $prefix ),
+                    'Northwest' => esc_html__( 'Northwest', $prefix ),
+                    'Pacific' => esc_html__( 'Pacific', $prefix ),
 					'Southern Plains' => esc_html__( 'Southern Plains', $prefix ),
-					'Pacific' => esc_html__( 'Pacific', $prefix ),
-					'Western' => esc_html__( 'Western', $prefix ),
+					'Southwest' => esc_html__( 'Southwest', $prefix ),
+					'Rocky Mountain' => esc_html__( 'Rocky Mountain', $prefix ),
+                    'Western' => esc_html__( 'Western', $prefix ),
 				),
 				// Select multiple values, optional. Default is false.
 				'multiple'    => false,
@@ -654,6 +662,44 @@ function changeUMPAdminEmail( $adminEmails ) {
     return array( 'tribaldatabase@ncjtc.org' );
 }
 add_filter( 'user_meta_admin_email_recipient', 'changeUMPAdminEmail' );	
+
+
+
+add_filter( 'mb_settings_pages', 'global_docs_page' );
+function global_docs_page( $settings_pages )
+{
+	$settings_pages[] = array(
+		'id'          => 'tribaldb',
+		'option_name' => 'tribaldb',
+		'menu_title'  => __( 'Information & Resources', 'tribaldb' ),
+		//'parent'      => 'themes.php',
+	);
+	return $settings_pages;
+}
+
+add_filter( 'rwmb_meta_boxes', 'global_docs_meta_boxes' );
+function global_docs_meta_boxes( $meta_boxes )
+{
+    $meta_boxes[] = array(
+        'id'         => 'global-docs',
+        'title'      => __( 'Information and Resources Documents', 'tribaldb' ),
+        'settings_pages' => 'tribaldb',
+		'icon_url'      => 'dashicons-admin-page',
+        'fields'     => array(
+            // FILE ADVANCED (WP 3.5+)
+			array(
+				'name'             => __( 'File Upload', 'tribal' ),
+				'id'               => "global_doc",
+				'type'             => 'file_advanced',
+				//'mime_type'        => 'application,audio,video', // Leave blank for all file types
+			),
+        )
+    );    
+    
+	return $meta_boxes;
+}
+
+
 
 /**
  * Include User Meta Fields.
