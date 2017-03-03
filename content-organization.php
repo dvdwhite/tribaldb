@@ -4,23 +4,37 @@
  */
 
 	//GET USER DATA
+    
 	$post = get_post($_GET[org_id]); 
 	$org_name = $post->post_name;
 
+    //get users that are a members of current organization page. 
 	$user_fields = array( 
 		'meta_query' => array(
 		        array(
 		            'key'   => 'organization',
 		            'value' => $org_name,
 		            'compare' => 'REGEXP'
-		        )
+		        ),
 		    )
 		);
-	$user_query = new WP_User_Query( $user_fields );
-	/*echo '<pre>';
-	var_dump($user_query);
-	echo '</pre>';*/
+    $user_query = new WP_User_Query( $user_fields );
+
+
+    //get all inactive/pending users from user_meta table 
+    global $userMeta;
+    $inactive_user_ids = get_users( array(
+    'meta_key'=>'user_meta_user_status',
+    'meta_value'=>'pending' // Use "inactive" or "pending" both value refer to inactive users. ie all pending users are inactive but all inactive users are not pending. Pending refers to email validation by the user which we are not using on this site. In this case users will move from pending to active directly.
+    ));
 	
+    $inactive_ids = array();
+    foreach($inactive_user_ids as $value) {
+     $inactive_ids[] = $value->ID;
+    }
+	/*echo '<pre>';
+    var_dump($inactive_ids);
+    echo '</pre>';*/
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
@@ -146,7 +160,13 @@
                         if ( ! empty( $user_query->results ) ) {
 
                             foreach ( $user_query->results as $user ) {
-                                echo '<tr><td><span class="dashicons dashicons-universal-access dash-large"></span> <a href="/member-profile?usr_id=' . $user->ID . '">'. $user->display_name .'</a></td><td>'. $user->job_title .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
+                                //dont list inactive/pending users
+                                if (in_array($user->ID, $inactive_ids)) {
+                                    //do nothing
+                                }else{
+                                    echo '<tr><td><span class="dashicons dashicons-universal-access dash-large"></span> <a href="/member-profile?usr_id=' . $user->ID . '">'. $user->display_name .'</a></td><td>'. $user->job_title .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
+                                }
+
                             }
                         } 
                         else {
