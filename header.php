@@ -131,7 +131,7 @@
             } 
 
 
-            if ( rwmb_meta( 'umc_meta_imgadv', 'type=image&size=full' ) != null ) {?>
+            if ( rwmb_meta( 'tribal_meta_imgadv', 'type=image&size=full' ) != null ) {?>
                 <script type="text/javascript">
                         jQuery('#header-container').addClass('has-slideshow');
                 </script>
