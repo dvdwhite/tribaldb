@@ -137,8 +137,8 @@
             <!--<div class="learn-more blue" style="text-align:left;padding-left:39px;"><a href="/wp-admin/profile">Update Profile</a></div>-->
         </div>
         <br clear="all" />
-        <div class="col-sm-8 col-sm-offset-2 white-callout">
-            Do you have updated information or corrections for this Tribal Organization's contact information? Please share them with us using the <a href="">Contact Us</a> form. 
+        <div class="col-sm-8 col-sm-offset-2 white-center-callout">
+            Do you have updated information or corrections for this Tribal Organization's contact information? Please share them with us using the <a href="<?php echo get_site_url(); ?>/database/contact/">Contact Us</a> form. 
         </div>
         <br clear="all" />
         <?php 

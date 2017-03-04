@@ -666,7 +666,17 @@ textarea.um_input {
 .screen-reader-text { /* temp, need to fix */
     display: none !important;
 }
-
+.white-center-callout{
+	font-weight:bold;
+	margin-top:2em;
+	margin-bottom:2em;
+}
+.org-details-container .white-center-callout a{
+	color:#EF4305 !important;
+}
+.org-details-container .white-center-callout a:hover{
+	color:#c53603 !important;
+}
 
 /* ----- BRIAN tribal database Login Page ---------*/
 @media (min-width: 766px){
