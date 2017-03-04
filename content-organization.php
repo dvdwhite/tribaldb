@@ -25,11 +25,16 @@
     global $userMeta;
     $inactive_user_ids = get_users( array(
     'meta_key'=>'user_meta_user_status',
-    'meta_value'=>'pending' // Use "inactive" or "pending" both value refer to inactive users. ie all pending users are inactive but all inactive users are not pending. Pending refers to email validation by the user which we are not using on this site. In this case users will move from pending to active directly.
+    'meta_value'=>'inactive' 
     ));
+    $pending_user_ids = get_users( array(
+    'meta_key'=>'user_meta_user_status',
+    'meta_value'=>'pending' 
+    ));
+    $hide_user_ids = array_unique(array_merge($inactive_user_ids,$pending_user_ids), SORT_REGULAR);
 	
     $inactive_ids = array();
-    foreach($inactive_user_ids as $value) {
+    foreach($hide_user_ids as $value) {
      $inactive_ids[] = $value->ID;
     }
 	/*echo '<pre>';
@@ -130,8 +135,12 @@
                 </ul>
             </div>
             <!--<div class="learn-more blue" style="text-align:left;padding-left:39px;"><a href="/wp-admin/profile">Update Profile</a></div>-->
-        </div><br clear="all" />
-        
+        </div>
+        <br clear="all" />
+        <div class="col-sm-8 col-sm-offset-2 white-callout">
+            Do you have updated information or corrections for this Tribal Organization's contact information? Please share them with us using the <a href="">Contact Us</a> form. 
+        </div>
+        <br clear="all" />
         <?php 
             if ( is_user_logged_in() ) { 
                 $user = wp_get_current_user();
