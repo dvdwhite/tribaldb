@@ -733,6 +733,17 @@ input[type="submit"].um_login_button{
     display: inline-block;
     text-transform: uppercase !important;
 }
+input[type="submit"].um_lostpass_button{
+	border: 0 !important;
+    outline: 0 !important;
+    background-color:#E1E1E1 !important;
+    box-shadow: none !important;
+    color: #EF4305 !important;
+    min-width: 60%;
+    text-align:center;
+    display: inline-block;
+    text-transform: uppercase !important;
+}
 [class^="lostpassword_link"]{ //starts with "lostpassword_link".
 	color: #E1E1E1 !important;
 }
@@ -771,3 +782,6 @@ input[type="submit"].um_login_button{
 input[type="text"].um_login_field, input[type="password"].um_pass_field{
 		width: 100%;
 	}
+
+
+
