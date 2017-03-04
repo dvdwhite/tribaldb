@@ -570,7 +570,6 @@ jQuery(document).ready(function() {
     
     jQuery('form.um_login_form').next().click(function(){
         jQuery('.um_login_form').toggle();
-        console.log('toggle that shit');
         jQuery(this).html('Go to Login');
     })
 });
