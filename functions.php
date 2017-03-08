@@ -616,6 +616,27 @@ function tribal_register_meta_boxes( $meta_boxes ) {
     );
     return $meta_boxes;
 }
+/*$args = array(
+		'posts_per_page'   => -1,
+		'offset'           => 0,
+		'orderby'          => 'title',
+		'order'            => 'ASC',
+		'post_type'        => 'organization',
+		'post_status'      => 'publish',
+		'suppress_filters' => true 
+	);
+	$posts_array = get_posts( $args );
+
+	$output = null;
+    //$output .= 'other=Other,';
+    foreach( $posts_array as $post ):
+        $output1 .= $post->ID.'='.$post->post_title.',';
+    endforeach;
+    $output2 = ',' . trim( $output1, ',' );
+	echo '<pre>';
+	var_dump($output2);
+	echo '</pre>';*/
+
 
 
 //ADD DROPDOWN TO USER PROFILE THAT DISPLAYS ORGANIZATIONS
@@ -647,6 +668,7 @@ function user_meta_field_config_populate_categories( $field, $fieldID, $formName
         return $field;
  	
     $output = null;
+    $output .= 'other=Other,';
     foreach( $posts_array as $post ):
         $output .= $post->ID.'='.$post->post_name.',';
     endforeach;

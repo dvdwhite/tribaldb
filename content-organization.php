@@ -41,6 +41,19 @@
     var_dump($inactive_ids);
     echo '</pre>';*/
 ?>
+<style type="text/css">
+    .white-center-callout{
+        font-weight:bold;
+        margin-top:2em;
+        margin-bottom:2em;
+    }
+    .org-details-container .white-center-callout a{
+        color:#EF4305 !important;
+    }
+    .org-details-container .white-center-callout a:hover{
+        color:#c53603 !important;
+    }
+</style>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
         <!-- SEARCH BAR -->
