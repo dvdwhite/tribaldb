@@ -788,6 +788,35 @@ input[type="submit"].um_lostpass_button{
 	background-color: #EF4305 !important;
 	border: 0;
 }
+
+.search-form-blog input[type="search"]{
+	line-height: 1em;
+    font-family: 'Encode-Thin';
+    font-size: 1em;
+	/*text-transform: uppercase !important;*/
+	width:66.6%;
+ 	/*border: 0 !important;*/
+    outline: 0 !important;
+    background: transparent !important;
+    /*border-bottom: 1px solid #ccc !important;*/
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background-image: url('images/global/searchicon.png') !important;
+    background-position: 5px 5px !important;
+    background-repeat: no-repeat !important;
+    background-size: 20px 23px !important;
+    padding: 8px 0 8px 35px;
+}
+.search-form-blog input[type="submit"]{
+	line-height: 2.1em;
+    margin: 0;
+	width:27%;
+	text-transform: uppercase;
+	float:right;
+	background-color: #EF4305 !important;
+	border: 0;
+}
+
  /* ================= User Meta Form Classes ======================== */
 input[type="text"].um_login_field, input[type="password"].um_pass_field{
 		width: 100%;

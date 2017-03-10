@@ -27,7 +27,25 @@ get_header(); ?>
                                 <input type="search" class="search-field" placeholder="Search the Tribal Database" value="" name="s" title="Search the Tribal Database" />
                             </label>
                             <input type="submit" class="search-submit" value="Search" />
-                            <input type="hidden" name="post_type" value="organization" />
+                            <?php 
+                                $referrer = $_SERVER["HTTP_REFERER"]; 
+                                $organization   = 'organization';
+                                $database   = 'database';
+                                $pos1 = strpos($referrer, $organization);
+                                $pos2 = strpos($referrer, $database);
+
+                                // Note our use of ===.  Simply == would not work as expected
+                                // because the position of 'a' was the 0th (first) character.
+                                if ( ($pos1 === false) && ($pos2 === false) ) {
+                                    //echo "The string '$findme' was not found in the string '$referrer'";
+                                } else {
+                                    //echo "The string '$findme' was found in the string '$referrer'";
+                                    //echo " and exists at position $pos";
+                                    echo '<input type="hidden" name="post_type" value="organization" />';
+                                }
+                                //if ( $referrer == '')
+                            ?>
+                            
                         </form>
 
                         <p>&nbsp;</p>

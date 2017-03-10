@@ -187,7 +187,22 @@
                 </div>
             </div>
 
-        <?php }     
+        <?php }    
+    
+            else if ( ( is_page('tribal-connections') ) || ( in_category('tribal-connections' ) ) ) { ?>
+
+			<script type="text/javascript">
+				jQuery('#header-container').addClass('has-slideshow');
+			</script>
+            <div class="fixed-wrapper">
+                <div id="header-rs" class="window-fixed">
+                    <div class="scroll-slow">
+                        <?php echo do_shortcode('[rev_slider tribal-connections]'); ?>
+                    </div>
+                </div>
+            </div>
+
+        <?php }    
     
 
             else if ( (!is_front_page()) && (!empty($parallax_header_text)) ) { // Test to see if the Parallax Header has been set ?>
