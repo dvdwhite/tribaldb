@@ -232,7 +232,7 @@ add_action('wp_head', 'hide_org_detail');
 
 function hide_org_detail() {
     if( is_page('profile')){  
-		echo '<style>#um_field_15_userinformation_label, #um_field_15_userinformation, .org-dropdown-instructions h4, .org-dropdown-instructions ul{display:none;}</style>';
+		echo '<style>#um_field_15_userinformation_label, #um_field_15_userinformation, .org-dropdown-instructions h4, .org-dropdown-instructions ul{display:none;}p.org-change{display:block;}</style>';
  	}
 }
 
