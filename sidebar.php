@@ -24,7 +24,7 @@
                 <aside id="archives" class="widget">
 					<h4 class="widget-title"><?php _e( 'ARCHIVES', 'tribaldb' ); ?></h4>
 					<ul>
-						<?php wp_get_archives( array( 'type' => 'monthly', 'category' => 'tribal-connections' ) ); ?>
+						<?php wp_get_archives( array( 'type' => 'monthly' ) ); ?>
 					</ul>
 				</aside>
 
