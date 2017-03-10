@@ -227,6 +227,15 @@ function tribaldb_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'tribaldb_scripts' );
 
+//HIDE ORG DETAIL ON PROFILE UPDATE PAGE
+add_action('wp_head', 'hide_org_detail');
+
+function hide_org_detail() {
+    if( is_page('profile')){  
+		echo '<style>#um_field_15_userinformation_label, #um_field_15_userinformation{display:none;}</style>';
+ 	}
+}
+
 add_action('admin_head', 'admin_form_styles');
 
 function admin_form_styles() {
