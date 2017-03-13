@@ -11,7 +11,8 @@
             <div class="post-image"><?php the_post_thumbnail(); ?></div>
         <?php endif ?>
 		<div class="entry-meta">
-			<?php the_date(); ?>
+			<?php the_date(); ?><div class="alignright"><?php the_author(); ?></div>
+            
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
