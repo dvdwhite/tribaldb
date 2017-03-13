@@ -102,37 +102,43 @@ get_header(); ?>
 				<?php endwhile; // end of the loop. ?>
 
 				    <div class="org-details-container row loop-padding">
-				        <div class="col-sm-8 orange-bg detail-height">
-				            <div class="col-sm-6">
-				                <h3>Profile Details</h3>
-				                <p>
-				                	<?php
-				                		echo 'Name: ' . $first_name . ' ' . $last_name . '<br/>';
-				                		echo 'Organization: ' . $organization . '<br/>';
-				                		echo 'Agency/Department: ' . $agencydepartment . '<br/>';
-                                        echo 'Title: ' . $job_title . '<br/>';
-				                	?>
-				                </p>
-				            </div>
-				            <div class="col-sm-6">
-				                <h3>Contact Info:</h3>
-				                	<?php
-				                		echo 'Phone: ' . $phone . '<br/>';
-				                		echo 'Address: ' . $address_1 . '<br/>';
-				                		if ($address_2) {
-				                			echo $address_2 . '<br/>';
-				                		}
-				                		echo 'State: ' . $state . '<br/>';
-				                		echo 'Zip Code:' . $zip . '<br/>';
-				                	?>
-				                <?php if($description): ?>
-				                <h3>Bio:</h3>
-				                <?php echo $description;
-				                      endif;
-				                ?>
-				            </div>
+				        <div class="col-sm-8 orange-bg profile-height">
+				            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <h3>Profile Details</h3>
+                                    <p>
+                                        <?php
+                                            echo 'Name: ' . $first_name . ' ' . $last_name . '<br/>';
+                                            echo 'Organization: ' . $organization . '<br/>';
+                                            echo 'Agency/Department: ' . $agencydepartment . '<br/>';
+                                            echo 'Title: ' . $job_title . '<br/>';
+                                        ?>
+                                    </p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h3>Contact Info:</h3>
+                                        <?php
+                                            echo 'Phone: ' . $phone . '<br/>';
+                                            echo 'Address: ' . $address_1 . '<br/>';
+                                            if ($address_2) {
+                                                echo $address_2 . '<br/>';
+                                            }
+                                            echo 'State: ' . $state . '<br/>';
+                                            echo 'Zip Code:' . $zip . '<br/>';
+                                        ?>
+                                </div>                                
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-11">
+                                <?php if($description): ?>
+                                    <h3>Bio:</h3>
+                                    <?php echo $description;
+                                          endif;
+                                    ?>
+                                </div>
+                            </div>
 				        </div>
-				        <div class="col-sm-4 blue-bg detail-height">
+				        <div class="col-sm-4 blue-bg profile-height">
 				            <h3>Database Links</h3>
 				            <div class="menu-temporary-database-menu-container">
                                 <ul id="menu-temporary-database-menu" class="menu">
