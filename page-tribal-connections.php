@@ -53,7 +53,7 @@ get_header(); ?>
                                         //echo ' | ';
                                         echo the_date();
 
-                                    ?>
+                                    ?><div class="alignright"><strong><em>by: <?php the_author(); ?></em></strong></div>
                                     <p><?php echo the_excerpt(); ?></p>
                             <?php endwhile;?>
 

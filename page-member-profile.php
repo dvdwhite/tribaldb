@@ -34,6 +34,7 @@ get_header(); ?>
 					$first_name = $user_meta['first_name'];
 					$last_name = $user_meta['last_name'];
 					$organization = $user_meta['organization'];
+					$agencydepartment = $user_meta['agencydepartment'];
 					$job_title = $user_meta['job_title'];
 					$address_1 = $user_meta['address_1'];
 					$address_2 = $user_meta['address_2'];
@@ -108,7 +109,8 @@ get_header(); ?>
 				                	<?php
 				                		echo 'Name: ' . $first_name . ' ' . $last_name . '<br/>';
 				                		echo 'Organization: ' . $organization . '<br/>';
-				                		echo 'Title: ' . $job_title . '<br/>';
+				                		echo 'Agency/Department: ' . $agencydepartment . '<br/>';
+                                        echo 'Title: ' . $job_title . '<br/>';
 				                	?>
 				                </p>
 				            </div>
