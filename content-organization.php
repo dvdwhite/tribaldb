@@ -160,7 +160,7 @@
                 //echo '$org_name: ' . $org_name;
                 //echo '<br />$user->organization: ' . $user->organization;
         
-                if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( $user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
+                if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( in_array( 'member', (array) $user->roles ) ) || ( $user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
         
                 <div class="details-header">
                     <h3><span class="dashicons dashicons-groups dash-large"></span> Member Directory<!-- &nbsp; &#187;--></h3>
@@ -199,6 +199,10 @@
                     </table> 
                     
                 </div>
+
+                <?php
+
+                if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( $user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
         
                 <div class="details-header">
                     <h3><span class="dashicons dashicons-paperclip dash-large"></span> Documents<!-- &nbsp; &#187;--><span class="float-right"><span class="dashicons dashicons-welcome-add-page dash-large"></span> <a href="/database/submit-a-document">Submit a Document &#187;</a></span></h3>
@@ -247,6 +251,17 @@
                         echo '</div>';
         
                     }
+
+                } else { ?>
+
+                    <div class="details-header loop-padding">
+                        <h3><span class="dashicons dashicons-paperclip dash-large"></span> Documents <!--&nbsp; &#187;--></h3>
+                    </div>
+                    <div class="ten-twenty-four row loop-padding clearfix">
+                        <p>You must be assigned to this organization to view it’s documents.</p>
+                    </div>
+
+                <?php }
         
         } else { ?>
                     
