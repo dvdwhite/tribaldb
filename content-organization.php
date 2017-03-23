@@ -58,21 +58,21 @@
 	<header class="entry-header">
         <!-- SEARCH BAR -->
                 
-                    <aside style="width: 75%; display:inline; float: left;" id="" class="">
-                        <form role="search" method="get" class="search-form" action="/">
-                            <label>
-                                <!--<span class="screen-reader-text">
-                                    <p><strong>Search The Tribal Directory</strong></p>
-                                </span>-->
-                                <input type="search" class="search-field" placeholder="Search the Tribal Database" value="" name="s" title="Search the Tribal Database" />
-                            </label>
-                            <input type="submit" class="search-submit" value="Search" />
-                            <input type="hidden" name="post_type" value="organization" />
-                        </form>
+        <aside style="width: 75%; display:inline; float: left;" id="" class="">
+            <form role="search" method="get" class="search-form" action="/">
+                <label>
+                    <!--<span class="screen-reader-text">
+                        <p><strong>Search The Tribal Directory</strong></p>
+                    </span>-->
+                    <input type="search" class="search-field" placeholder="Search the Tribal Database" value="" name="s" title="Search the Tribal Database" />
+                </label>
+                <input type="submit" class="search-submit" value="Search" />
+                <input type="hidden" name="post_type" value="organization" />
+            </form>
 
-                        <p>&nbsp;</p>
+            <p>&nbsp;</p>
 
-                    </aside>
+        </aside>
                          
         <div class="profile-links">
             <?php if ( is_user_logged_in() ) {
@@ -156,112 +156,91 @@
         <br clear="all" />
         <?php 
             if ( is_user_logged_in() ) { 
+
                 $user = wp_get_current_user();
                 //echo '$org_name: ' . $org_name;
                 //echo '<br />$user->organization: ' . $user->organization;
         
                 if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( in_array( 'member', (array) $user->roles ) ) || ( $user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
         
-                <div class="details-header">
-                    <h3><span class="dashicons dashicons-groups dash-large"></span> Member Directory<!-- &nbsp; &#187;--></h3>
-                </div>
+                    <div class="details-header">
+                        <h3><span class="dashicons dashicons-groups dash-large"></span> Member Directory<!-- &nbsp; &#187;--></h3>
+                    </div>
 
-                <div class="loop-padding">
-        
-                    <table class="organization-list">
-                        <tr>
-                            <th>Name</th>
-                            <th>Title</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                        </tr>
+                    <div class="loop-padding">
+            
+                        <table class="organization-list">
+                            <tr>
+                                <th>Name</th>
+                                <th>Title</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                            </tr>
 
-                        <?php
+                            <?php
 
-                        // User Loop
-                        if ( ! empty( $user_query->results ) ) {
+                            // User Loop
+                            if ( ! empty( $user_query->results ) ) {
 
-                            foreach ( $user_query->results as $user ) {
-                                //dont list inactive/pending users
-                                if (in_array($user->ID, $inactive_ids)) {
-                                    //do nothing
-                                }else{
-                                    echo '<tr><td><span class="dashicons dashicons-universal-access dash-large"></span> <a href="/member-profile?usr_id=' . $user->ID . '">'. $user->display_name .'</a></td><td>'. $user->job_title .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
+                                foreach ( $user_query->results as $user ) {
+                                    //dont list inactive/pending users
+                                    if (in_array($user->ID, $inactive_ids)) {
+                                        //do nothing
+                                    }else{
+                                        echo '<tr><td><span class="dashicons dashicons-universal-access dash-large"></span> <a href="/member-profile?usr_id=' . $user->ID . '">'. $user->display_name .'</a></td><td>'. $user->job_title .'</td><td>'. $user->user_email .'</td><td>'. $user->phone .'</td></tr>';
+                                    }
+
                                 }
-
-                            }
-                        } 
-                        else {
-                            echo '<tr><td colspan="4">No members found.</td></tr>';
-                        }
-                    ?>
-
-                    </table> 
-                    
-                </div>
-
-                <?php
-
-                if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( $user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
-        
-                <div class="details-header">
-                    <h3><span class="dashicons dashicons-paperclip dash-large"></span> Documents<!-- &nbsp; &#187;--><span class="float-right"><span class="dashicons dashicons-welcome-add-page dash-large"></span> <a href="/database/submit-a-document">Submit a Document &#187;</a></span></h3>
-                </div>
-        
-                <div class="loop-padding">
-
-                    <table class="organization-list">
-                        <tr>
-                            <th>File name</th>
-                        </tr>
-                        <?php
-                            $tribal_files = rwmb_meta('tribal_file_advanced');
-                            //var_dump($tribal_files);
-                            if ( !empty( $tribal_files ) ) {
-                                foreach ( $tribal_files as $tribal_file ) {
-                                    echo "<tr><td><span class='dashicons dashicons-media-document dash-medium'></span> <a href='{$tribal_file['url']}' title='{$tribal_file['title']}' target='_blank'>{$tribal_file['title']}</a></td></tr>";
-                                }
-                            } else {
-                                echo '<tr><td>No documents found.</td></tr>';
+                            } 
+                            else {
+                                echo '<tr><td colspan="4">No members found.</td></tr>';
                             }
                         ?>
-                    </table>
-                </div> 
-        
-                <?php
-                    $settings = get_option( 'tribaldb' );
-                    $field_id = 'global_doc';
-                    $global_doc_ids = $settings[$field_id];
 
-                    if ( !empty( $global_doc_ids ) ) {        
-        
-                        echo '<div class="details-header"><h3><span class="dashicons dashicons-info dash-large"></span> Information & Resources</h3></div>';
-                        echo '<div class="loop-padding">';
-                        echo '<table class="organization-list">';
-
-                        foreach ( $global_doc_ids as $global_doc_id ) {
-
-                            $document = RWMB_File_Field::file_info( $global_doc_id );
-                            //var_dump($document);
-
-                            echo "<tr><td><span class='dashicons dashicons-media-document dash-medium'></span> <a href='{$document['url']}' title='{$document['title']}' target='_blank'>{$document['title']}</a></td></tr>";
-                        }
+                        </table> 
                         
-                        echo '</table>';
-                        echo '</div>';
+                    </div>
+
+                    <?php
+
+                        if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( $user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
         
-                    }
+                            <div class="details-header">
+                                <h3><span class="dashicons dashicons-paperclip dash-large"></span> Documents<!-- &nbsp; &#187;--><span class="float-right"><span class="dashicons dashicons-welcome-add-page dash-large"></span> <a href="/database/submit-a-document">Submit a Document &#187;</a></span></h3>
+                            </div>
+                    
+                            <div class="loop-padding">
 
-                } else { ?>
+                                <table class="organization-list">
+                                    <tr>
+                                        <th>File name</th>
+                                    </tr>
+                                    <?php
+                                        $tribal_files = rwmb_meta('tribal_file_advanced');
+                                        //var_dump($tribal_files);
+                                        if ( !empty( $tribal_files ) ) {
+                                            foreach ( $tribal_files as $tribal_file ) {
+                                                echo "<tr><td><span class='dashicons dashicons-media-document dash-medium'></span> <a href='{$tribal_file['url']}' title='{$tribal_file['title']}' target='_blank'>{$tribal_file['title']}</a></td></tr>";
+                                            }
+                                        } else {
+                                            echo '<tr><td>No documents found.</td></tr>';
+                                        }
+                                    ?>
+                                </table>
+                            </div> 
 
-                    <div class="details-header loop-padding">
-                        <h3><span class="dashicons dashicons-paperclip dash-large"></span> Documents <!--&nbsp; &#187;--></h3>
-                    </div>
-                    <div class="ten-twenty-four row loop-padding clearfix">
-                        <p>You must be assigned to this organization to view it’s documents.</p>
-                    </div>
+                        <?php } 
 
-                <?php }
+                        else { ?>
+
+                            <div class="details-header loop-padding">
+                                <h3><span class="dashicons dashicons-paperclip dash-large"></span> Documents <!--&nbsp; &#187;--></h3>
+                            </div>
+                            <div class="ten-twenty-four row loop-padding clearfix">
+                                <p>You must be assigned to this organization to view it’s documents.</p>
+                            </div>
+
+                        <?php }
         
         } else { ?>
                     
@@ -273,6 +252,30 @@
             </div>
                     
                 <?php }
+
+            
+                $settings = get_option( 'tribaldb' );
+                $field_id = 'global_doc';
+                $global_doc_ids = $settings[$field_id];
+
+                if ( !empty( $global_doc_ids ) ) {        
+    
+                    echo '<div class="details-header"><h3><span class="dashicons dashicons-info dash-large"></span> Information & Resources</h3></div>';
+                    echo '<div class="loop-padding">';
+                    echo '<table class="organization-list">';
+
+                    foreach ( $global_doc_ids as $global_doc_id ) {
+
+                        $document = RWMB_File_Field::file_info( $global_doc_id );
+                        //var_dump($document);
+
+                        echo "<tr><td><span class='dashicons dashicons-media-document dash-medium'></span> <a href='{$document['url']}' title='{$document['title']}' target='_blank'>{$document['title']}</a></td></tr>";
+                    }
+                    
+                    echo '</table>';
+                    echo '</div>';
+    
+                }                    
             
             } else { ?>
         
@@ -283,7 +286,7 @@
                 <p>You must be logged in to view the complete member directory and document repository. Please <a href="/database" style="color:#866787!important">login here</a>.</p>
             </div>
         
-        <?php } ?>
+        <?php } ?>   
                
     </div>
     
