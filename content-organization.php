@@ -3,21 +3,21 @@
  * @package Tribal Database
  */
 
-	//GET USER DATA
+    //GET USER DATA
     
-	$post = get_post($_GET[org_id]); 
-	$org_name = $post->post_name;
+    $post = get_post($_GET[org_id]); 
+    $org_name = $post->post_name;
 
     //get users that are a members of current organization page. 
-	$user_fields = array( 
-		'meta_query' => array(
-		        array(
-		            'key'   => 'organization',
-		            'value' => $org_name,
-		            'compare' => 'REGEXP'
-		        ),
-		    )
-		);
+    $user_fields = array( 
+        'meta_query' => array(
+                array(
+                    'key'   => 'organization',
+                    'value' => $org_name,
+                    'compare' => 'REGEXP'
+                ),
+            )
+        );
     $user_query = new WP_User_Query( $user_fields );
 
 
@@ -32,12 +32,12 @@
     'meta_value'=>'pending' 
     ));
     $hide_user_ids = array_unique(array_merge($inactive_user_ids,$pending_user_ids), SORT_REGULAR);
-	
+    
     $inactive_ids = array();
     foreach($hide_user_ids as $value) {
      $inactive_ids[] = $value->ID;
     }
-	/*echo '<pre>';
+    /*echo '<pre>';
     var_dump($inactive_ids);
     echo '</pre>';*/
 ?>
@@ -55,7 +55,7 @@
     }
 </style>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+    <header class="entry-header">
         <!-- SEARCH BAR -->
                 
         <aside style="width: 75%; display:inline; float: left;" id="" class="">
@@ -100,14 +100,14 @@
                 echo '<a href="/wp-admin">Sign In</a> | <a href="/database/request-access">Request Access</a>';
             } ?>
         </div>    <br clear="all" />    
-		<h2 class="page-title"><?php the_title(); ?><!-- <span class="back-to-link"> &nbsp; | <a href="/organizations">Back to Organizations &#187;</a></span>--></h2>
-	</header><!-- .entry-header -->
+        <h2 class="page-title"><?php the_title(); ?><!-- <span class="back-to-link"> &nbsp; | <a href="/organizations">Back to Organizations &#187;</a></span>--></h2>
+    </header><!-- .entry-header -->
 
-	<div class="entry-content">
+    <div class="entry-content">
         
         <?php the_content(); ?>
 
-	</div><!-- .entry-content -->    
+    </div><!-- .entry-content -->    
     
     <div class="org-details-container row loop-padding">
         <div class="col-sm-8 orange-bg detail-height">
@@ -157,11 +157,15 @@
         <?php 
             if ( is_user_logged_in() ) { 
 
-                $user = wp_get_current_user();
+                $current_user = wp_get_current_user();
+
+                // DISPLAY ORG DETAIL DATA FOR TESTING
                 //echo '$org_name: ' . $org_name;
-                //echo '<br />$user->organization: ' . $user->organization;
-        
-                if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( in_array( 'member', (array) $user->roles ) ) || ( $user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
+                //echo '<br />$current_user->organization: ' . $current_user->organization;
+
+                // START MEMBERS CONDITIONAL
+
+                if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( in_array( 'member', (array) $user->roles ) ) || ( $current_user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
         
                     <div class="details-header">
                         <h3><span class="dashicons dashicons-groups dash-large"></span> Member Directory<!-- &nbsp; &#187;--></h3>
@@ -199,61 +203,51 @@
 
                         </table> 
                         
+                    </div> 
+                    
+                <?php } 
+
+                // START DOCUMENTS CONDITIONAL
+
+                if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( in_array( 'administrator', (array) $user->roles ) ) || ( $current_user->organization == $org_name )  ) { ?>
+
+                    <div class="details-header">
+                        <h3><span class="dashicons dashicons-paperclip dash-large"></span> Documents<!-- &nbsp; &#187;--><span class="float-right"><span class="dashicons dashicons-welcome-add-page dash-large"></span> <a href="/database/submit-a-document">Submit a Document &#187;</a></span></h3>
+                    </div>
+            
+                    <div class="loop-padding">
+
+                        <table class="organization-list">
+                            <tr>
+                                <th>File name</th>
+                            </tr>
+                            <?php
+                                $tribal_files = rwmb_meta('tribal_file_advanced');
+                                //var_dump($tribal_files);
+                                if ( !empty( $tribal_files ) ) {
+                                    foreach ( $tribal_files as $tribal_file ) {
+                                        echo "<tr><td><span class='dashicons dashicons-media-document dash-medium'></span> <a href='{$tribal_file['url']}' title='{$tribal_file['title']}' target='_blank'>{$tribal_file['title']}</a></td></tr>";
+                                    }
+                                } else {
+                                    echo '<tr><td>No documents found.</td></tr>';
+                                }
+                            ?>
+                        </table>
+                    </div> 
+
+                <?php } else { ?>
+
+                    <div class="details-header loop-padding">
+                        <h3><span class="dashicons dashicons-paperclip dash-large"></span> Documents <!--&nbsp; &#187;--></h3>
+                    </div>
+                    <div class="ten-twenty-four row loop-padding clearfix">
+                        <p>You must be assigned to this organization to view it’s documents.</p>
                     </div>
 
-                    <?php
+                <?php } 
 
-                        if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( $user->organization == $org_name ) || ( in_array( 'administrator', (array) $user->roles ) ) ) { ?>
-        
-                            <div class="details-header">
-                                <h3><span class="dashicons dashicons-paperclip dash-large"></span> Documents<!-- &nbsp; &#187;--><span class="float-right"><span class="dashicons dashicons-welcome-add-page dash-large"></span> <a href="/database/submit-a-document">Submit a Document &#187;</a></span></h3>
-                            </div>
-                    
-                            <div class="loop-padding">
+                // START GLOBAL DOCS SECTION
 
-                                <table class="organization-list">
-                                    <tr>
-                                        <th>File name</th>
-                                    </tr>
-                                    <?php
-                                        $tribal_files = rwmb_meta('tribal_file_advanced');
-                                        //var_dump($tribal_files);
-                                        if ( !empty( $tribal_files ) ) {
-                                            foreach ( $tribal_files as $tribal_file ) {
-                                                echo "<tr><td><span class='dashicons dashicons-media-document dash-medium'></span> <a href='{$tribal_file['url']}' title='{$tribal_file['title']}' target='_blank'>{$tribal_file['title']}</a></td></tr>";
-                                            }
-                                        } else {
-                                            echo '<tr><td>No documents found.</td></tr>';
-                                        }
-                                    ?>
-                                </table>
-                            </div> 
-
-                        <?php } 
-
-                        else { ?>
-
-                            <div class="details-header loop-padding">
-                                <h3><span class="dashicons dashicons-paperclip dash-large"></span> Documents <!--&nbsp; &#187;--></h3>
-                            </div>
-                            <div class="ten-twenty-four row loop-padding clearfix">
-                                <p>You must be assigned to this organization to view it’s documents.</p>
-                            </div>
-
-                        <?php }
-        
-        } else { ?>
-                    
-            <div class="details-header loop-padding">
-                <h3>Member Directory and Documents <!--&nbsp; &#187;--></h3>
-            </div>
-            <div class="ten-twenty-four row loop-padding clearfix">
-                <p>You must be assigned to this organization to view it’s member directory and documents.</p>
-            </div>
-                    
-                <?php }
-
-            
                 $settings = get_option( 'tribaldb' );
                 $field_id = 'global_doc';
                 $global_doc_ids = $settings[$field_id];
@@ -275,8 +269,8 @@
                     echo '</table>';
                     echo '</div>';
     
-                }                    
-            
+                }               
+
             } else { ?>
         
             <div class="details-header loop-padding">
@@ -291,41 +285,41 @@
     </div>
     
         
-	<footer class="entry-footer">
-		<?php
-			/* translators: used between list items, there is a space after the comma 
-			$category_list = get_the_category_list( __( ', ', 'tribaldb' ) );
+    <footer class="entry-footer">
+        <?php
+            /* translators: used between list items, there is a space after the comma 
+            $category_list = get_the_category_list( __( ', ', 'tribaldb' ) );
 
-			/* translators: used between list items, there is a space after the comma 
-			$tag_list = get_the_tag_list( '', __( ', ', 'tribaldb' ) );
+            /* translators: used between list items, there is a space after the comma 
+            $tag_list = get_the_tag_list( '', __( ', ', 'tribaldb' ) );
 
-			if ( ! tribaldb_categorized_blog() ) {
-				// This blog only has 1 category so we just need to worry about tags in the meta text
-				if ( '' != $tag_list ) {
-					$meta_text = __( 'This entry was tagged %2$s. Bookmark the <a href="%3$s" rel="bookmark">permalink</a>.', 'tribaldb' );
-				} else {
-					$meta_text = __( 'Bookmark the <a href="%3$s" rel="bookmark">permalink</a>.', 'tribaldb' );
-				}
+            if ( ! tribaldb_categorized_blog() ) {
+                // This blog only has 1 category so we just need to worry about tags in the meta text
+                if ( '' != $tag_list ) {
+                    $meta_text = __( 'This entry was tagged %2$s. Bookmark the <a href="%3$s" rel="bookmark">permalink</a>.', 'tribaldb' );
+                } else {
+                    $meta_text = __( 'Bookmark the <a href="%3$s" rel="bookmark">permalink</a>.', 'tribaldb' );
+                }
 
-			} else {
-				// But this blog has loads of categories so we should probably display them here
-				if ( '' != $tag_list ) {
-					$meta_text = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" rel="bookmark">permalink</a>.', 'tribaldb' );
-				} else {
-					$meta_text = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" rel="bookmark">permalink</a>.', 'tribaldb' );
-				}
+            } else {
+                // But this blog has loads of categories so we should probably display them here
+                if ( '' != $tag_list ) {
+                    $meta_text = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" rel="bookmark">permalink</a>.', 'tribaldb' );
+                } else {
+                    $meta_text = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" rel="bookmark">permalink</a>.', 'tribaldb' );
+                }
 
-			} // end check for categories on this blog
+            } // end check for categories on this blog
 
-			printf(
-				$meta_text,
-				$category_list,
-				$tag_list,
-				get_permalink()
-			); */
-		?>
+            printf(
+                $meta_text,
+                $category_list,
+                $tag_list,
+                get_permalink()
+            ); */
+        ?>
 
-		<?php edit_post_link( __( 'Edit', 'tribaldb' ), '<span class="edit-link">', '</span>' ); ?>
+        <?php edit_post_link( __( 'Edit', 'tribaldb' ), '<span class="edit-link">', '</span>' ); ?>
 
-	</footer><!-- .entry-footer -->
+    </footer><!-- .entry-footer -->
 </article><!-- #post-## -->
