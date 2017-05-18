@@ -14,7 +14,7 @@
                 array(
                     'key'   => 'organization',
                     'value' => $org_name,
-                    'compare' => 'REGEXP'
+                    'compare' => '='
                 ),
             )
         );
@@ -209,7 +209,9 @@
 
                 // START DOCUMENTS CONDITIONAL
 
-                if ( ( in_array( 'mega_member', (array) $user->roles ) ) || ( in_array( 'administrator', (array) $user->roles ) ) || ( $current_user->organization == $org_name )  ) { ?>
+                $current_user = wp_get_current_user();                
+
+                if ( ( in_array( 'mega_member', (array) $current_user->roles ) ) || ( in_array( 'administrator', (array) $current_user->roles ) ) || ( $current_user->organization == $org_name )  ) { ?>
 
                     <div class="details-header">
                         <h3><span class="dashicons dashicons-paperclip dash-large"></span> Documents<!-- &nbsp; &#187;--><span class="float-right"><span class="dashicons dashicons-welcome-add-page dash-large"></span> <a href="/database/submit-a-document">Submit a Document &#187;</a></span></h3>
