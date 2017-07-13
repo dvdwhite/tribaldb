@@ -492,6 +492,7 @@ function tribal_register_meta_boxes( $meta_boxes ) {
                     'Eastern Oklahoma' => esc_html__( 'Eastern Oklahoma', $prefix ),
                     'Great Plains' => esc_html__( 'Great Plains', $prefix ),
                     'Midwest' => esc_html__( 'Midwest', $prefix ),
+                    'Navajo' => esc_html__( 'Navajo', $prefix ),
                     'Northwest' => esc_html__( 'Northwest', $prefix ),
                     'Pacific' => esc_html__( 'Pacific', $prefix ),
 					'Southern Plains' => esc_html__( 'Southern Plains', $prefix ),

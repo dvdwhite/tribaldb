@@ -140,6 +140,7 @@ get_header(); ?>
                                 <option value="eastern">Eastern</option>
                                 <option value="great plains">Great Plains</option>
                                 <option value="midwest">Midwest</option>
+                                <option value="navajo">Navajo</option>
                                 <option value="northwest">Northwest</option>
                                 <option value="pacific">Pacific</option>
                                 <option value="rocky mountain">Rocky Mountain</option>
