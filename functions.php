@@ -492,6 +492,7 @@ function tribal_register_meta_boxes( $meta_boxes ) {
                     'Eastern Oklahoma' => esc_html__( 'Eastern Oklahoma', $prefix ),
                     'Great Plains' => esc_html__( 'Great Plains', $prefix ),
                     'Midwest' => esc_html__( 'Midwest', $prefix ),
+                    'Navajo' => esc_html__( 'Navajo', $prefix ),
                     'Northwest' => esc_html__( 'Northwest', $prefix ),
                     'Pacific' => esc_html__( 'Pacific', $prefix ),
 					'Southern Plains' => esc_html__( 'Southern Plains', $prefix ),
@@ -741,6 +742,16 @@ add_filter( 'getarchives_join', 'wse95776_archives_join', 10, 2 );
  */
 function wse95776_archives_join( $join, $r ){
     return 'inner join wp_tribal_term_relationships on wp_tribal_posts.ID = wp_tribal_term_relationships.object_id inner join wp_tribal_term_taxonomy on wp_tribal_term_relationships.term_taxonomy_id = wp_tribal_term_taxonomy.term_taxonomy_id inner join wp_tribal_terms on wp_tribal_term_taxonomy.term_id = wp_tribal_terms.term_id';
+}
+
+
+
+add_action('after_setup_theme', 'remove_admin_bar');
+
+function remove_admin_bar() {
+	if (!current_user_can('administrator') && !is_admin()) {
+	  show_admin_bar(false);
+	}
 }
 
 
