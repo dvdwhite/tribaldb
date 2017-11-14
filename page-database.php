@@ -44,6 +44,12 @@ get_header(); ?>
                                 <div class="learn-more blue"><a href="/database/submit-a-document">Submit a Document</a></div>
                     
                             <?php } }?>
+
+                    <p>&nbsp;</p>
+                    <h3>Looking for a listing of state<br />AMBER Alert Coordinators?</h3>
+                    Visit that listing on our AMBER Advocate website<br />(<a href="https://www.amberadvocate.org" target="_blank" style="color:#fff;">www.amberadvocate.org</a>)
+                        <div class="learn-more blue"><a href="https://www.amberadvocate.org/amber-alert-network/meet-our-partners/" target="_blank">State AMBER Alert Contact Information</a></div>                            
+                    </p>
 						
 				</div>	
 
